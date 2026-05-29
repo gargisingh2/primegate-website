@@ -1,0 +1,68 @@
+# =========================================================
+# Primegate Consultancy - Decap CMS configuration
+# ---------------------------------------------------------
+# Decap CMS is Git-based: it commits content changes to a
+# GitHub repository. To use this editor you MUST host the
+# website's source in a GitHub repo and connect it below.
+# See README.md (section "Editing content with the CMS")
+# for the full, honest setup walkthrough.
+# =========================================================
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/primegate-website   # <-- change to your repo
+  branch: main
+  # For login without running your own server, use Netlify Identity
+  # OR the simpler GitHub OAuth via a free proxy. See README.
+
+# Where uploaded images are stored / served from
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Editorial workflow gives a Draft -> Review -> Publish flow
+publish_mode: editorial_workflow
+
+# ---------------------------------------------------------
+# Editable content collections.
+# NOTE: The 7 pages are hand-built HTML. Decap edits MARKDOWN/
+# data files, not raw HTML directly. The practical pattern is:
+#   1. Edit the "Site Settings" + "Editable Snippets" below.
+#   2. For full page-copy editing, convert page bodies to the
+#      markdown files in /content (a small dev task - see README).
+# This config ships ready for the common edits the client will
+# actually make: contact details, testimonials, and FAQs.
+# ---------------------------------------------------------
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "contact"
+        label: "Contact Details"
+        file: "content/settings/contact.json"
+        fields:
+          - { name: email, label: "Email", widget: string }
+          - { name: phone, label: "Phone", widget: string }
+          - { name: address, label: "Dubai Office Address", widget: text }
+          - { name: response_time, label: "Response Commitment", widget: string }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: quote, label: "Quote", widget: text }
+      - { name: attribution, label: "Attribution (name / institution)", widget: string }
+      - { name: audience, label: "Audience", widget: select, options: ["University", "Outbound Student", "Inbound Student", "Agent Partner"] }
+      - { name: order, label: "Display Order", widget: number, default: 1 }
+
+  - name: "faqs"
+    label: "FAQs"
+    folder: "content/faqs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: question, label: "Question", widget: string }
+      - { name: answer, label: "Answer", widget: text }
+      - { name: page, label: "Which page?", widget: select, options: ["Home", "Study Abroad", "Study in the Middle East", "For Agents"] }
+      - { name: order, label: "Display Order", widget: number, default: 1 }

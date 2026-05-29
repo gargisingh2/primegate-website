@@ -1,0 +1,31 @@
+# Primegate Consultancy - robots.txt
+# Allow all standard search crawlers
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI / LLM citation crawlers (helps Primegate be cited in AI answers)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://primegateconsultancy.com/sitemap.xml
