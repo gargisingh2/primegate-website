@@ -138,6 +138,20 @@
     }
   });
 
+  /* ---- Hero rotating slideshow ---- */
+  var heroSlides = document.querySelectorAll(".hero__slides img");
+  if (heroSlides.length > 1) {
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      var hi = 0;
+      setInterval(function () {
+        heroSlides[hi].classList.remove("is-active");
+        hi = (hi + 1) % heroSlides.length;
+        heroSlides[hi].classList.add("is-active");
+      }, 4000);
+    }
+  }
+
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
