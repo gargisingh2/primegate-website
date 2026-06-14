@@ -23,6 +23,12 @@
 
 <link rel="stylesheet" href="css/style.css" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/favicon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="#0B1F4D" />
+
+<!-- Preload the LCP hero image for faster first paint -->
+<link rel="preload" as="image" href="images/hero-rotate-2.jpg" imagesrcset="images/hero-rotate-2-mobile.jpg 900w, images/hero-rotate-2.jpg 1920w" imagesizes="100vw" fetchpriority="high" />
 
 <!-- JSON-LD: Organization + LocalBusiness -->
 <script type="application/ld+json">
@@ -57,6 +63,17 @@
   ]
 }
 </script>
+<!-- JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Primegate Consultancy",
+  "url": "https://primegateconsultancy.com/",
+  "inLanguage": "en",
+  "publisher": { "@type": "Organization", "name": "Primegate Consultancy", "url": "https://primegateconsultancy.com/" }
+}
+</script>
 </head>
 <body>
 
@@ -73,7 +90,7 @@
     <nav class="nav__menu">
       <a href="for-universities.html">For Universities</a>
       <a href="study-abroad.html">Study Abroad</a>
-      <a href="study-in-middle-east.html">Study in the Middle East</a>
+      <a href="study-in-middle-east.html">Study in the Middle East</a><a href="management-consulting.html">Management Consulting</a>
       <a href="partner-with-us.html">For Agents</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="btn btn--gold nav__cta">Get in Touch</a>
@@ -108,7 +125,7 @@
       <div class="cred__item"><div class="cred__num" data-count="6">6</div><div class="cred__label">Continents of Source Markets</div></div>
       <div class="cred__item"><div class="cred__num" data-count="500" data-suffix="+">500+</div><div class="cred__label">Partner Institutions Engaged</div></div>
       <div class="cred__item"><div class="cred__num" data-count="40" data-suffix="+">40+</div><div class="cred__label">Countries Placed</div></div>
-      <div class="cred__item"><div class="cred__num" data-count="3">3</div><div class="cred__label">Audiences. One Advisory Standard.</div></div>
+      <div class="cred__item"><div class="cred__num" data-count="4">4</div><div class="cred__label">Audiences. One Advisory Standard.</div></div>
     </div>
   </div>
 </section>
@@ -118,9 +135,9 @@
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow on-dark">Who Are You Here For?</span>
-      <h2>Three Audiences. One Unwavering Standard.</h2>
+      <h2>Four Audiences. One Unwavering Standard.</h2>
     </div>
-    <div class="grid grid--3">
+    <div class="grid grid--4">
       <article class="card card--dark reveal from-left">
         <div class="card__img"><img src="images/card-universities.jpg" alt="University graduates tossing their caps in celebration outside a modern campus building" loading="lazy" /></div>
         <div class="card__body">
@@ -143,6 +160,14 @@
           <h3>The Middle East Is No Longer a Detour. It Is a Destination.</h3>
           <p>The Gulf region hosts branch campuses of NYU, Sorbonne, Heriot-Watt, Middlesex, and more than sixty internationally accredited institutions. Primegate helps global students navigate this world - from shortlisting to arrival - with cultural and market fluency no algorithm can replicate.</p>
           <a href="study-in-middle-east.html" class="link-arrow">Explore the Middle East →</a>
+        </div>
+      </article>
+      <article class="card card--dark reveal from-right" data-delay="3">
+        <div class="card__img"><img src="images/card-consulting.jpg" alt="A business team reviewing growth charts and financial data together" loading="lazy" /></div>
+        <div class="card__body">
+          <h3>Now Building Businesses, Not Just Careers.</h3>
+          <p>The same advisory standard now guides founders and companies into the UAE - company formation, free zone setup, visas, banking and digital growth, all carried by one trusted partner so you can focus on building.</p>
+          <a href="management-consulting.html" class="link-arrow">Explore Management Consulting →</a>
         </div>
       </article>
     </div>
@@ -224,7 +249,7 @@
         <h4>Audiences</h4>
         <a href="for-universities.html">For Universities</a>
         <a href="study-abroad.html">Study Abroad</a>
-        <a href="study-in-middle-east.html">Study in the Middle East</a>
+        <a href="study-in-middle-east.html">Study in the Middle East</a><a href="management-consulting.html">Management Consulting</a>
         <a href="partner-with-us.html">For Agents</a>
       </div>
       <div>

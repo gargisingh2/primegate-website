@@ -8,21 +8,28 @@ A fast, SEO-friendly, fully static website (plain HTML + CSS + JavaScript - **no
 
 ```
 website/
-├── index.html                 Home (triage page for all 3 audiences)
-├── for-universities.html      B2B - university partnerships
+├── index.html                 Home (showcases all 4 audiences)
+├── for-universities.html      University recruitment partnerships
 ├── study-abroad.html          Outbound students (Middle East → world)
 ├── study-in-middle-east.html  Inbound students (world → Gulf)
+├── management-consulting.html Business setup & consulting (4th audience)
 ├── partner-with-us.html       Education agents / sub-agents (+ application form)
 ├── about.html                 Founder story & philosophy
 ├── contact.html               3 tabbed contact forms
+├── 404.html                   Branded "page not found"
+├── .htaccess                  Apache speed + caching + redirects (HIDDEN FILE - see §3)
 ├── robots.txt                 Lets Google + AI crawlers (GPTBot, ClaudeBot, etc.) in
 ├── sitemap.xml                Page list for search engines
+├── llms.txt                   Plain-text site summary for AI assistants (LLM/AIO citation)
+├── site.webmanifest           App icon / theme metadata
 ├── css/style.css              The whole design system (colours, type, components)
 ├── js/main.js                 All interactivity (no libraries)
-├── images/                    Logos + (later) your photos
-│   ├── logo-full.png
-│   ├── logo-mark.png
-│   └── logo-alt.png
+├── images/                    Logos + photography
+│   ├── logo-horizontal.png    Header + footer lockup
+│   ├── logo-full.png          Alternate full logo (used as the OG share image)
+│   ├── favicon.png            Browser-tab icon
+│   ├── hero-*.jpg             Page hero banners (each with a -mobile version)
+│   └── card-*.jpg             Section / card photos
 └── admin/                     Optional free content editor (Decap CMS) - see §6
     ├── index.html
     └── config.yml
@@ -58,6 +65,8 @@ You are replacing the current WordPress site. Two routes - pick **A** if you wan
    - You should end up with `public_html/index.html`, `public_html/css/style.css`, etc. - **not** `public_html/website/index.html`.
 7. Visit `https://primegateconsultancy.com` - the new site should appear. If you see the old site, clear your browser cache or wait a few minutes.
 
+> ⚠️ **Don't lose the `.htaccess` file.** It starts with a dot, so File Manager and many zip tools treat it as *hidden* and skip it by default. It powers the site's compression, browser caching, HTTPS/www redirects and the custom 404 page - without it the site still works but loads slower. In SiteGround File Manager, turn on **Settings → Show hidden files (dotfiles)** and confirm `.htaccess` is sitting in `public_html` after upload. The same applies to `llms.txt`, `sitemap.xml`, `robots.txt` and `site.webmanifest` - make sure all of them made it across.
+
 ### Domain note (GoDaddy)
 Your domain is at **GoDaddy** but hosting is at **SiteGround**, so the domain's nameservers/DNS should *already* point to SiteGround (that's how the current site works). **You don't need to change anything at GoDaddy** - you're only swapping the files inside the same hosting account. The domain keeps working as-is.
 
@@ -90,7 +99,7 @@ To keep the site looking complete with **zero broken images**, the hero banners 
    ```
 4. The art direction the copywriter recommended for each image is in `../Primegate_Website_Copy_AllPages.md` (look for the `[IMAGE: ...]` notes).
 
-**Logos:** `logo-shield.png` is the PG monogram shown in the navbar (it sits on a white "shield" plate, set in `css/style.css` under `.nav__logo img`, so the navy "P" stays visible on the navy bar); `logo-full.png` is the full lockup used in the footer; `favicon.png` is the bold navy-and-gold browser-tab icon (set via `<link rel="icon">` in each page's `<head>`). Replace any of these files (keep the same names) to update them everywhere at once.
+**Logos:** `logo-horizontal.png` is the full horizontal PRIMEGATE CONSULTANCY lockup used in **both the navbar and the footer** (it has a transparent background so it sits cleanly on the navy bar and over hero photos; sizes are set in `css/style.css` under `.nav__logo img` and `.footer__brand img`); `logo-full.png` is the alternate full logo used as the social-share (Open Graph) image; `favicon.png` is the bold navy-and-gold browser-tab icon (set via `<link rel="icon">` in each page's `<head>`). Replace any of these files (keep the same names) to update them everywhere at once.
 
 ---
 
@@ -152,10 +161,12 @@ The free editor included here (**Decap CMS**, in the `admin/` folder) is **Git-b
 
 **Already baked in:**
 - Unique `<title>` and meta description on every page (keyword-targeted).
-- Open Graph tags for clean link previews on LinkedIn/WhatsApp.
-- **JSON-LD structured data** (Organization / EducationalOrganization, Service, FAQPage, ContactPage) - this is what helps you show up as a rich result in Google *and* get cited by AI assistants.
-- `robots.txt` that explicitly welcomes AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) so Primegate can be cited in AI answers.
-- `sitemap.xml`, semantic headings, fast load (no heavy frameworks), mobile-first responsive layout.
+- Open Graph **and Twitter Card** tags for clean link previews on LinkedIn / WhatsApp / X.
+- **JSON-LD structured data on every page** - EducationalOrganization, WebSite and Organization, plus Service (with an OfferCatalog), FAQPage, BreadcrumbList, AboutPage and ContactPage. This is what helps you show up as a rich result in Google *and* get cited by AI assistants. Includes the real NAP, `foundingDate` and `sameAs` (Instagram + LinkedIn).
+- `robots.txt` that explicitly welcomes AI crawlers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, Applebot-Extended) so Primegate can be cited in AI answers.
+- **`llms.txt`** - a plain-text summary of the business and its four service areas written specifically for AI assistants (the emerging standard for LLM / AI-Overview citation).
+- **Performance layer:** `.htaccess` adds GZIP compression, browser caching and HTTPS/www redirects; the homepage preloads its hero image (faster LCP); images use responsive `srcset`/`<picture>` and lazy-loading; fonts use `display: swap`. No frameworks, single CSS/JS file.
+- `sitemap.xml` (with `lastmod`), `site.webmanifest`, a branded `404.html`, semantic headings, and a mobile-first responsive layout.
 
 **Do this after the site is live:**
 1. Add the site to **Google Search Console** (search.google.com/search-console), verify ownership, and submit `https://primegateconsultancy.com/sitemap.xml`.

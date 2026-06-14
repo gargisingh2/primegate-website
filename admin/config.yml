@@ -24,7 +24,7 @@ publish_mode: editorial_workflow
 
 # ---------------------------------------------------------
 # Editable content collections.
-# NOTE: The 7 pages are hand-built HTML. Decap edits MARKDOWN/
+# NOTE: The 8 pages are hand-built HTML. Decap edits MARKDOWN/
 # data files, not raw HTML directly. The practical pattern is:
 #   1. Edit the "Site Settings" + "Editable Snippets" below.
 #   2. For full page-copy editing, convert page bodies to the
@@ -53,7 +53,7 @@ collections:
     fields:
       - { name: quote, label: "Quote", widget: text }
       - { name: attribution, label: "Attribution (name / institution)", widget: string }
-      - { name: audience, label: "Audience", widget: select, options: ["University", "Outbound Student", "Inbound Student", "Agent Partner"] }
+      - { name: audience, label: "Audience", widget: select, options: ["University", "Outbound Student", "Inbound Student", "Agent Partner", "Business / Entrepreneur"] }
       - { name: order, label: "Display Order", widget: number, default: 1 }
 
   - name: "faqs"
@@ -64,5 +64,5 @@ collections:
     fields:
       - { name: question, label: "Question", widget: string }
       - { name: answer, label: "Answer", widget: text }
-      - { name: page, label: "Which page?", widget: select, options: ["Home", "Study Abroad", "Study in the Middle East", "For Agents"] }
+      - { name: page, label: "Which page?", widget: select, options: ["Home", "For Universities", "Study Abroad", "Study in the Middle East", "Management Consulting", "For Agents"] }
       - { name: order, label: "Display Order", widget: number, default: 1 }

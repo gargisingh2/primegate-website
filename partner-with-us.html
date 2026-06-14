@@ -17,6 +17,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/favicon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="#0B1F4D" />
+<meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">
 { "@context": "https://schema.org", "@type": "Organization", "name": "Primegate Consultancy", "url": "https://primegateconsultancy.com/", "logo": "https://primegateconsultancy.com/images/logo-full.png", "description": "Dubai-based international education advisory and university channel partner network with 30+ years of expertise.", "areaServed": ["AE","SA","QA","KW","BH","OM","IN","PK","BD","LK","PH","MY","ID","NG","KE","ZA","UZ","KZ"], "knowsAbout": ["international student recruitment","university agent partnerships","education counselling","higher education advisory"], "email": "info@primegateconsultancy.com", "telephone": "+971553129798", "address": { "@type": "PostalAddress", "streetAddress": "Meydan Grandstand, 6th Floor, Meydan Road, Nad Al Sheba", "addressLocality": "Dubai", "addressCountry": "AE" } }
 </script>
@@ -32,6 +36,9 @@
 {"@type": "Question", "name": "What support does Primegate provide to partner agents?", "acceptedAnswer": {"@type": "Answer", "text": "Partner agents receive onboarding training, regular university briefings, market intelligence updates, branded collateral, and approved campaign assets to support their student recruitment activities."}}
 ]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://primegateconsultancy.com/"},{"@type":"ListItem","position":2,"name":"For Agents","item":"https://primegateconsultancy.com/partner-with-us.html"}]}
+</script>
 </head>
 <body>
 
@@ -42,7 +49,7 @@
     <nav class="nav__menu">
       <a href="for-universities.html">For Universities</a>
       <a href="study-abroad.html">Study Abroad</a>
-      <a href="study-in-middle-east.html">Study in the Middle East</a>
+      <a href="study-in-middle-east.html">Study in the Middle East</a><a href="management-consulting.html">Management Consulting</a>
       <a href="partner-with-us.html" class="active">For Agents</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="btn btn--gold nav__cta">Get in Touch</a>
@@ -88,7 +95,7 @@
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow on-dark">How It Works</span><h2>Three Steps From Application to Active Partnership.</h2></div>
     <div class="steps reveal">
-      <div class="step"><div class="step__dot">1</div><h3>Apply</h3><p>Submit your partnership application through the form below. We review every application personally - assessing your advisory background, current student base, source markets served, and alignment with the Primegate standard. Primegate is selective about who joins the network. This is by design.</p></div>
+      <div class="step"><div class="step__dot">1</div><h3>Apply</h3><p>Download the application form, complete it, and email it to us with your business licence. We review every application personally - assessing your advisory background, current student base, source markets served, and alignment with the Primegate standard. Primegate is selective about who joins the network. This is by design.</p></div>
       <div class="step"><div class="step__dot">2</div><h3>Onboard &amp; Get Certified</h3><p>Accepted partners complete the Primegate Partner Onboarding Programme - a structured introduction to the institutions you will represent, the student profiles Primegate matches, the compliance standards we operate to, and the advisory methodology that underpins every placement. This is the foundation of the partnership.</p></div>
       <div class="step"><div class="step__dot">3</div><h3>Start Placing Students</h3><p>With onboarding complete, you begin referring qualified students from your network to Primegate's institutional partners. Primegate handles the institutional relationship, application infrastructure, compliance documentation, and post-acceptance coordination. You focus on your students. We manage the institutional side.</p></div>
     </div>
@@ -168,25 +175,26 @@
 <!-- APPLY FORM -->
 <section class="section section--ivory" id="apply">
   <div class="wrap">
-    <div class="section-head center reveal"><span class="eyebrow">Apply to Become a Partner</span><h2>The Application Takes Ten Minutes.</h2><p>We accept a limited number of new partners each quarter. Applications are reviewed in the order they are received.</p></div>
-    <form class="reveal" style="max-width:760px;margin-inline:auto;" action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="hidden" name="_subject" value="New Partner Application - Primegate" />
-      <input type="hidden" name="enquiry_type" value="Agent Partner" />
-      <div class="form-grid">
-        <div class="field"><label for="p-name">Your Name</label><input id="p-name" name="name" type="text" required /></div>
-        <div class="field"><label for="p-company">Company / Practice Name</label><input id="p-company" name="company" type="text" /></div>
-        <div class="field"><label for="p-email">Email</label><input id="p-email" name="email" type="email" required /></div>
-        <div class="field"><label for="p-phone">Phone / WhatsApp</label><input id="p-phone" name="phone" type="tel" /></div>
-        <div class="field"><label for="p-country">Country of Operation</label><input id="p-country" name="country" type="text" /></div>
-        <div class="field"><label for="p-exp">Years in Education Advisory</label>
-          <select id="p-exp" name="experience"><option>Less than 2 years</option><option>2-5 years</option><option>5-10 years</option><option>10+ years</option></select></div>
-      </div>
-      <div class="field"><label for="p-markets">Primary Source Markets Served</label>
-        <select id="p-markets" name="markets"><option>GCC / Middle East</option><option>South Asia</option><option>Southeast Asia</option><option>CIS / Central Asia</option><option>Sub-Saharan Africa</option><option>Multiple</option></select></div>
-      <div class="field"><label for="p-about">Tell us about your practice and why you'd like to partner</label><textarea id="p-about" name="message"></textarea></div>
-      <button type="submit" class="btn btn--gold">Apply to Become a Partner →</button>
-      <p style="font-size:0.8rem;color:var(--graphite);margin-top:1rem;">By submitting, you agree to be contacted by Primegate regarding your application. <a href="contact.html" class="link-arrow" style="color:var(--navy);">Have questions first? Get in touch →</a></p>
-    </form>
+    <div class="section-head center reveal"><span class="eyebrow">Apply to Become a Partner</span><h2>The Application Takes Ten Minutes.</h2><p>Download the official sub-agent application form, complete it, and email it to us with a copy of your business licence. Complete applications are reviewed within 3-4 working days.</p></div>
+
+    <!-- How to apply: download, complete, email -->
+    <div class="apply-steps reveal" style="max-width:760px;margin:0 auto 2rem;">
+      <div class="apply-step"><span class="apply-step__n">1</span><div><strong>Download the application form</strong><p>Open the official Primegate sub-agent application form (PDF) and fill in every field marked with an asterisk.</p><a href="forms/PrimeGate-SubAgent-Application-Form.pdf" download class="btn btn--gold" style="margin-top:0.6rem;">Download the Form (PDF) →</a></div></div>
+      <div class="apply-step"><span class="apply-step__n">2</span><div><strong>Complete, sign and save it</strong><p>Fill in your company and contact details, markets and coverage, and business documents, then sign and stamp the declaration on the final page and save the completed form to your device.</p></div></div>
+      <div class="apply-step"><span class="apply-step__n">3</span><div><strong>Email it to us with your licence</strong><p>Email the completed form together with a clear copy of your business licence to <a href="mailto:info@primegateconsultancy.com" class="link-arrow" style="color:var(--navy);">info@primegateconsultancy.com</a>. Our partnerships team reviews complete applications within 3-4 working days.</p><a href="mailto:info@primegateconsultancy.com?subject=Sub-Agent%20Application%20-%20%5BYour%20Company%20Name%5D&body=Hello%20Primegate%20Partnerships%20Team%2C%0A%0APlease%20find%20attached%20my%20completed%20sub-agent%20application%20form%20and%20a%20clear%20copy%20of%20our%20business%20licence.%0A%0ACompany%20name%3A%20%0ACountry%20of%20operation%3A%20%0A%0AThank%20you." class="btn btn--gold" style="margin-top:0.6rem;">Email Your Application →</a></div></div>
+    </div>
+
+    <!-- What to attach -->
+    <div class="apply-note reveal" style="max-width:760px;margin:0 auto;">
+      <h4>What to attach to your email</h4>
+      <ul>
+        <li>Your <strong>completed application form</strong> (the PDF you downloaded above).</li>
+        <li>A clear copy of your <strong>Business Licence / Incorporation Document</strong> - PDF, JPG or PNG, max 5 MB per file.</li>
+        <li>If the licence is not in English, attach <strong>both the original and an English translation</strong>.</li>
+        <li>The business licence must <strong>match the company information</strong> provided in the form.</li>
+      </ul>
+      <p style="margin-top:1rem;margin-bottom:0;"><a href="contact.html" class="link-arrow" style="color:var(--navy);">Have questions before you apply? Get in touch →</a></p>
+    </div>
   </div>
 </section>
 
@@ -205,7 +213,7 @@
     <div class="footer__top">
       <div class="footer__brand"><img src="images/logo-horizontal.png" alt="Primegate Consultancy" /><p class="footer__tag">"Thirty Years of Expertise. One Direction. Forward."</p>
         <div class="footer__social"><a href="https://www.instagram.com/primegateconsultancy/" target="_blank" rel="noopener" aria-label="Primegate Consultancy on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.36 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2a3.8 3.8 0 0 1-.9 1.4 3.8 3.8 0 0 1-1.4.9c-.4.17-1 .36-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.8 3.8 0 0 1-1.4-.9 3.8 3.8 0 0 1-.9-1.4c-.17-.4-.36-1-.42-2.2-.07-1.3-.07-1.7-.07-4.9s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-.9.04-1.4.2-1.7.32-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.12.3-.28.8-.32 1.7-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.04.9.2 1.4.32 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.3.12.8.28 1.7.32 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c.9-.04 1.4-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.12-.3.28-.8.32-1.7.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.04-.9-.2-1.4-.32-1.7a2.8 2.8 0 0 0-.7-1.06 2.8 2.8 0 0 0-1.05-.7c-.3-.12-.8-.28-1.7-.32-1.2-.06-1.6-.07-4.7-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-3.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg></a><a href="https://www.linkedin.com/company/prime-gate-consultancy/" target="_blank" rel="noopener" aria-label="Primegate Consultancy on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.05c.53-1 1.83-2.05 3.76-2.05C20.7 8.59 22 10.36 22 13.5V21h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V21H9V9Z"/></svg></a></div></div>
-      <div><h4>Audiences</h4><a href="for-universities.html">For Universities</a><a href="study-abroad.html">Study Abroad</a><a href="study-in-middle-east.html">Study in the Middle East</a><a href="partner-with-us.html">For Agents</a></div>
+      <div><h4>Audiences</h4><a href="for-universities.html">For Universities</a><a href="study-abroad.html">Study Abroad</a><a href="study-in-middle-east.html">Study in the Middle East</a><a href="management-consulting.html">Management Consulting</a><a href="partner-with-us.html">For Agents</a></div>
       <div><h4>Company</h4><a href="about.html">About Primegate</a><a href="contact.html">Contact</a></div>
       <div><h4>Get in Touch</h4><a href="mailto:info@primegateconsultancy.com">info@primegateconsultancy.com</a><a href="tel:+971553129798">+971 55 312 9798</a><a href="contact.html">Meydan, Dubai, U.A.E</a></div>
     </div>
