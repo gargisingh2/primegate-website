@@ -105,7 +105,7 @@ To keep the site looking complete with **zero broken images**, the hero banners 
 
 ## 5. Contact form email delivery
 
-The three forms in `contact.html` use Netlify Forms. Netlify stores every submission and sends notifications to `gargi.singh2@gmail.com`. The form names produce clear notification subjects:
+The three forms in `contact.html` use Netlify Forms. Netlify stores every submission and sends notifications to `info@primegateconsultancy.com`. The form names produce clear notification subjects:
 
 - `University Partnership Enquiry`
 - `Study Abroad Enquiry`
