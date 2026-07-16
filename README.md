@@ -1,6 +1,6 @@
 # Primegate Consultancy - Website
 
-A fast, SEO-friendly, fully static website (plain HTML + CSS + JavaScript - **no build step, no framework**). You can open it locally by double-clicking `index.html`, and you deploy it by uploading the files to SiteGround. No Node, no compiling, nothing to install.
+A fast, SEO-friendly static website built with plain HTML, CSS and JavaScript (**no build step, no framework**). You can preview it locally by double-clicking `index.html`; GitHub publishes updates through Netlify.
 
 ---
 
@@ -45,7 +45,7 @@ Everything is **self-contained**. The only external requests the pages make are 
 2. Double-click `index.html`. It opens in your browser.
 3. Click around - every page, menu, accordion, tab, flip card and carousel works locally.
 
-> Tip: the contact/partner **forms won't actually send anything** until you connect a free form service (see §5). Everything else is fully functional offline.
+> Tip: the contact forms are processed by Netlify and do not send when the HTML files are opened directly from your computer.
 
 ---
 
@@ -103,29 +103,15 @@ To keep the site looking complete with **zero broken images**, the hero banners 
 
 ---
 
-## 5. Making the forms actually send (free)
+## 5. Contact form email delivery
 
-The contact forms (`contact.html`) and the partner application (`partner-with-us.html`) are wired to **Formspree** but use a placeholder address. Pick one free option:
+The three forms in `contact.html` use Netlify Forms. Netlify stores every submission and sends notifications to `gargi.singh2@gmail.com`. The form names produce clear notification subjects:
 
-### Option A - Formspree (already wired in)
-1. Sign up free at **formspree.io**.
-2. Create a form; it gives you an endpoint like `https://formspree.io/f/abcdwxyz`.
-3. In `contact.html` and `partner-with-us.html`, find every:
-   ```html
-   action="https://formspree.io/f/your-form-id"
-   ```
-   and replace `your-form-id` with your real ID (`abcdwxyz`).
-4. Submit a test from the live site to confirm the email arrives. Free tier = 50 submissions/month.
+- `University Partnership Enquiry`
+- `Study Abroad Enquiry`
+- `Study in the Middle East Enquiry`
 
-### Option B - Web3Forms (no account, generous free tier)
-1. Go to **web3forms.com**, enter the email you want submissions sent to, and copy the **Access Key**.
-2. In each `<form>`, change the action to `https://api.web3forms.com/submit` and add near the top of the form:
-   ```html
-   <input type="hidden" name="access_key" value="YOUR-ACCESS-KEY" />
-   ```
-3. Test from the live site. Free tier = 250 submissions/month.
-
-Both deliver submissions to your inbox with the audience type tagged (the hidden `enquiry_type` field is already in each form).
+Email notifications are configured under **Netlify → Forms → Form notifications**. Submit one test from each contact tab after deployment so Netlify creates and verifies all three forms.
 
 ---
 

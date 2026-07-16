@@ -69,9 +69,10 @@
 </section>
 
 <!-- THREE CONTACT PATHS -->
-<section class="section">
+<section class="section" id="contact-forms">
   <div class="wrap">
     <div class="section-head reveal"><h2>Who Are You Reaching Out As?</h2></div>
+    <div class="form-status" data-form-status role="status" aria-live="polite" hidden></div>
     <div class="reveal" data-tabs>
       <div class="tabs__nav">
         <button class="tabs__btn active" data-tab="uni">University / Institution</button>
@@ -82,9 +83,10 @@
       <!-- PATH 1 -->
       <div class="tabs__panel active" data-panel="uni">
         <p class="lead mb-2">Partnership discussions begin with a briefing, not a form submission. Tell us who you are, which institution you represent, and what you hope to achieve. We respond within one working day with a proposed time for a structured introductory call.</p>
-        <form action="https://formspree.io/f/your-form-id" method="POST" style="max-width:760px;">
+        <form name="University Partnership Enquiry" action="/contact.html?status=sent#contact-forms" method="POST" data-netlify="true" netlify-honeypot="company_website" style="max-width:760px;">
+          <input type="hidden" name="form-name" value="University Partnership Enquiry" />
           <input type="hidden" name="enquiry_type" value="University / Institution" />
-          <input type="hidden" name="_subject" value="University Partnership Enquiry - Primegate" />
+          <div class="form-honeypot" aria-hidden="true"><label for="u-website">Website</label><input id="u-website" name="company_website" type="text" tabindex="-1" autocomplete="off" /></div>
           <div class="form-grid">
             <div class="field"><label for="u-name">Your Name</label><input id="u-name" name="name" type="text" required /></div>
             <div class="field"><label for="u-inst">Institution Name</label><input id="u-inst" name="institution" type="text" required /></div>
@@ -106,9 +108,10 @@
       <!-- PATH 2 -->
       <div class="tabs__panel" data-panel="out">
         <p class="lead mb-2">The first conversation with Primegate is a listening session. You do not need to have everything figured out - that is what the conversation is for.</p>
-        <form action="https://formspree.io/f/your-form-id" method="POST" style="max-width:760px;">
+        <form name="Study Abroad Enquiry" action="/contact.html?status=sent#contact-forms" method="POST" data-netlify="true" netlify-honeypot="company_website" style="max-width:760px;">
+          <input type="hidden" name="form-name" value="Study Abroad Enquiry" />
           <input type="hidden" name="enquiry_type" value="Outbound Student" />
-          <input type="hidden" name="_subject" value="Study Abroad Enquiry - Primegate" />
+          <div class="form-honeypot" aria-hidden="true"><label for="o-website">Website</label><input id="o-website" name="company_website" type="text" tabindex="-1" autocomplete="off" /></div>
           <div class="form-grid">
             <div class="field"><label for="o-sname">Student's Name</label><input id="o-sname" name="student_name" type="text" required /></div>
             <div class="field"><label for="o-cname">Contact Name (if parent enquiring)</label><input id="o-cname" name="contact_name" type="text" /></div>
@@ -127,9 +130,10 @@
       <!-- PATH 3 -->
       <div class="tabs__panel" data-panel="in">
         <p class="lead mb-2">The Middle East may not have been part of your original thinking. That is exactly the kind of conversation Primegate is built for.</p>
-        <form action="https://formspree.io/f/your-form-id" method="POST" style="max-width:760px;">
+        <form name="Study in the Middle East Enquiry" action="/contact.html?status=sent#contact-forms" method="POST" data-netlify="true" netlify-honeypot="company_website" style="max-width:760px;">
+          <input type="hidden" name="form-name" value="Study in the Middle East Enquiry" />
           <input type="hidden" name="enquiry_type" value="Inbound Student" />
-          <input type="hidden" name="_subject" value="Study in the Middle East Enquiry - Primegate" />
+          <div class="form-honeypot" aria-hidden="true"><label for="i-website">Website</label><input id="i-website" name="company_website" type="text" tabindex="-1" autocomplete="off" /></div>
           <div class="form-grid">
             <div class="field"><label for="i-name">Your Name</label><input id="i-name" name="name" type="text" required /></div>
             <div class="field"><label for="i-email">Email</label><input id="i-email" name="email" type="email" required /></div>

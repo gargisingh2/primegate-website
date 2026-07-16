@@ -112,6 +112,21 @@
     });
   });
 
+  /* ---- Contact form submission feedback ---- */
+  var formStatus = document.querySelector("[data-form-status]");
+  if (formStatus) {
+    var submissionStatus = new URLSearchParams(window.location.search).get("status");
+    if (submissionStatus === "sent") {
+      formStatus.textContent = "Thank you. Your enquiry has been sent successfully. We will respond within one working day.";
+      formStatus.classList.add("form-status--success");
+      formStatus.hidden = false;
+    } else if (submissionStatus === "error") {
+      formStatus.textContent = "We could not send your enquiry. Please try again or email info@primegateconsultancy.com.";
+      formStatus.classList.add("form-status--error");
+      formStatus.hidden = false;
+    }
+  }
+
   /* ---- Testimonial carousels ---- */
   document.querySelectorAll("[data-carousel]").forEach(function (car) {
     var slides = car.querySelectorAll(".tslide");
