@@ -1,6 +1,6 @@
 # Primegate Consultancy - Website
 
-A fast, SEO-friendly, fully static website (plain HTML + CSS + JavaScript - **no build step, no framework**). You can open it locally by double-clicking `index.html`, and you deploy it by uploading the files to SiteGround. No Node, no compiling, nothing to install.
+A fast, SEO-friendly static website built with plain HTML, CSS and JavaScript (**no build step, no framework**). You can preview it locally by double-clicking `index.html`; GitHub publishes updates through Netlify.
 
 ---
 
@@ -45,33 +45,13 @@ Everything is **self-contained**. The only external requests the pages make are 
 2. Double-click `index.html`. It opens in your browser.
 3. Click around - every page, menu, accordion, tab, flip card and carousel works locally.
 
-> Tip: the contact/partner **forms won't actually send anything** until you connect a free form service (see §5). Everything else is fully functional offline.
+> Tip: the contact forms are processed by Netlify and do not send when the HTML files are opened directly from your computer.
 
 ---
 
-## 3. Put it live on SiteGround (the main task)
+## 3. Publishing with GitHub and Netlify
 
-You are replacing the current WordPress site. Two routes - pick **A** if you want to keep WordPress installed elsewhere, or **B** (recommended) for a clean, fast static site.
-
-### Route B (recommended): upload as a static site
-
-1. Log in to **SiteGround → Site Tools** for primegateconsultancy.com.
-2. Go to **Site → File Manager**.
-3. Open the **`public_html`** folder. This is what the world sees at your domain.
-4. **Back up the old site first:** select everything currently in `public_html`, click **Archive**, and download the resulting `.zip` to your computer. (If anything goes wrong you can restore it.)
-5. Delete (or move into a `_old_wordpress` subfolder) the existing WordPress files in `public_html`.
-6. Upload your new site:
-   - The fastest way: zip the **contents** of this `website` folder (not the folder itself - you want `index.html` at the top level of the zip), then use File Manager's **Upload** button, and **Extract** the zip inside `public_html`.
-   - You should end up with `public_html/index.html`, `public_html/css/style.css`, etc. - **not** `public_html/website/index.html`.
-7. Visit `https://primegateconsultancy.com` - the new site should appear. If you see the old site, clear your browser cache or wait a few minutes.
-
-> ⚠️ **Don't lose the `.htaccess` file.** It starts with a dot, so File Manager and many zip tools treat it as *hidden* and skip it by default. It powers the site's compression, browser caching, HTTPS/www redirects and the custom 404 page - without it the site still works but loads slower. In SiteGround File Manager, turn on **Settings → Show hidden files (dotfiles)** and confirm `.htaccess` is sitting in `public_html` after upload. The same applies to `llms.txt`, `sitemap.xml`, `robots.txt` and `site.webmanifest` - make sure all of them made it across.
-
-### Domain note (GoDaddy)
-Your domain is at **GoDaddy** but hosting is at **SiteGround**, so the domain's nameservers/DNS should *already* point to SiteGround (that's how the current site works). **You don't need to change anything at GoDaddy** - you're only swapping the files inside the same hosting account. The domain keeps working as-is.
-
-### HTTPS / SSL
-SiteGround provides a free **Let's Encrypt SSL**. If it isn't already on: **Site Tools → Security → SSL Manager**, install Let's Encrypt for the domain, then enable **HTTPS Enforce** under **Security → HTTPS Enforce**.
+The production site is connected to the `gargisingh2/primegate-website` GitHub repository. Push changes to its `main` branch and Netlify automatically builds and publishes them to `primegateconsultancy.com`.
 
 ---
 
@@ -103,29 +83,15 @@ To keep the site looking complete with **zero broken images**, the hero banners 
 
 ---
 
-## 5. Making the forms actually send (free)
+## 5. Contact form email delivery
 
-The contact forms (`contact.html`) and the partner application (`partner-with-us.html`) are wired to **Formspree** but use a placeholder address. Pick one free option:
+The three forms in `contact.html` use Netlify Forms. Netlify stores every submission and sends notifications to `info@primegateconsultancy.com`. The form names produce clear notification subjects:
 
-### Option A - Formspree (already wired in)
-1. Sign up free at **formspree.io**.
-2. Create a form; it gives you an endpoint like `https://formspree.io/f/abcdwxyz`.
-3. In `contact.html` and `partner-with-us.html`, find every:
-   ```html
-   action="https://formspree.io/f/your-form-id"
-   ```
-   and replace `your-form-id` with your real ID (`abcdwxyz`).
-4. Submit a test from the live site to confirm the email arrives. Free tier = 50 submissions/month.
+- `Primegate Contact - University Partnership Enquiry`
+- `Primegate Contact - Study Abroad Enquiry`
+- `Primegate Contact - Study in the Middle East Enquiry`
 
-### Option B - Web3Forms (no account, generous free tier)
-1. Go to **web3forms.com**, enter the email you want submissions sent to, and copy the **Access Key**.
-2. In each `<form>`, change the action to `https://api.web3forms.com/submit` and add near the top of the form:
-   ```html
-   <input type="hidden" name="access_key" value="YOUR-ACCESS-KEY" />
-   ```
-3. Test from the live site. Free tier = 250 submissions/month.
-
-Both deliver submissions to your inbox with the audience type tagged (the hidden `enquiry_type` field is already in each form).
+Email notifications are configured under **Netlify → Forms → Form notifications**. Submit one test from each contact tab after deployment so Netlify creates and verifies all three forms.
 
 ---
 

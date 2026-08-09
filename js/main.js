@@ -112,6 +112,21 @@
     });
   });
 
+  /* ---- Contact form submission feedback ---- */
+  var formStatus = document.querySelector("[data-form-status]");
+  if (formStatus) {
+    var submissionStatus = new URLSearchParams(window.location.search).get("status");
+    if (submissionStatus === "sent") {
+      formStatus.textContent = "Thank you. Your enquiry has been sent successfully. We will respond within one working day.";
+      formStatus.classList.add("form-status--success");
+      formStatus.hidden = false;
+    } else if (submissionStatus === "error") {
+      formStatus.textContent = "We could not send your enquiry. Please try again or email info@primegateconsultancy.com.";
+      formStatus.classList.add("form-status--error");
+      formStatus.hidden = false;
+    }
+  }
+
   /* ---- Testimonial carousels ---- */
   document.querySelectorAll("[data-carousel]").forEach(function (car) {
     var slides = car.querySelectorAll(".tslide");
@@ -151,6 +166,33 @@
       }, 4000);
     }
   }
+
+  /* ---- Nav dropdown groups (Services, Partner With Us) ---- */
+  var groupToggles = document.querySelectorAll(".nav__grouptoggle");
+  groupToggles.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var group = btn.closest(".nav__group");
+      var isOpen = group.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.querySelectorAll(".nav__group").forEach(function (g) {
+        if (g !== group) {
+          g.classList.remove("open");
+          var b = g.querySelector(".nav__grouptoggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav__group")) {
+      document.querySelectorAll(".nav__group.open").forEach(function (g) {
+        g.classList.remove("open");
+        var b = g.querySelector(".nav__grouptoggle");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
 
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
