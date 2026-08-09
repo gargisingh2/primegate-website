@@ -167,6 +167,33 @@
     }
   }
 
+  /* ---- Nav dropdown groups (Services, Partner With Us) ---- */
+  var groupToggles = document.querySelectorAll(".nav__grouptoggle");
+  groupToggles.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var group = btn.closest(".nav__group");
+      var isOpen = group.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.querySelectorAll(".nav__group").forEach(function (g) {
+        if (g !== group) {
+          g.classList.remove("open");
+          var b = g.querySelector(".nav__grouptoggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav__group")) {
+      document.querySelectorAll(".nav__group.open").forEach(function (g) {
+        g.classList.remove("open");
+        var b = g.querySelector(".nav__grouptoggle");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
