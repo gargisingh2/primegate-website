@@ -90,6 +90,9 @@ The three forms in `contact.html` use Netlify Forms. Netlify stores every submis
 - `Primegate Contact - University Partnership Enquiry`
 - `Primegate Contact - Study Abroad Enquiry`
 - `Primegate Contact - Study in the Middle East Enquiry`
+- `University Partnership Enquiry`
+- `Study Abroad Enquiry`
+- `Study in the Middle East Enquiry`
 
 Email notifications are configured under **Netlify → Forms → Form notifications**. Submit one test from each contact tab after deployment so Netlify creates and verifies all three forms.
 
