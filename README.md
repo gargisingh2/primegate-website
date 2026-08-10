@@ -49,9 +49,29 @@ Everything is **self-contained**. The only external requests the pages make are 
 
 ---
 
-## 3. Publishing with GitHub and Netlify
+## 3. Put it live on SiteGround (the main task)
 
-The production site is connected to the `gargisingh2/primegate-website` GitHub repository. Push changes to its `main` branch and Netlify automatically builds and publishes them to `primegateconsultancy.com`.
+You are replacing the current WordPress site. Two routes - pick **A** if you want to keep WordPress installed elsewhere, or **B** (recommended) for a clean, fast static site.
+
+### Route B (recommended): upload as a static site
+
+1. Log in to **SiteGround → Site Tools** for primegateconsultancy.com.
+2. Go to **Site → File Manager**.
+3. Open the **`public_html`** folder. This is what the world sees at your domain.
+4. **Back up the old site first:** select everything currently in `public_html`, click **Archive**, and download the resulting `.zip` to your computer. (If anything goes wrong you can restore it.)
+5. Delete (or move into a `_old_wordpress` subfolder) the existing WordPress files in `public_html`.
+6. Upload your new site:
+   - The fastest way: zip the **contents** of this `website` folder (not the folder itself - you want `index.html` at the top level of the zip), then use File Manager's **Upload** button, and **Extract** the zip inside `public_html`.
+   - You should end up with `public_html/index.html`, `public_html/css/style.css`, etc. - **not** `public_html/website/index.html`.
+7. Visit `https://primegateconsultancy.com` - the new site should appear. If you see the old site, clear your browser cache or wait a few minutes.
+
+> ⚠️ **Don't lose the `.htaccess` file.** It starts with a dot, so File Manager and many zip tools treat it as *hidden* and skip it by default. It powers the site's compression, browser caching, HTTPS/www redirects and the custom 404 page - without it the site still works but loads slower. In SiteGround File Manager, turn on **Settings → Show hidden files (dotfiles)** and confirm `.htaccess` is sitting in `public_html` after upload. The same applies to `llms.txt`, `sitemap.xml`, `robots.txt` and `site.webmanifest` - make sure all of them made it across.
+
+### Domain note (GoDaddy)
+Your domain is at **GoDaddy** but hosting is at **SiteGround**, so the domain's nameservers/DNS should *already* point to SiteGround (that's how the current site works). **You don't need to change anything at GoDaddy** - you're only swapping the files inside the same hosting account. The domain keeps working as-is.
+
+### HTTPS / SSL
+SiteGround provides a free **Let's Encrypt SSL**. If it isn't already on: **Site Tools → Security → SSL Manager**, install Let's Encrypt for the domain, then enable **HTTPS Enforce** under **Security → HTTPS Enforce**.
 
 ---
 
@@ -87,9 +107,6 @@ To keep the site looking complete with **zero broken images**, the hero banners 
 
 The three forms in `contact.html` use Netlify Forms. Netlify stores every submission and sends notifications to `info@primegateconsultancy.com`. The form names produce clear notification subjects:
 
-- `Primegate Contact - University Partnership Enquiry`
-- `Primegate Contact - Study Abroad Enquiry`
-- `Primegate Contact - Study in the Middle East Enquiry`
 - `University Partnership Enquiry`
 - `Study Abroad Enquiry`
 - `Study in the Middle East Enquiry`

@@ -126,17 +126,6 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .nav__menu a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s var(--ease); }
 .nav__menu a:hover::after, .nav__menu a.active::after { width: 100%; }
 .nav__cta { padding: 0.6rem 1.2rem !important; }
-/* Grouped nav dropdowns (Services, Partner With Us) - links stay in the DOM (crawlable) */
-.nav__group { position: relative; display: flex; align-items: center; }
-.nav__grouptoggle { background: none; border: 0; color: var(--ivory); font-family: inherit; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; padding-block: 0.3rem; white-space: nowrap; }
-.nav__grouptoggle .caret { font-size: 0.6rem; transition: transform 0.25s var(--ease); }
-.nav__group:hover .caret, .nav__group.open .caret { transform: rotate(180deg); }
-.nav__group.is-active .nav__grouptoggle { color: var(--gold); }
-.nav__dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: rgba(11,31,77,0.98); border: 1px solid rgba(212,175,55,0.25); border-radius: 6px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.15rem; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s; box-shadow: 0 16px 40px rgba(0,0,0,0.35); z-index: 1001; }
-.nav__group:hover .nav__dropdown, .nav__group:focus-within .nav__dropdown, .nav__group.open .nav__dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav__dropdown a { padding: 0.55rem 0.7rem; font-size: 0.8rem; border-radius: 4px; }
-.nav__dropdown a::after { display: none; }
-.nav__dropdown a:hover, .nav__dropdown a.active { background: rgba(212,175,55,0.12); color: var(--gold); }
 .nav__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
 .nav__toggle span { width: 26px; height: 2px; background: var(--white); transition: 0.3s var(--ease); }
 .nav__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -154,11 +143,6 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
   }
   .nav__menu.open { transform: translateX(0); }
   .nav__menu a { font-size: 1.05rem; }
-  .nav__group { flex-direction: column; align-items: flex-start; width: 100%; }
-  .nav__grouptoggle { font-size: 1.05rem; width: 100%; justify-content: space-between; }
-  .nav__dropdown { position: static; opacity: 1; visibility: visible; transform: none; background: none; border: 0; box-shadow: none; padding: 0.4rem 0 0.2rem 1rem; display: none; min-width: 0; }
-  .nav__group.open .nav__dropdown { display: flex; }
-  .nav__dropdown a { font-size: 0.98rem; padding: 0.5rem 0; }
 }
 
 /* ---------- Hero ---------- */
@@ -231,25 +215,6 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .card__body { padding: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
 .card__body h3 { color: var(--navy); }
 .card__kicker { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
-/* Partner-status badge (e.g. "Exclusive Representative Office") */
-.partner-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(212,175,55,0.6); color: var(--gold); background: rgba(212,175,55,0.08); padding: 0.45rem 1rem; border-radius: 999px; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-.partner-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 1rem 0 0; font-size: 0.85rem; color: var(--graphite); }
-.partner-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
-.section--navy .partner-meta { color: rgba(247,243,237,0.85); }
-/* Dual-audience split cards on partner pages */
-.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
-@media (max-width: 760px){ .dual { grid-template-columns: 1fr; } }
-.dual__card { background: #fff; border: 1px solid rgba(11,31,77,0.08); border-top: 3px solid var(--gold); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 0.8rem; }
-.dual__card h3 { color: var(--navy); }
-.dual__card p { color: var(--graphite); font-size: 0.95rem; flex: 1; }
-/* Team / leadership */
-.team-photo { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-soft); display: block; }
-.team-avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-soft); flex: none; background: var(--cloud); }
-.team-card { display: flex; gap: 1.1rem; align-items: center; background: #fff; border: 1px solid rgba(11,31,77,0.08); border-radius: var(--radius); padding: 1.2rem 1.4rem; box-shadow: var(--shadow-soft); }
-.team-card h3 { color: var(--navy); margin: 0; font-size: 1.1rem; }
-.team-card .role { color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin: 0.2rem 0 0.5rem; }
-.team-contact { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin-top: 0.6rem; font-size: 0.9rem; }
-.team-contact a { color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; }
 
 .card--dark { background: #0e2456; border-top-color: var(--gold); color: var(--ivory); }
 .card--dark h3 { color: var(--gold); }
