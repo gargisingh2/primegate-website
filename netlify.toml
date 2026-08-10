@@ -1,0 +1,14 @@
+# Netlify configuration for the Primegate Consultancy static site.
+#
+# Two deploy contexts:
+#   - production  -> `main` branch          -> https://primegateconsultancy.com  (public, indexable)
+#   - branch-deploy / deploy-preview        -> https://staging--primegateconsultancy.netlify.app (internal review)
+#
+# The site has no build step; the command below only writes a `_headers`
+# file that tells search engines NOT to index non-production deploys, so the
+# staging/preview URLs never compete with the live site for SEO. For the
+# production context the condition is false, so nothing changes.
+
+[build]
+  publish = "."
+  command = "if [ \"$CONTEXT\" != \"production\" ]; then printf '/*\\n  X-Robots-Tag: noindex\\n' > _headers; fi"
