@@ -49,9 +49,33 @@ Everything is **self-contained**. The only external requests the pages make are 
 
 ---
 
-## 3. Publishing with GitHub and Netlify
+## 3. Publishing with GitHub and Netlify (staging → production)
 
-The production site is connected to the `gargisingh2/primegate-website` GitHub repository. Push changes to its `main` branch and Netlify automatically builds and publishes them to `primegateconsultancy.com`.
+The site is connected to the `gargisingh2/primegate-website` GitHub repository and deploys through Netlify. There are **two stages**, one per branch:
+
+| Branch | URL | Purpose |
+|--------|-----|---------|
+| `staging` | `https://staging--primegateconsultancy.netlify.app` | **Internal review** - see changes before they go public. Search engines are told **not** to index this URL (`X-Robots-Tag: noindex`, set in `netlify.toml`), so it never competes with the live site. |
+| `main` | `https://primegateconsultancy.com` | **Live / public** site. |
+
+Every push to either branch triggers an automatic Netlify build (~30 seconds for this static site).
+
+### The workflow
+
+1. **Make + preview a change** - commit to `staging` and push, then review it on the staging URL:
+   ```bash
+   git checkout staging
+   git add -A && git commit -m "Describe the change"
+   git push
+   ```
+2. **Go live** - once you're happy with staging, promote it to production by merging into `main`:
+   ```bash
+   git checkout main && git merge staging && git push
+   git checkout staging      # switch back to staging for the next change
+   ```
+   (Or open a Pull Request from `staging` → `main` on GitHub and click *Merge* - Netlify also posts a preview link on every PR.)
+
+> **Note on privacy:** the staging URL is unlisted but publicly reachable by anyone who has the link. It is hidden from search engines (see above) but not password-protected - Netlify's password protection is a paid feature. Keep the staging link internal.
 
 ---
 
