@@ -1,14 +1,47 @@
-# Netlify configuration for the Primegate Consultancy static site.
-#
-# Two deploy contexts:
-#   - production  -> `main` branch          -> https://primegateconsultancy.com  (public, indexable)
-#   - branch-deploy / deploy-preview        -> https://staging--primegateconsultancy.netlify.app (internal review)
-#
-# The site has no build step; the command below only writes a `_headers`
-# file that tells search engines NOT to index non-production deploys, so the
-# staging/preview URLs never compete with the live site for SEO. For the
-# production context the condition is false, so nothing changes.
+# Netlify build & deploy config for Primegate Consultancy
+# Static site: no build step. Repo root IS the site root (index.html at top level).
 
 [build]
   publish = "."
-  command = "if [ \"$CONTEXT\" != \"production\" ]; then printf '/*\\n  X-Robots-Tag: noindex\\n' > _headers; fi"
+  command = ""
+
+# Production context = the `main` branch -> primegateconsultancy.com
+[context.production]
+  # nothing special; serves as-is
+
+# Staging context = the `staging` branch -> staging--primegateconsultancy.netlify.app
+[context.staging]
+  # keep staging out of search engines
+  [context.staging.environment]
+    ROBOTS = "noindex"
+
+# ---- Security headers (all pages) ----
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ---- Caching (Netlify ignores .htaccess; this replaces it) ----
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ---- Friendly 404 ----
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
