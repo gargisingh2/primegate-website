@@ -250,6 +250,15 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .team-card .role { color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin: 0.2rem 0 0.5rem; }
 .team-contact { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin-top: 0.6rem; font-size: 0.9rem; }
 .team-contact a { color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; }
+/* Institution partner blocks (logos on white cards) */
+.inst-logo { max-height: 54px; max-width: 160px; width: auto; height: auto; object-fit: contain; margin-bottom: 0.9rem; display: block; }
+.cat-label { display: inline-block; background: var(--navy); color: var(--white); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 999px; }
+.inst-card { background: #fff; border: 1px solid rgba(11,31,77,0.08); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 0.5rem; height: 100%; }
+.inst-card h3 { color: var(--navy); margin: 0; }
+.inst-card .loc { color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.inst-card p { color: var(--graphite); font-size: 0.92rem; flex: 1; }
+.logo-float { display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; align-items: center; justify-content: center; padding: 1.4rem 0; }
+.logo-float .ph { width: 140px; height: 74px; border: 1px dashed rgba(11,31,77,0.25); border-radius: 8px; display: grid; place-items: center; color: var(--mist); font-size: 0.7rem; text-align: center; padding: 0.4rem; }
 
 .card--dark { background: #0e2456; border-top-color: var(--gold); color: var(--ivory); }
 .card--dark h3 { color: var(--gold); }
