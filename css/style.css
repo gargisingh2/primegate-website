@@ -274,7 +274,7 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .logo-track { display: flex; gap: 1.2rem; width: max-content; animation: inst-marquee 55s linear infinite; will-change: transform; }
 .logo-marquee:hover .logo-track { animation-play-state: paused; }
 @keyframes inst-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.inst-tile { flex: none; min-width: 190px; max-width: 190px; background: #fff; border: 1px solid rgba(11,31,77,0.08); border-radius: var(--radius); box-shadow: var(--shadow-soft); padding: 1.2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.9rem; }
+.inst-tile { flex: none; min-width: 190px; max-width: 190px; background: #fff; border: 1px solid rgba(11,31,77,0.14); border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 1.2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.9rem; }
 @media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } .logo-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; } }
 
 /* Programme list accordion */
