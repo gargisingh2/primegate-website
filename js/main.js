@@ -19,16 +19,29 @@
   var toggle = document.querySelector(".nav__toggle");
   var menu = document.querySelector(".nav__menu");
   if (toggle && menu) {
-    toggle.addEventListener("click", function () {
+    function closeMenu() {
+      menu.classList.remove("open");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
       var open = menu.classList.toggle("open");
       toggle.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
     menu.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        menu.classList.remove("open");
-        toggle.classList.remove("open");
-      });
+      a.addEventListener("click", closeMenu);
+    });
+    // Close the mobile menu when tapping anywhere outside it
+    document.addEventListener("click", function (e) {
+      if (!menu.classList.contains("open")) return;
+      if (menu.contains(e.target) || toggle.contains(e.target)) return;
+      closeMenu();
+    });
+    // Close on Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
     });
   }
 

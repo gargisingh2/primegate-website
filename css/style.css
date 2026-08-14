@@ -63,6 +63,7 @@ p:last-child { margin-bottom: 0; }
 .eyebrow.on-dark { color: var(--gold); }
 
 .lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--graphite); }
+.section--navy .lead, .hero .lead { color: rgba(247,243,237,0.92); }
 
 /* ---------- Layout ---------- */
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
