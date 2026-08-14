@@ -93,10 +93,25 @@
   }
   bindAccordion(".pillar__head", ".pillar", ".pillar__body");
   bindAccordion(".faq__q", ".faq__item", ".faq__a");
+  bindAccordion(".prog-acc__head", ".prog-acc__item", ".prog-acc__body");
 
   /* ---- Flip cards: tap to flip on touch devices ---- */
   document.querySelectorAll(".flip").forEach(function (f) {
     f.addEventListener("click", function () { f.classList.toggle("flipped"); });
+  });
+
+  /* ---- Institution marquee: duplicate tiles for a seamless loop ---- */
+  document.querySelectorAll("[data-marquee]").forEach(function (track) {
+    if (track.getAttribute("data-cloned")) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    var originals = Array.prototype.slice.call(track.children);
+    originals.forEach(function (node) {
+      var clone = node.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      track.appendChild(clone);
+    });
+    track.setAttribute("data-cloned", "true");
   });
 
   /* ---- Tabs ---- */
