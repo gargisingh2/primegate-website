@@ -42,6 +42,133 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# ---- Canonical URLs: 301 every .html to its clean URL (force overrides the static file) ----
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-in-demand-fields-2026.html"
+  to = "/blog-in-demand-fields-2026"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-mqf-levels-explained.html"
+  to = "/blog-mqf-levels-explained"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-study-malta-vs-dubai.html"
+  to = "/blog-study-malta-vs-dubai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-why-study-in-malta.html"
+  to = "/blog-why-study-in-malta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eastwood-montreux.html"
+  to = "/eastwood-montreux"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/for-universities.html"
+  to = "/for-universities"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/higher-education.html"
+  to = "/higher-education"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/idea-college-malta.html"
+  to = "/idea-college-malta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/idea-uae.html"
+  to = "/idea-uae"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/institutions.html"
+  to = "/institutions"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/istituto-doria.html"
+  to = "/istituto-doria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/k12-learning.html"
+  to = "/k12-learning"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/management-consulting.html"
+  to = "/management-consulting"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/partner-with-us.html"
+  to = "/partner-with-us"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/study-abroad.html"
+  to = "/study-abroad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/study-in-middle-east.html"
+  to = "/study-in-middle-east"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tejas-raju.html"
+  to = "/tejas-raju"
+  status = 301
+  force = true
+
 # ---- Friendly 404 ----
 [[redirects]]
   from = "/*"
