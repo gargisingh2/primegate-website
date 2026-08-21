@@ -129,7 +129,19 @@
 
 [[redirects]]
   from = "/istituto-doria.html"
-  to = "/istituto-doria"
+  to = "/fondazione-doria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/istituto-doria"
+  to = "/fondazione-doria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fondazione-doria.html"
+  to = "/fondazione-doria"
   status = 301
   force = true
 
