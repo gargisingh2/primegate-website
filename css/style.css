@@ -429,8 +429,11 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 
 /* ---------- Checklist ---------- */
 .ticks { display: grid; gap: 0.9rem; }
-.ticks li { display: flex; gap: 0.8rem; align-items: flex-start; }
-.ticks li::before { content: "✓"; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+/* Hanging-indent tick list: keeps inline content (e.g. a bold lead-in followed by
+   body text) flowing as one block, so it wraps normally instead of splitting into
+   two shrink-to-fit flex columns. */
+.ticks li { position: relative; padding-left: 1.7rem; }
+.ticks li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; }
 
 /* ---------- Tabs (contact / markets) ---------- */
 .tabs__nav { display: flex; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid var(--silver); margin-bottom: 2rem; }
