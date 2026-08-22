@@ -512,3 +512,39 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .mt-1{margin-top:1rem}.mt-2{margin-top:2rem}.mb-1{margin-bottom:1rem}.mb-2{margin-bottom:2rem}
 .section-head { max-width: 760px; margin-bottom: 2.8rem; }
 .section-head.center { margin-inline: auto; }
+
+/* =========================================================
+   MOBILE ERGONOMICS
+   Tap-target sizing, iOS input-zoom prevention and small-label
+   legibility. Scoped to mobile so the desktop design is unchanged.
+   ========================================================= */
+@media (max-width: 1100px) {
+  /* Off-canvas menu: comfortable tap targets */
+  .nav__menu a { padding-block: 0.7rem; }
+  .nav__grouptoggle { padding-block: 0.7rem; }
+  .nav__dropdown a { padding: 0.65rem 0; }
+  /* 44x44 minimum touch target for the hamburger */
+  .nav__toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 0; }
+}
+
+@media (max-width: 760px) {
+  /* iOS zooms the page when a focused field is under 16px */
+  .field input, .field select, .field textarea { font-size: 16px; }
+
+  /* Minimum comfortable tap targets */
+  .footer__social a { width: 44px; height: 44px; }
+  .card__body .link-arrow,
+  .blog-card__body .link-arrow,
+  .inst-card .link-arrow,
+  .dual__card .link-arrow { padding-block: 0.5rem; }
+
+  /* Keep small labels above the 12px legibility floor */
+  .eyebrow { font-size: 0.78rem; }
+  .partner-badge { font-size: 0.75rem; }
+  .cat-label { font-size: 0.75rem; }
+  .prog-ects { font-size: 0.78rem; }
+  .prog-acc__count { font-size: 0.75rem; }
+  .field label { font-size: 0.82rem; }
+  .blog-card__cat { font-size: 0.75rem; }
+  .flip__hint { font-size: 0.75rem; }
+}
