@@ -513,11 +513,18 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .section-head { max-width: 760px; margin-bottom: 2.8rem; }
 .section-head.center { margin-inline: auto; }
 
+
+/* In-page anchor jumps must clear the fixed header, otherwise the target
+   heading lands underneath it and reads as cropped. */
+[id] { scroll-margin-top: 110px; }
+
 /* =========================================================
    MOBILE ERGONOMICS
    Tap-target sizing, iOS input-zoom prevention and small-label
    legibility. Scoped to mobile so the desktop design is unchanged.
    ========================================================= */
+/* Touch range - matches the breakpoint where the off-canvas menu is active,
+   so tablets get the same ergonomics as phones. */
 @media (max-width: 1100px) {
   /* Off-canvas menu: comfortable tap targets */
   .nav__menu a { padding-block: 0.7rem; }
@@ -525,9 +532,7 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
   .nav__dropdown a { padding: 0.65rem 0; }
   /* 44x44 minimum touch target for the hamburger */
   .nav__toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 0; }
-}
 
-@media (max-width: 760px) {
   /* iOS zooms the page when a focused field is under 16px */
   .field input, .field select, .field textarea { font-size: 16px; }
 
@@ -537,6 +542,10 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
   .blog-card__body .link-arrow,
   .inst-card .link-arrow,
   .dual__card .link-arrow { padding-block: 0.5rem; }
+}
+
+/* Phone-only: small-label legibility */
+@media (max-width: 760px) {
 
   /* Keep small labels above the 12px legibility floor */
   .eyebrow { font-size: 0.78rem; }
