@@ -181,6 +181,12 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/privacy-policy.html"
+  to = "/privacy-policy"
+  status = 301
+  force = true
+
 # ---- Friendly 404 ----
 [[redirects]]
   from = "/*"
