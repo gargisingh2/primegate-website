@@ -140,33 +140,6 @@
     });
   });
 
-  /* ---- Contact forms -> Zoho CRM (Website Enquiry web form) ---- */
-  // Zoho needs First/Last Name and a Company. Each form has one "name" box,
-  // so split it on submit; student forms use the student's name as Company.
-  // Without JS the full name still reaches Zoho as Last Name.
-  document.querySelectorAll("form[data-zoho-form]").forEach(function (form) {
-    form.addEventListener("submit", function () {
-      var nameInput = form.querySelector("[data-full-name]");
-      if (nameInput) {
-        var full = nameInput.value.trim().replace(/\s+/g, " ");
-        var cut = full.lastIndexOf(" ");
-        var first = cut > 0 ? full.slice(0, cut) : "";
-        var last = cut > 0 ? full.slice(cut + 1) : full;
-        nameInput.removeAttribute("name");
-        [["First Name", first], ["Last Name", last]].forEach(function (pair) {
-          var h = document.createElement("input");
-          h.type = "hidden"; h.name = pair[0]; h.value = pair[1];
-          form.appendChild(h);
-        });
-        var company = form.querySelector("[data-company-from-name]");
-        if (company && full) company.value = full;
-      }
-      // Return to the site the visitor submitted from (live or staging)
-      var ret = form.querySelector('input[name="returnURL"]');
-      if (ret) ret.value = window.location.origin + "/contact?status=sent#contact-forms";
-    });
-  });
-
   /* ---- Contact form submission feedback ---- */
   var formStatus = document.querySelector("[data-form-status]");
   if (formStatus) {
