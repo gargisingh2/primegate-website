@@ -308,7 +308,7 @@
     if (!hits.length) return "";
     return hits.slice(0, 3).map(function (h) {
       return '<div class="results-more"><strong>' + esc(h.name) + "</strong> (" + esc(h.how) + "): no programmes are listed here yet. " +
-        '<a class="textlink" href="/contact?institution=' + encodeURIComponent(h.key) + '#contact-forms">Ask about this institution</a></div>';
+        '<a class="btn btn--navy btn--sm" style="margin-top:0.5rem;" href="/contact?institution=' + encodeURIComponent(h.key) + '#contact-forms">Ask about ' + esc(h.name) + '</a></div>';
     }).join("");
   }
   function emptyHtml(unconfirmed) {
@@ -362,7 +362,11 @@
     els.coverage.innerHTML = data.programmes.length + " listed programmes from " + listed + " institutions · more institutions available on enquiry: <a class=\"textlink\" href=\"/higher-education#directory\">see all institutions</a>";
     els.chips.innerHTML = chipsHtml();
     var html = sel + knownInstitutionsHtml() + slice.map(function (p) { return rowHtml(p); }).join("");
-    if (!list.length) html = sel + knownInstitutionsHtml() + emptyHtml(res.unconfirmed);
+    if (!list.length) {
+      var known = knownInstitutionsHtml();
+      // A search that names an institution we work with gets that institution's route, not the generic empty state.
+      html = sel + (known ? '<div class="results-empty" role="status"><h3>No programmes are listed here yet for “' + esc(state.q) + '”.</h3><p>We work with this institution, so an advisor can tell you which programmes are available.</p></div>' + known : emptyHtml(res.unconfirmed));
+    }
     else if (state.mode.length && res.unconfirmed && !state.incl && state.page === pages) {
       html += '<div class="results-more">' + res.unconfirmed + ' more programmes match your other choices, but their study mode is still to be confirmed. <button type="button" class="linkbtn" data-incl>Include options needing confirmation</button></div>';
     }

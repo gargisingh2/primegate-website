@@ -11,17 +11,17 @@
 
 # Staging context = the `staging` branch -> staging--primegateconsultancy.netlify.app
 [context.staging]
-  # Keep staging out of search engines: the build writes a staging-only _headers
-  # file (git-ignored, so it can never reach production). Crawlers can still
-  # fetch pages, which they must do to see the noindex.
-  command = 'printf "/*\n  X-Robots-Tag: noindex, nofollow\n" > _headers'
+  # Keep staging out of search engines and discovery: tools/staging-build.sh adds
+  # a noindex header to every response, serves a minimal robots.txt and drops
+  # sitemap.xml / llms.txt from this deploy only. Production runs no build command.
+  command = "sh tools/staging-build.sh"
 
 # Deploy previews and other branch deploys get the same treatment
 [context.deploy-preview]
-  command = 'printf "/*\n  X-Robots-Tag: noindex, nofollow\n" > _headers'
+  command = "sh tools/staging-build.sh"
 
 [context.branch-deploy]
-  command = 'printf "/*\n  X-Robots-Tag: noindex, nofollow\n" > _headers'
+  command = "sh tools/staging-build.sh"
 
 # ---- Security headers (all pages) ----
 [[headers]]
