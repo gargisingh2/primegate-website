@@ -333,6 +333,13 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .article-cta h2 { margin: 0 0 0.6rem; }
 .article-cta p { color: var(--graphite); }
 .article-cta .btn { margin-top: 0.4rem; }
+.article-standfirst { font-size: 0.95rem; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0 1.4rem; }
+.table-scroll .cost-table { margin: 0; min-width: 480px; }
+.article sup.cite { font-size: 0.68em; line-height: 0; margin-left: 0.1em; }
+.article sup.cite a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.article .sources li { font-size: 0.85rem; scroll-margin-top: 110px; }
+.article .sources a, .article .related-reads a { color: var(--navy); }
 
 .card--dark { background: #0e2456; border-top-color: var(--gold); color: var(--ivory); }
 .card--dark h3 { color: var(--gold); }

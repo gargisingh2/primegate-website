@@ -187,6 +187,30 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/blog-study-in-italy-vocational-courses.html"
+  to = "/blog-study-in-italy-vocational-courses"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-jobs-in-italy-international-students.html"
+  to = "/blog-jobs-in-italy-international-students"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-italy-student-visa-vocational-courses.html"
+  to = "/blog-italy-student-visa-vocational-courses"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-learning-italian-beginners-guide.html"
+  to = "/blog-learning-italian-beginners-guide"
+  status = 301
+  force = true
+
 # ---- Friendly 404 ----
 [[redirects]]
   from = "/*"
