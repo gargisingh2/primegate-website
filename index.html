@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="css/style.css?v=8" />
+<link rel="stylesheet" href="css/style.css?v=9" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="apple-touch-icon" href="images/favicon.png" />
 <link rel="manifest" href="site.webmanifest" />
@@ -105,7 +105,7 @@
           <a href="/k12-learning">K-12 Learning</a>
         </div>
       </div>
-      <a href="/programmes">Find My Programme</a>
+      <a href="/programmes">Find Your Programme</a>
       <div class="nav__group">
         <button class="nav__grouptoggle" aria-expanded="false" aria-haspopup="true">Partner With Us <span class="caret">&#9662;</span></button>
         <div class="nav__dropdown">
@@ -133,9 +133,15 @@
   <div class="wrap hero__inner">
     <h1 class="reveal">The World's Best Universities Begin Here.</h1>
     <p class="lead reveal" data-delay="1">Thirty years of collective expertise in international higher education - connecting institutions, guiding students, and opening pathways across six continents.</p>
-    <div class="btn-row reveal" data-delay="2">
-      <a href="/for-universities" class="btn btn--gold">Partner With Us</a>
-      <a href="/programmes" class="btn btn--ghost">Find Your University</a>
+    <div class="hero-ctas reveal" data-delay="2">
+      <div class="hero-cta">
+        <span class="hero-cta__label" id="cta-students">For prospective students</span>
+        <div class="hero-cta__btns" role="group" aria-labelledby="cta-students"><a href="/programmes" class="btn btn--gold">Find Your Programme</a></div>
+      </div>
+      <div class="hero-cta">
+        <span class="hero-cta__label" id="cta-partners">Partner with us</span>
+        <div class="hero-cta__btns" role="group" aria-labelledby="cta-partners"><a href="/partner-with-us" class="btn btn--ghost">I'm an Agent</a><a href="/for-universities" class="btn btn--ghost">I'm an Institution</a></div>
+      </div>
     </div>
   </div>
 </section>
