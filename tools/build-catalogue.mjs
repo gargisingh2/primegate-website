@@ -44,6 +44,13 @@ function formatDuration(raw) {
   return { text: s, cav };
 }
 
+// Owner-approved wording corrections to official excerpts (source text is cut off).
+// Keyed by programme ID; the raw scrape in data/enrichment stays unchanged.
+const ER_CORRECTIONS = {
+  // Approved 17 Oct 2026 (review round 3): IDEA's page ends "IELTS level 6.0 or equival".
+  "idea-malta-bachelor-of-science-in-nursing-top-up": [[/IELTS level 6\.0 or equival$/, "IELTS level 6.0 or equivalent."]],
+};
+
 const errors = [];
 const seeds = readSeeds(ROOT);
 const ids = new Set();
@@ -74,6 +81,7 @@ const programmes = seeds.map((p) => {
     }
     // No partner-site URLs on our pages: drop "Link to ...: <url>" pointers and bare URLs.
     if (e.entry_requirements) rec.er = e.entry_requirements.replace(/\s*Link to [^:.]*:\s*https?:\/\/\S+/gi, "").replace(/\s*https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim();
+    if (rec.er && ER_CORRECTIONS[p.id]) ER_CORRECTIONS[p.id].forEach(([from, to]) => { rec.er = rec.er.replace(from, to); });
   }
   return rec;
 });
