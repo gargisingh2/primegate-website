@@ -195,6 +195,29 @@
     }
   }
 
+  /* ---- Hero background video ----
+     The poster image is the LCP element. The video is only fetched after the
+     page has fully loaded, and skipped for reduced-motion / data-saver /
+     slow connections (they keep the poster). Portrait screens get a
+     cropped 9:16 file. */
+  var heroVideo = document.querySelector(".hero__video video");
+  if (heroVideo) {
+    var conn = navigator.connection || {};
+    var skipVideo = (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+      conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+    if (!skipVideo) {
+      var startHeroVideo = function () {
+        var portrait = window.matchMedia("(max-aspect-ratio: 1/1)").matches;
+        heroVideo.src = portrait ? heroVideo.dataset.srcPortrait : heroVideo.dataset.src;
+        heroVideo.addEventListener("playing", function () { heroVideo.classList.add("is-playing"); }, { once: true });
+        var p = heroVideo.play();
+        if (p && p.catch) p.catch(function () { /* autoplay blocked (e.g. low-power mode): poster stays */ });
+      };
+      if (document.readyState === "complete") startHeroVideo();
+      else window.addEventListener("load", startHeroVideo, { once: true });
+    }
+  }
+
   /* ---- Nav dropdown groups (Services, Partner With Us) ---- */
   var groupToggles = document.querySelectorAll(".nav__grouptoggle");
   groupToggles.forEach(function (btn) {

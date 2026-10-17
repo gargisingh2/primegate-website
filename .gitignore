@@ -15,3 +15,6 @@ desktop.ini
 # Local env / secrets
 .env
 .env.*
+
+# Raw source video (40 MB) - only the compressed hero-video*.mp4 files ship
+images/Website hero banner.mp4
