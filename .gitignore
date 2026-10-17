@@ -18,3 +18,6 @@ desktop.ini
 
 # Raw source video (40 MB) - only the compressed hero-video*.mp4 files ship
 images/Website hero banner.mp4
+
+# Generated per deploy context by netlify.toml (staging/previews only)
+_headers

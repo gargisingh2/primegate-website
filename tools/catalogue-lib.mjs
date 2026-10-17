@@ -91,7 +91,7 @@ function readAccordion(html, institutionId, page) {
   items.forEach((item) => {
     const fw = (/prog-acc__lvl">([^<]+)</.exec(item) || [])[1] || "";
     const [framework, lvl] = fw.trim().split(/\s+/);
-    const re = /<li><span class="prog-name">([^<]+)<\/span>(?:<span class="prog-ects">([^<]+)<\/span>)?<\/li>/g;
+    const re = /<li><span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>(?:<span class="prog-ects">([^<]+)<\/span>)?<\/li>/g;
     let m;
     while ((m = re.exec(item))) {
       let title = unescape(m[1]);
@@ -112,7 +112,7 @@ function readAccordion(html, institutionId, page) {
 // Fondazione Doria lists named courses as <li data-prog="...">Title - 1,000 hrs</li>
 function readTagged(html, institutionId, page) {
   const out = [];
-  const re = /<li data-prog(?:="[^"]*")?>([^<]+)<\/li>/g;
+  const re = /<li data-prog(?:="[^"]*")?>(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/li>/g;
   let m;
   while ((m = re.exec(html))) {
     const raw = unescape(m[1]);

@@ -34,24 +34,27 @@
     var base = ["I'm interested in: " + subject].concat(lines);
     var text = function (withPrefs) { return base.concat(withPrefs && extra.length ? [""].concat(extra) : []).join("\n"); };
     box.innerHTML = "<h3>You are asking about " + esc(subject) + "</h3>" +
-      "<p>We have added this to the message box in the form below so your advisor knows which programme you mean. You can edit it before sending.</p>" +
+      "<p>We have added the programme details below to the message box in the form, so your advisor knows which programme you mean. You can edit it before sending.</p>" +
       "<pre data-summary></pre>" +
-      (extra.length ? '<label class="fld__check"><input type="checkbox" data-include-prefs /> Also include the preferences I chose in the programme finder</label>' : "") +
+      (extra.length ? '<label class="fld__check"><input type="checkbox" data-include-prefs /> Show the preferences I chose in the programme finder in this summary</label>' +
+        '<p data-prefs-note hidden style="margin:0.4rem 0 0;font-size:0.82rem;">Your preferences are only in the summary above; they have not been sent anywhere. To share them with your advisor, copy the summary and paste it into "Anything else you want to share". Unticking only changes this summary - check the message box yourself if you already pasted them.</p>' : "") +
       '<p style="margin:0.6rem 0 0;"><button type="button" class="btn btn--ghost-navy btn--sm" data-copy>Copy this summary</button> <span data-copy-status role="status" style="font-size:0.84rem;margin-left:0.5rem;"></span></p>' +
       '<p style="margin:0.6rem 0 0;font-size:0.8rem;">If the message box is empty, paste the summary into "Anything else you want to share".</p>';
     box.hidden = false;
     var pre = box.querySelector("[data-summary]");
     var cb = box.querySelector("[data-include-prefs]");
+    var prefsNote = box.querySelector("[data-prefs-note]");
+    // The form is loaded ONCE, pre-filled with the programme only. Reloading it
+    // later would wipe anything the student has typed (review round 2, R2-03),
+    // so the preferences checkbox only changes the copyable summary.
     var base0 = frame.getAttribute("src").split("?")[0];
-    var apply = function () {
+    frame.setAttribute("src", base0 + "?MultiLine=" + encodeURIComponent(text(false)));
+    var update = function () {
       var withPrefs = !!(cb && cb.checked);
-      var t = text(withPrefs);
-      pre.textContent = t;
-      var q = "MultiLine=" + encodeURIComponent(t);
-      if (withPrefs && prefs.res && prefs.res !== "Prefer not to say") q += "&SingleLine4=" + encodeURIComponent(prefs.res);
-      frame.setAttribute("src", base0 + "?" + q);
+      pre.textContent = text(withPrefs);
+      if (prefsNote) prefsNote.hidden = !withPrefs;
     };
-    if (cb) cb.addEventListener("change", apply);
+    if (cb) cb.addEventListener("change", update);
     box.querySelector("[data-copy]").addEventListener("click", function () {
       var st = box.querySelector("[data-copy-status]");
       var t = pre.textContent;
@@ -59,7 +62,7 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function () { st.textContent = "Select the text above and copy it."; });
       else st.textContent = "Select the text above and copy it.";
     });
-    apply();
+    update();
   }
 
   Promise.all([

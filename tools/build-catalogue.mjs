@@ -12,14 +12,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { readSeeds, LEVELS, SUBJECTS } from "./catalogue-lib.mjs";
+import { readSeeds, LEVELS, SUBJECTS, SEED_PAGES } from "./catalogue-lib.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (f) => fs.readFileSync(path.join(ROOT, f), "utf8");
 const write = (f, s) => fs.writeFileSync(path.join(ROOT, f), s);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-const { institutions } = JSON.parse(read("data/institutions.json"));
+const { institutions, network = [] } = JSON.parse(read("data/institutions.json"));
 const instById = Object.fromEntries(institutions.map((i) => [i.id, i]));
 const enrichment = {};
 const enrichDir = path.join(ROOT, "data", "enrichment");
@@ -28,8 +28,21 @@ if (fs.existsSync(enrichDir)) fs.readdirSync(enrichDir).filter((f) => f.endsWith
   enrichment[r.institution_id] = r;
 });
 
-// Official duration strings carry long caveats; keep the leading duration only.
-const shortDuration = (s) => s.split(/\s[(*]|\.\s|\s\+\s?Minimum/)[0].replace(/\s+/g, " ").trim();
+// Official duration wording is kept in full (owner-approved 17 Oct 2026, review
+// round 2, R2-04): dissertation/project components and minimums stay. Only the
+// two generic scheduling caveats are lifted out and shown once as a note.
+const CAVEATS = {
+  recess: /\(?\s*subject to changes? due to public holidays,? christmas,? and summer recess\.?\s*\)?/i,
+  flexible: /\.?\s*\*\s*the institute sets an indicative duration[\s\S]*$/i,
+};
+function formatDuration(raw) {
+  let s = raw, cav = [];
+  Object.entries(CAVEATS).forEach(([k, re]) => { if (re.test(s)) { cav.push(k); s = s.replace(re, " "); } });
+  s = s.replace(/\s*\+\s*/g, " + ").replace(/\bMinimum\b/g, "minimum").replace(/\bfor Dissertation\b/g, "for dissertation")
+    .replace(/\((Dissertation|Project)\)/g, (m, w) => "(" + w.toLowerCase() + ")").replace(/\bMonths\b/g, "months")
+    .replace(/\s+/g, " ").replace(/[\s.]+$/, "").trim();
+  return { text: s, cav };
+}
 
 const errors = [];
 const seeds = readSeeds(ROOT);
@@ -52,7 +65,12 @@ const programmes = seeds.map((p) => {
     rec.src = e.official_url;
     rec.chk = e.retrieved_at;
     if (e.modes) rec.m = e.modes;
-    if (e.durations) rec.d = Object.fromEntries(Object.entries(e.durations).map(([k, v]) => [k, shortDuration(v)]));
+    if (e.durations) {
+      rec.d = {};
+      const cav = new Set();
+      Object.entries(e.durations).forEach(([k, v]) => { const f = formatDuration(v); rec.d[k] = f.text; f.cav.forEach((c) => cav.add(c)); });
+      if (cav.size) rec.dc = [...cav];
+    }
     if (e.entry_requirements) rec.er = e.entry_requirements;
   }
   return rec;
@@ -66,6 +84,8 @@ write("data/programmes.json", JSON.stringify({
   generated: new Date().toISOString().slice(0, 10),
   levels: LEVELS, subjects: SUBJECTS,
   institutions: institutions.map((i) => ({ id: i.id, name: i.name, url: i.url, location: i.location, country: i.country, region: i.region, relationship: i.relationship, count: counts[i.id] || 0 })),
+  // Directory-only institutions (no listed programmes): lets the finder offer an enquiry route.
+  network: network.map((n) => ({ key: n.logo.replace(/^uni-|\.png$/g, ""), name: n.name, country: n.country })),
   programmes,
 }) + "\n");
 
@@ -98,6 +118,24 @@ if (partner.includes("<!-- portfolio:start")) {
   partner = partner.replace(/<!-- portfolio:start[\s\S]*?<!-- portfolio:end -->/, table);
   write("partner-with-us.html", partner);
 }
+
+// ---- Institution pages: link each listed programme to its stable finder link ----
+// Rows are paired with catalogue records in document order (the same order
+// readSeeds parsed them), so every row maps to exactly one ID.
+SEED_PAGES.forEach(([instId, file]) => {
+  let html = read(file);
+  const recs = programmes.filter((p) => p.i === instId);
+  let n = 0;
+  const link = (title) => { const p = recs[n++]; return p ? `<a href="/programmes?programme=${p.id}">${title}</a>` : title; };
+  if (instId === "fondazione-doria") {
+    html = html.replace(/<li data-prog(="[^"]*")?>(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/li>/g, (m, attr, t) => `<li data-prog${attr || ""}>${link(t)}</li>`);
+  } else {
+    const [head, list] = html.split('id="programme-list"');
+    html = head + 'id="programme-list"' + list.replace(/<span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>/g, (m, t) => `<span class="prog-name">${link(t)}</span>`);
+  }
+  if (n !== recs.length) { console.error(`${file}: ${n} rows vs ${recs.length} records - not linking`); process.exit(1); }
+  write(file, html);
+});
 
 // ---- /programmes crawlable / no-JavaScript list ----
 let finder = read("programmes.html");

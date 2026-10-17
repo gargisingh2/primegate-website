@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css?v=7" />
+<link rel="stylesheet" href="css/style.css?v=8" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="apple-touch-icon" href="images/favicon.png" />
 <link rel="manifest" href="site.webmanifest" />
@@ -76,6 +76,13 @@
 <section class="section" style="padding-top:0;" data-finder>
   <div class="wrap">
     <div class="finder">
+      <form class="finder__bar finder__bar--top" role="search" data-search-form>
+        <div class="fld">
+          <label for="f-q">Search by programme or institution name</label>
+          <input type="search" id="f-q" placeholder="e.g. Nursing, AI, IDEA" autocomplete="off" />
+        </div>
+        <div class="finder__go"><button type="submit" class="btn btn--navy" style="min-height:44px;">Search</button><a href="#results-top" class="textlink finder__jump">Explore results &darr;</a></div>
+      </form>
       <div class="finder__title">
         <h2>Your preferences <span style="font-weight:500;color:var(--graphite);">(all optional)</span></h2>
         <p>Study level and subject filter the list. Qualification, country and budget help your advisor and do not hide programmes. <button type="button" class="linkbtn" id="clear-prefs">Clear preferences</button></p>
@@ -99,7 +106,7 @@
         </div>
         <div class="fld fld--more">
               <label for="f-res">Where do you currently live?</label>
-              <input type="text" id="f-res" list="countries" autocomplete="country-name" placeholder="Start typing a country" />
+              <input type="text" id="f-res" list="countries" autocomplete="country-name" placeholder="Country" />
               <span class="fld__help">For your advisor; this does not limit programmes.</span>
             </div>
         <div class="fld fld--more">
@@ -115,7 +122,7 @@
               <span class="fld__label" id="budget-label">Annual tuition budget</span>
               <div class="fld__pair" role="group" aria-labelledby="budget-label">
                 <select id="f-cur" aria-label="Currency"><option>EUR</option><option>AED</option><option>USD</option><option>GBP</option><option>CAD</option><option>INR</option></select>
-                <input type="number" id="f-budget" inputmode="numeric" min="0" step="500" placeholder="Maximum" aria-label="Maximum annual tuition" />
+                <input type="number" id="f-budget" inputmode="numeric" min="0" step="500" placeholder="Max" aria-label="Maximum annual tuition" />
               </div>
               <label class="fld__check"><input type="checkbox" id="f-unsure" /> Not sure yet</label>
               <span class="fld__help">Tuition only, excluding living costs.</span>
@@ -124,13 +131,7 @@
       <button type="button" class="linkbtn finder__toggle" aria-expanded="false" aria-controls="finder-grid" data-personalise>+ Personalise your search (study level, country, budget)</button>
       <p class="finder__note" id="budget-note" hidden>Your budget can be included in your advisor enquiry. Verified annual-price filtering is not available yet, so these results are based on your other filters.</p>
 
-      <form class="finder__bar" role="search" data-search-form>
-        <div class="fld">
-          <label for="f-q">Search by programme or institution name</label>
-          <input type="search" id="f-q" placeholder="e.g. Artificial Intelligence, Nursing, IDEA" autocomplete="off" />
-        </div>
-        <button type="submit" class="btn btn--navy" style="min-height:44px;">Search</button>
-      </form>
+      
       <details class="finder__filters">
         <summary>More filters</summary>
         <div class="finder__filters-body">
@@ -147,8 +148,8 @@
       </details>
     </div>
 
-    <div class="results-head">
-      <p class="results-count" id="results-count" tabindex="-1" aria-live="polite">Loading programmes&hellip;</p>
+    <div class="results-head" id="results-top">
+      <div><p class="results-count" id="results-count" tabindex="-1" aria-live="polite">Loading programmes&hellip;</p><p class="coverage" id="coverage"></p></div>
       <label class="results-sort">Sort <select id="f-sort"><option value="az">Programme A-Z</option><option value="inst">Institution</option></select></label>
     </div>
     <div class="chips" id="chips"></div>
@@ -284,6 +285,6 @@
 </footer>
 
 <script src="js/main.js?v=7"></script>
-<script src="js/programmes.js?v=1" defer></script>
+<script src="js/programmes.js?v=2" defer></script>
 </body>
 </html>

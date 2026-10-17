@@ -33,9 +33,18 @@
   var ALIASES = {
     ai: ["artificial intelligence"], aml: ["anti-money laundering", "money laundering"],
     mba: ["business administration"], dba: ["business administration"], hr: ["human resource"],
-    it: ["computing"], msc: ["master of science", "m.sc"], bsc: ["bachelor of science", "b.sc"],
-    nursing: ["nursing"], oss: ["oss"], chef: ["chef", "culinary"], logistics: ["logistics", "supply chain"]
+    it: ["computing"], chef: ["chef", "culinary"], logistics: ["logistics", "supply chain"]
   };
+  // Degree abbreviations are normalised identically in the query and the index,
+  // so "B.Sc.", "BSc", "B Sc" and "Bachelor of Science" all mean the same token.
+  // Display titles are never changed.
+  function norm(s) {
+    return " " + String(s).toLowerCase()
+      .replace(/\bbachelor of science\b/g, " bsc ").replace(/\bmaster of science\b/g, " msc ")
+      .replace(/\bb\.?\s?sc\b\.?/g, " bsc ").replace(/\bm\.?\s?sc\b\.?/g, " msc ")
+      .replace(/\bm\.?\s?b\.?\s?a\b\.?/g, " mba ")
+      .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim() + " ";
+  }
   var MODES = { full_time: "Full-time", part_time: "Part-time" };
   var REL = { exclusive: "Exclusive Representative Office", admissions: "Admissions Partner" };
   var SOURCE_NAME = { "idea-malta": "IDEA College official course page", "idea-uae": "IDEA Academy official course page" };
@@ -47,10 +56,10 @@
     cur: $("#f-cur"), budget: $("#f-budget"), unsure: $("#f-unsure"),
     q: $("#f-q"), inst: $("#f-inst"), dest: $("#f-dest"), modes: $("#f-mode"), incl: $("#f-incl"),
     sort: $("#f-sort"), results: $("#results"), count: $("#results-count"), chips: $("#chips"),
-    pager: $("#pager"), note: $("#budget-note"), clearPrefs: $("#clear-prefs")
+    pager: $("#pager"), coverage: $("#coverage"), note: $("#budget-note"), clearPrefs: $("#clear-prefs")
   };
 
-  var state = { level: "", subject: "", q: "", dest: [], inst: "", mode: [], incl: false, sort: "az", page: 1 };
+  var state = { prog: "", level: "", subject: "", q: "", dest: [], inst: "", mode: [], incl: false, sort: "az", page: 1 };
   var prefs = { qual: "", res: "", cur: "EUR", budget: "", unsure: false };
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
@@ -69,9 +78,11 @@
     state.incl = p.get("unconfirmed") === "1";
     state.sort = p.get("sort") || "az";
     state.page = Math.max(1, parseInt(p.get("page"), 10) || 1);
+    state.prog = p.get("programme") || "";
   }
   function writeUrl() {
     var p = new URLSearchParams();
+    if (state.prog) p.set("programme", state.prog);
     if (state.level) p.set("level", state.level);
     if (state.subject) p.set("subject", state.subject);
     if (state.q) p.set("q", state.q);
@@ -94,7 +105,7 @@
   }
 
   /* ---------- filtering ---------- */
-  function tokens(q) { return q.toLowerCase().split(/[^a-z0-9.\-]+/).filter(Boolean); }
+  function tokens(q) { return norm(q).trim().split(" ").filter(Boolean); }
   function wordMatch(hay, needle) {
     var i = hay.indexOf(needle);
     while (i !== -1) {
@@ -111,14 +122,15 @@
   }
   function queryScore(p, toks) {
     if (!toks.length) return 1;
-    var title = p.t.toLowerCase(), hay = title + " " + (instById[p.i] ? instById[p.i].name.toLowerCase() : "");
+    if (!p._n) p._n = norm(p.t);
+    var title = p._n, hay = title + norm(instById[p.i] ? instById[p.i].name : "");
     var score = 0;
     for (var i = 0; i < toks.length; i++) {
       var t = toks[i], hit = false, alias = ALIASES[t];
-      if (alias) for (var a = 0; a < alias.length; a++) if (wordMatch(hay, alias[a])) { hit = true; break; }
+      if (alias) for (var a = 0; a < alias.length; a++) if (wordMatch(hay, norm(alias[a]).trim())) { hit = true; break; }
       if (!hit && (t.length >= 3 ? prefixMatch(hay, t) : wordMatch(hay, t))) hit = true;
       if (!hit) return 0;
-      score += wordMatch(title, t) || (alias && alias.some(function (x) { return wordMatch(title, x); })) ? 2 : 1;
+      score += wordMatch(title, t) || (alias && alias.some(function (x) { return wordMatch(title, norm(x).trim()); })) ? 2 : 1;
     }
     if (title.indexOf(toks.join(" ")) !== -1) score += 3;
     return score;
@@ -227,35 +239,77 @@
     if (!bits.length) return "";
     return '<span class="tag tag--match">Matches your selected ' + bits.join(" and ") + "</span>";
   }
-  function rowHtml(p) {
+  // Stable, shareable programme link. Keeps the public filters already in the
+  // URL (never private preferences, which are not in the URL).
+  function progHref(id) {
+    var p = new URLSearchParams(location.search);
+    p.set("programme", id);
+    p.delete("page");
+    return "/programmes?" + p.toString();
+  }
+  function rowHtml(p, opts) {
+    opts = opts || {};
     var inst = instById[p.i] || {};
     var level = data.levels[p.lv] + (p.fw ? " · " + p.fw : "");
-    var modes = p.m ? '<span class="tag tag--known">' + p.m.map(function (m) { return MODES[m]; }).join(" / ") + "</span>" : '<span class="tag tag--confirm">Study mode to confirm</span>';
+    var load = p.m ? '<span class="tag tag--known">' + p.m.map(function (m) { return MODES[m]; }).join(" / ") + "</span>" : '<span class="tag tag--confirm">Study load to confirm</span>';
     var note = p.lv === "top_up" ? '<p class="prow__note">Top-up degree: it builds on a completed, relevant diploma or higher diploma. It is not a first-degree route for school leavers.</p>' : "";
-    var unconf = p._unconf ? '<p class="prow__note">Study mode has not been confirmed for this programme yet.</p>' : "";
-    var detailId = "d-" + p.id;
-    return '<article class="prow">' +
-      '<div class="prow__top"><div><h3>' + esc(p.t) + '</h3><p class="prow__meta"><strong>' + esc(inst.name) + "</strong> · " + esc(inst.location) + " · " + esc(level) + "</p></div>" +
+    var unconf = p._unconf ? '<p class="prow__note">Study load (full-time / part-time) has not been confirmed for this programme yet.</p>' : "";
+    var detailId = (opts.selected ? "s-" : "d-") + p.id;
+    var open = !!opts.selected;
+    return '<article class="prow' + (open ? " prow--selected" : "") + '">' +
+      '<div class="prow__top"><div><h3><a href="' + esc(progHref(p.id)) + '">' + esc(p.t) + '</a></h3><p class="prow__meta"><strong>' + esc(inst.name) + "</strong> · " + esc(inst.location) + " · " + esc(level) + "</p></div>" +
       (p.cr ? '<span class="prow__cr">' + esc(p.cr) + "</span>" : "") + "</div>" +
-      '<div class="tags">' + why(p) + modes + '<span class="tag tag--confirm">Fees to confirm</span><span class="tag tag--confirm">Intake to confirm</span>' + (p.er ? '<span class="tag tag--confirm">Entry requirements need review</span>' : "") + "</div>" +
+      '<div class="tags">' + why(p) + load + '<span class="tag tag--confirm">Fees and intake to confirm</span></div>' +
       note + unconf +
-      '<div class="prow__actions"><button type="button" class="linkbtn" aria-expanded="false" aria-controls="' + detailId + '" data-detail>View details</button>' +
+      '<div class="prow__actions"><button type="button" class="linkbtn" aria-expanded="' + open + '" aria-controls="' + detailId + '" data-detail>' + (open ? "Hide details" : "View details") + "</button>" +
       '<a class="btn btn--navy btn--sm" href="/contact?programme=' + encodeURIComponent(p.id) + '#contact-forms">Ask about this programme</a></div>' +
-      '<div class="prow__detail" id="' + detailId + '" hidden>' + detailHtml(p, inst) + "</div>" +
+      '<div class="prow__detail" id="' + detailId + '"' + (open ? "" : " hidden") + ">" + detailHtml(p, inst) + "</div>" +
       "</article>";
+  }
+  var CAVEAT_TEXT = {
+    recess: "IDEA notes that these durations are subject to change due to public holidays, Christmas and summer recess.",
+    flexible: "IDEA describes this as an indicative duration: weekly hours can be adjusted for a cohort while keeping to MFHEA guidelines."
+  };
+  // Show the official wording unchanged, but lay "one of the following ... OR ..." out as a list.
+  function entryHtml(text) {
+    var parts = text.split(/;?\s+OR\s+/);
+    if (parts.length < 2) return "<p>" + esc(text) + "</p>";
+    var intro = "", first = parts[0], colon = first.indexOf(":");
+    if (colon !== -1) { intro = first.slice(0, colon + 1); parts[0] = first.slice(colon + 1).trim(); }
+    var last = parts[parts.length - 1], tail = "", cut = last.search(/\.\s+[A-Z*]/);
+    if (cut !== -1) { tail = last.slice(cut + 1).trim(); parts[parts.length - 1] = last.slice(0, cut + 1); }
+    return (intro ? "<p>" + esc(intro) + "</p>" : "") +
+      '<ul class="entry-routes">' + parts.map(function (x, i) { return "<li>" + (i ? "<strong>or</strong> " : "") + esc(x.replace(/;$/, "")) + "</li>"; }).join("") + "</ul>" +
+      (tail ? "<p>" + esc(tail) + "</p>" : "");
   }
   function detailHtml(p, inst) {
     var h = "";
     if (p.d) {
-      h += "<h4>Duration</h4>" + Object.keys(p.d).map(function (k) { return "<p>" + MODES[k] + ": " + esc(p.d[k]) + "</p>"; }).join("");
+      h += "<h4>Duration by study load</h4>" + Object.keys(p.d).map(function (k) { return "<p>" + MODES[k] + ": " + esc(p.d[k]) + "</p>"; }).join("");
+      (p.dc || []).forEach(function (c) { if (CAVEAT_TEXT[c]) h += '<p class="src">' + CAVEAT_TEXT[c] + "</p>"; });
     }
     if (p.er) {
-      h += "<h4>Official entry requirements</h4><p>" + esc(p.er) + "</p><p><em>An advisor will confirm how your qualification maps to these requirements.</em></p>";
+      h += "<h4>Official entry requirements</h4>" + entryHtml(p.er) + "<p><em>An advisor will confirm how your qualification maps to these requirements.</em></p>";
     }
-    h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study mode, nationality and start date can all change them).</p>";
-    if (p.src) h += '<p class="src">Source: <a href="' + esc(p.src) + '" target="_blank" rel="noopener">' + esc(SOURCE_NAME[p.i] || "Official course page") + "</a> (checked " + esc(p.chk) + "). Details can change; your advisor confirms them before you apply.</p>";
+    h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
+    if (p.src) h += '<p class="src">Source: <a href="' + esc(p.src) + '" target="_blank" rel="noopener">' + esc(SOURCE_NAME[p.i] || "Official course page") + "</a>, retrieved " + esc(p.chk) + ". Duration and entry details are shown as published there; your advisor confirms them before you apply.</p>";
     if (inst.url) h += '<p class="src"><a href="' + esc(p.u) + '">See all programmes at ' + esc(inst.name) + "</a></p>";
     return h;
+  }
+  // Institutions we work with that have no listed programmes (Ajman, Alpine, AUE,
+  // the ApplyBoard network): when a search names one, offer its enquiry route.
+  function knownInstitutionsHtml() {
+    if (!state.q) return "";
+    var toks = tokens(state.q);
+    var hits = [];
+    var test = function (name) { var n = norm(name); return toks.every(function (t) { return t.length >= 3 ? prefixMatch(n, t) : wordMatch(n, t); }); };
+    data.institutions.forEach(function (i) { if (!i.count && test(i.name)) hits.push({ key: i.id, name: i.name, how: "Admissions Partner · " + i.location }); });
+    (data.network || []).forEach(function (n) { if (test(n.name)) hits.push({ key: n.key, name: n.name, how: "Available through our ApplyBoard partnership · " + n.country }); });
+    if (!hits.length) return "";
+    return hits.slice(0, 3).map(function (h) {
+      return '<div class="results-more"><strong>' + esc(h.name) + "</strong> (" + esc(h.how) + "): no programmes are listed here yet. " +
+        '<a class="textlink" href="/contact?institution=' + encodeURIComponent(h.key) + '#contact-forms">Ask about this institution</a></div>';
+    }).join("");
   }
   function emptyHtml(unconfirmed) {
     var actions = [];
@@ -285,10 +339,30 @@
     if (state.page > pages) state.page = pages;
     var start = (state.page - 1) * PAGE_SIZE;
     var slice = list.slice(start, start + PAGE_SIZE);
-    els.count.innerHTML = list.length ? list.length + (list.length === 1 ? " programme" : " programmes") + (pages > 1 ? " <span>· showing " + (start + 1) + "-" + (start + slice.length) + "</span>" : "") : "0 programmes";
+    // Shared programme link (?programme=ID): shown first and open, kept out of the list below.
+    var sel = "", selected = null;
+    if (state.prog) {
+      selected = data.programmes.filter(function (p) { return p.id === state.prog; })[0];
+      if (selected) {
+        var inFilters = list.indexOf(selected) !== -1;
+        list = list.filter(function (p) { return p !== selected; });
+        sel = '<div class="selected-prog" id="selected-programme"><p class="selected-prog__label">Programme you opened' +
+          (inFilters ? "" : " · shown separately: it is outside your current filters") +
+          ' <button type="button" class="linkbtn" data-remove="prog">Close</button></p>' + rowHtml(selected, { selected: true }) + "</div>";
+      } else {
+        sel = '<div class="results-more" id="selected-programme">That programme link is not in our current list. Search below or <a class="textlink" href="/contact#contact-forms">ask an advisor</a>. <button type="button" class="linkbtn" data-remove="prog">Dismiss</button></div>';
+      }
+    }
+    pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    if (state.page > pages) state.page = pages;
+    start = (state.page - 1) * PAGE_SIZE;
+    slice = list.slice(start, start + PAGE_SIZE);
+    els.count.innerHTML = list.length ? list.length + (selected ? " more" : "") + (list.length === 1 ? " programme" : " programmes") + (pages > 1 ? " <span>· showing " + (start + 1) + "-" + (start + slice.length) + "</span>" : "") : "0 programmes";
+    var listed = data.institutions.filter(function (i) { return i.count; }).length;
+    els.coverage.innerHTML = data.programmes.length + " listed programmes from " + listed + " institutions · more institutions available on enquiry: <a class=\"textlink\" href=\"/higher-education#directory\">see all institutions</a>";
     els.chips.innerHTML = chipsHtml();
-    var html = slice.map(rowHtml).join("");
-    if (!list.length) html = emptyHtml(res.unconfirmed);
+    var html = sel + knownInstitutionsHtml() + slice.map(function (p) { return rowHtml(p); }).join("");
+    if (!list.length) html = sel + knownInstitutionsHtml() + emptyHtml(res.unconfirmed);
     else if (state.mode.length && res.unconfirmed && !state.incl && state.page === pages) {
       html += '<div class="results-more">' + res.unconfirmed + ' more programmes match your other choices, but their study mode is still to be confirmed. <button type="button" class="linkbtn" data-incl>Include options needing confirmation</button></div>';
     }
@@ -356,6 +430,7 @@
     else if (r === "dest-all") state.dest = [];
     else if (r === "mode") state.mode = state.mode.filter(function (m) { return m !== v; });
     else if (r === "inst") state.inst = "";
+    else if (r === "prog") { state.prog = ""; render(); els.count.focus({ preventScroll: true }); return; }
     else state[r] = "";
     syncControls(); onFilter();
     els.count.focus({ preventScroll: true });
@@ -390,7 +465,8 @@
       if (store) {
         var saved = (store.getItem(SCROLL_KEY) || "").split("|");
         if (saved[0] === location.search && saved[1]) window.scrollTo(0, parseInt(saved[1], 10) || 0);
-      }
+        else if (state.prog && document.getElementById("selected-programme")) document.getElementById("selected-programme").scrollIntoView({ block: "start" });
+      } else if (state.prog && document.getElementById("selected-programme")) document.getElementById("selected-programme").scrollIntoView({ block: "start" });
     }).catch(fail);
   }
   load();
