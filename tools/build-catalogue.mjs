@@ -62,7 +62,8 @@ const programmes = seeds.map((p) => {
   };
   if (p.institution_id === "fondazione-doria") rec.u = inst.url + "#programmes";
   if (e) {
-    rec.src = e.official_url;
+    // Partner-site URLs stay in data/enrichment (not served); the public index
+    // carries no outbound links, only the retrieval date.
     rec.chk = e.retrieved_at;
     if (e.modes) rec.m = e.modes;
     if (e.durations) {
@@ -71,7 +72,8 @@ const programmes = seeds.map((p) => {
       Object.entries(e.durations).forEach(([k, v]) => { const f = formatDuration(v); rec.d[k] = f.text; f.cav.forEach((c) => cav.add(c)); });
       if (cav.size) rec.dc = [...cav];
     }
-    if (e.entry_requirements) rec.er = e.entry_requirements;
+    // No partner-site URLs on our pages: drop "Link to ...: <url>" pointers and bare URLs.
+    if (e.entry_requirements) rec.er = e.entry_requirements.replace(/\s*Link to [^:.]*:\s*https?:\/\/\S+/gi, "").replace(/\s*https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim();
   }
   return rec;
 });
@@ -155,4 +157,4 @@ let he = read("higher-education.html");
 he = he.replace(/(<span data-count-for="([a-z-]+)">)[^<]*(<\/span>)/g, (m, a, id, b) => a + (counts[id] || 0) + b);
 write("higher-education.html", he);
 
-console.log(`programmes.json: ${programmes.length} programmes (${Object.entries(counts).map(([k, v]) => k + " " + v).join(", ")}); ${programmes.filter((p) => p.src).length} with official source`);
+console.log(`programmes.json: ${programmes.length} programmes (${Object.entries(counts).map(([k, v]) => k + " " + v).join(", ")}); ${programmes.filter((p) => p.chk).length} with official-source details`);

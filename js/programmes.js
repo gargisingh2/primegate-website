@@ -47,7 +47,7 @@
   }
   var MODES = { full_time: "Full-time", part_time: "Part-time" };
   var REL = { exclusive: "Exclusive Representative Office", admissions: "Admissions Partner" };
-  var SOURCE_NAME = { "idea-malta": "IDEA College official course page", "idea-uae": "IDEA Academy official course page" };
+  var SOURCE_NAME = { "idea-malta": "IDEA College", "idea-uae": "IDEA Academy" };
 
   var data = null, instById = {};
   var $ = function (sel) { return root.querySelector(sel); };
@@ -292,7 +292,7 @@
       h += "<h4>Official entry requirements</h4>" + entryHtml(p.er) + "<p><em>An advisor will confirm how your qualification maps to these requirements.</em></p>";
     }
     h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
-    if (p.src) h += '<p class="src">Source: <a href="' + esc(p.src) + '" target="_blank" rel="noopener">' + esc(SOURCE_NAME[p.i] || "Official course page") + "</a>, retrieved " + esc(p.chk) + ". Duration and entry details are shown as published there; your advisor confirms them before you apply.</p>";
+    if (p.chk) h += '<p class="src">Duration and entry details are as published by ' + esc(SOURCE_NAME[p.i] || inst.name) + " (retrieved " + esc(p.chk) + "); your advisor confirms them before you apply.</p>";
     if (inst.url) h += '<p class="src"><a href="' + esc(p.u) + '">See all programmes at ' + esc(inst.name) + "</a></p>";
     return h;
   }

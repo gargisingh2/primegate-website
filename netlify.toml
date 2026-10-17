@@ -63,6 +63,13 @@
   status = 301
   force = true
 
+# Raw official-site scrapes (partner URLs) are build inputs, not public files
+[[redirects]]
+  from = "/data/enrichment/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Catalogue build scripts are repo tooling, not site pages
 [[redirects]]
   from = "/tools/*"
