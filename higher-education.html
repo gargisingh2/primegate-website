@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css?v=6" />
+<link rel="stylesheet" href="css/style.css?v=7" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="apple-touch-icon" href="images/favicon.png" />
 <link rel="manifest" href="site.webmanifest" />
@@ -53,6 +53,7 @@
     <a href="/" class="nav__logo"><img src="images/logo-horizontal.png" alt="Primegate Consultancy" /><span>Primegate<small>Consultancy</small></span></a>
     <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav__menu">
+      <a href="/programmes">Find a Programme</a>
       <a href="/about">About</a>
       <div class="nav__group">
         <button class="nav__grouptoggle" aria-expanded="false" aria-haspopup="true">Services <span class="caret">&#9662;</span></button>
@@ -81,115 +82,170 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero hero--ken">
-  <div class="hero__bg" style="background:#0B1F4D;">
-    <picture>
-      <source media="(max-width: 760px)" srcset="images/hero-higher-education-mobile.jpg" />
-      <img src="images/hero-higher-education.jpg" alt="Students on a university campus, representing the higher-education institutions Primegate represents" fetchpriority="high" />
-    </picture>
+<!-- PAGE HEAD (compact: discovery starts on the first screen) -->
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Institutions We Represent &middot; Higher Education</span>
+    <h1>Universities &amp; Colleges We Represent.</h1>
+    <p>Primegate Consultancy (PGC) is a study abroad and overseas education consultancy representing a growing portfolio of higher-education institutions across Malta, the UAE, Italy and Switzerland.</p>
+    <div class="btn-row">
+      <a href="/programmes" class="btn btn--gold">Find a Programme</a>
+      <a href="#directory" class="btn btn--ghost">Browse Institutions</a>
+    </div>
   </div>
-  <div class="wrap hero__inner">
-    <span class="eyebrow on-dark reveal">Institutions We Represent &middot; Higher Education</span>
-    <h1 class="reveal">Universities &amp; Colleges We Represent.</h1>
-    <hr class="gold-rule reveal" />
-    <p class="lead reveal" data-delay="1">Primegate Consultancy (PGC) is a study abroad and overseas education consultancy representing a growing portfolio of higher-education institutions across Malta, the UAE, Italy and Switzerland. If you are a student or family, these are the universities and colleges you can apply to through PGC. If you are an education agent, these are the institutions you can recruit for by partnering with us. If you are a university or college, this is the representation PGC can provide for your institution.</p>
+</section>
+
+<!-- WHO THIS PAGE IS FOR -->
+<section class="section" style="padding-block:2.2rem 0;">
+  <div class="wrap">
+    <div class="audience-links">
+      <a href="/programmes"><strong>Students &amp; families &rarr;</strong><span>These are the universities and colleges you can apply to through PGC.</span></a>
+      <a href="/partner-with-us"><strong>Education agents &rarr;</strong><span>These are the institutions you can recruit for by partnering with us.</span></a>
+      <a href="#institution-enquiry"><strong>Universities &amp; colleges &rarr;</strong><span>This is the representation PGC can provide for your institution.</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTION DIRECTORY -->
+<section class="section" id="directory" data-directory style="padding-top:2.6rem;">
+  <div class="wrap">
+    <div class="dir-tools">
+      <div class="fld">
+        <label for="dir-q">Search institutions</label>
+        <input type="search" id="dir-q" placeholder="e.g. Ajman, Coventry, IDEA" autocomplete="off" />
+      </div>
+      <div class="fld" style="width:auto;">
+        <span class="fld__label" id="dir-region-label">Destination</span>
+        <div class="region-chips" role="group" aria-labelledby="dir-region-label">
+          <button type="button" aria-pressed="true" data-region="">All</button>
+          <button type="button" aria-pressed="false" data-region="europe">Europe</button>
+          <button type="button" aria-pressed="false" data-region="middle-east">Middle East</button>
+          <button type="button" aria-pressed="false" data-region="uk">United Kingdom</button>
+          <button type="button" aria-pressed="false" data-region="north-america">Canada</button>
+        </div>
+      </div>
+    </div>
+    <p class="sr-only" aria-live="polite" data-dir-status></p>
+
+    <!-- EUROPE -->
+    <div class="dir-region" id="europe" data-region-block="europe">
+      <h2>Europe <small>Malta &middot; Italy &middot; Switzerland</small></h2>
+      <p style="max-width:760px;margin:0 0 1.2rem;color:var(--graphite);font-size:0.95rem;">Malta, the UAE, Italy and Switzerland are among the best countries to study abroad for EU-recognised, globally accredited qualifications - each represented here by an institution PGC works with directly.</p>
+      <div class="dir-grid">
+        <article class="icard" data-name="IDEA College, Malta">
+          <div class="icard__logo"><img src="images/partners/idea-logo.svg" alt="IDEA College logo" loading="lazy" /></div>
+          <span class="rel rel--exclusive">Exclusive Representative Office</span>
+          <h3>IDEA College, Malta</h3>
+          <p class="loc">Malta &middot; EU</p>
+          <p>An MFHEA-accredited higher-education institution (Licence 2014-FHI-015) offering EU-recognised qualifications from MQF 4 to MQF 8 - foundation to doctorate - across healthcare, management, finance, technology and more.</p>
+          <p class="cov"><span data-count-for="idea-malta">73</span> programmes listed &middot; intakes and fees on request</p>
+          <div class="icard__actions"><a href="/idea-college-malta">View IDEA College Malta</a><a href="/programmes?institution=idea-malta">Explore programmes</a></div>
+        </article>
+        <article class="icard" data-name="Fondazione Doria - Training and Education Institute Italy">
+          <div class="icard__logo"><img class="inst-logo--dark" src="images/partners/doria.png" alt="Fondazione Doria - Training and Education Institute logo" loading="lazy" /></div>
+          <span class="rel rel--exclusive">Exclusive Representative Office</span>
+          <h3>Fondazione Doria - Training and Education Institute</h3>
+          <p class="loc">Campania, Italy &middot; Dubai office</p>
+          <p>An Italian training institute accredited by the Campania Region and recognised by the Italian Ministry of Education - regional healthcare qualifications (OSS/OSA), a culinary academy, and online university degrees through its eCampus University partnership.</p>
+          <p class="cov"><span data-count-for="fondazione-doria">6</span> named courses listed, plus university pathways &middot; intakes and fees on request</p>
+          <div class="icard__actions"><a href="/fondazione-doria">View Fondazione Doria</a><a href="/programmes?institution=fondazione-doria">Explore programmes</a></div>
+        </article>
+        <article class="icard" data-name="Alpine Swiss Business School Zurich Switzerland">
+          <div class="icard__logo"><img src="images/partners/alpine.png" alt="Alpine Swiss Business School logo" loading="lazy" /></div>
+          <span class="rel rel--admissions">Admissions Partner</span>
+          <h3>Alpine Swiss Business School</h3>
+          <p class="loc">Zurich &middot; Switzerland</p>
+          <p>A modern Swiss business school offering industry-driven Diploma, Bachelor, Master and PhD programmes with flexible learning designed for globally competitive leaders.</p>
+          <p class="cov">Programme list on request</p>
+          <div class="icard__actions"><a href="/contact?institution=alpine#contact-forms">Ask about this institution</a></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- MIDDLE EAST -->
+    <div class="dir-region" id="middle-east" data-region-block="middle-east">
+      <h2>Middle East <small>United Arab Emirates</small></h2>
+      <div class="dir-grid">
+        <article class="icard" data-name="IDEA Academy, UAE Dubai">
+          <div class="icard__logo"><img src="images/partners/idea-logo.svg" alt="IDEA Academy logo" loading="lazy" /></div>
+          <span class="rel rel--exclusive">Exclusive Representative Office</span>
+          <h3>IDEA Academy, UAE</h3>
+          <p class="loc">Dubai &middot; UAE</p>
+          <p>A KHDA-licensed academy in Dubai (Licence 630698) offering EQF-aligned foundation certificates and diplomas (EQF 4-5) across healthcare, management, finance, digital technology, tourism and logistics - built for flexible, career-friendly study.</p>
+          <p class="cov"><span data-count-for="idea-uae">5</span> programmes listed &middot; intakes and fees on request</p>
+          <div class="icard__actions"><a href="/idea-uae">View IDEA Academy UAE</a><a href="/programmes?institution=idea-uae">Explore programmes</a></div>
+        </article>
+        <article class="icard" data-name="Ajman University UAE">
+          <div class="icard__logo"><img src="images/partners/ajman.svg" alt="Ajman University logo" loading="lazy" /></div>
+          <span class="rel rel--admissions">Admissions Partner</span>
+          <h3>Ajman University</h3>
+          <p class="loc">Ajman &middot; UAE</p>
+          <p>A leading UAE university with 9 colleges and 46 accredited programmes, ranked in the QS World University Rankings top 400, with international accreditations including ABET and AACSB.</p>
+          <p class="cov">Programme list on request</p>
+          <div class="icard__actions"><a href="/contact?institution=ajman#contact-forms">Ask about this institution</a></div>
+        </article>
+        <article class="icard" data-name="American University in the Emirates AUE Dubai">
+          <div class="icard__logo"><img src="images/partners/aue.png" alt="American University in the Emirates logo" loading="lazy" /></div>
+          <span class="rel rel--admissions">Admissions Partner</span>
+          <h3>American University in the Emirates</h3>
+          <p class="loc">Dubai &middot; UAE</p>
+          <p>A QS 4-Star university in Dubai International Academic City with 8 colleges and 32+ undergraduate and graduate programmes across business, law, design, media, engineering and security studies.</p>
+          <p class="cov">Programme list on request</p>
+          <div class="icard__actions"><a href="/contact?institution=aue#contact-forms">Ask about this institution</a></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- NETWORK (ApplyBoard) -->
+    <div class="dir-region" id="network" style="scroll-margin-top:100px;" data-region-block="uk north-america">
+      <h2>Available Through Our Network <small>Canada &middot; United Kingdom</small></h2>
+      <p style="max-width:760px;margin:0 0 0.4rem;color:var(--graphite);font-size:0.95rem;">Through our ApplyBoard partnership, PGC students can access a wide network of universities and colleges across Canada and the UK - institutions with a strong track record of welcoming international students from South Asia. A selection is shown below.</p>
+      <div data-region-block="uk" id="uk">
+        <h3 class="dir-sub">United Kingdom</h3>
+        <div class="net-grid">
+          <article class="ncard" data-name="Coventry University"><img src="images/partners/uni-coventry.png" alt="Coventry University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Coventry University</h3><a href="/contact?institution=coventry#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="University of Greenwich"><img src="images/partners/uni-greenwich.png" alt="University of Greenwich logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>University of Greenwich</h3><a href="/contact?institution=greenwich#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="University of Hertfordshire"><img src="images/partners/uni-hertfordshire.png" alt="University of Hertfordshire logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>University of Hertfordshire</h3><a href="/contact?institution=hertfordshire#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Ulster University"><img src="images/partners/uni-ulster.png" alt="Ulster University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Ulster University</h3><a href="/contact?institution=ulster#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="University of East London"><img src="images/partners/uni-eastlondon.png" alt="University of East London logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>University of East London</h3><a href="/contact?institution=eastlondon#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="University of Sunderland"><img src="images/partners/uni-sunderland.png" alt="University of Sunderland logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>University of Sunderland</h3><a href="/contact?institution=sunderland#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Birmingham City University"><img src="images/partners/uni-bcu.png" alt="Birmingham City University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Birmingham City University</h3><a href="/contact?institution=bcu#contact-forms">Ask about this institution</a></article>
+        </div>
+      </div>
+      <div data-region-block="north-america" id="north-america">
+        <h3 class="dir-sub">Canada</h3>
+        <div class="net-grid">
+          <article class="ncard" data-name="University of Windsor"><img src="images/partners/uni-windsor.png" alt="University of Windsor logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>University of Windsor</h3><a href="/contact?institution=windsor#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Conestoga College"><img src="images/partners/uni-conestoga.png" alt="Conestoga College logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Conestoga College</h3><a href="/contact?institution=conestoga#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Fanshawe College"><img src="images/partners/uni-fanshawe.png" alt="Fanshawe College logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Fanshawe College</h3><a href="/contact?institution=fanshawe#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Centennial College"><img src="images/partners/uni-centennial.png" alt="Centennial College logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Centennial College</h3><a href="/contact?institution=centennial#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="St. Clair College"><img src="images/partners/uni-stclair.png" alt="St. Clair College logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>St. Clair College</h3><a href="/contact?institution=stclair#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Georgian College"><img src="images/partners/uni-georgian.png" alt="Georgian College logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Georgian College</h3><a href="/contact?institution=georgian#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Cape Breton University"><img src="images/partners/uni-capebreton.png" alt="Cape Breton University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Cape Breton University</h3><a href="/contact?institution=capebreton#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Trent University"><img src="images/partners/uni-trent.png" alt="Trent University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Trent University</h3><a href="/contact?institution=trent#contact-forms">Ask about this institution</a></article>
+          <article class="ncard" data-name="Thompson Rivers University"><img src="images/partners/uni-thompson.png" alt="Thompson Rivers University logo" loading="lazy" /><span class="rel rel--network">Via ApplyBoard</span><h3>Thompson Rivers University</h3><a href="/contact?institution=thompson#contact-forms">Ask about this institution</a></article>
+        </div>
+      </div>
+    </div>
+    <p class="dir-empty" data-dir-empty hidden>No institution matches that search. <a class="textlink" href="/contact#contact-forms">Ask an advisor</a> - the list grows as new institutions join.</p>
+
+    <!-- RELATIONSHIP KEY -->
+    <div class="apply-note" style="margin-top:2.4rem;">
+      <h4>What the labels mean</h4>
+      <ul>
+        <li><strong>Exclusive Representative Office:</strong> PGC is the appointed Exclusive Representative Office for these higher-education institutions - the single accountable partner for their student recruitment.</li>
+        <li><strong>Admissions Partner:</strong> PGC is an appointed Admissions Partner for these universities - working with students and agents to place the right candidates.</li>
+        <li><strong>Via ApplyBoard:</strong> available to PGC students through our ApplyBoard partnership.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- WHY AN INTERNATIONAL EDUCATION CONSULTANCY -->
-<section class="section">
+<section class="section section--cloud">
   <div class="wrap measure">
     <div class="section-head reveal"><span class="eyebrow">Why PGC</span><h2>Why Work With an International Education Consultancy.</h2></div>
     <p class="reveal">Primegate Consultancy (PGC) has spent thirty years building direct relationships with universities, colleges and awarding bodies - the foundation of any dependable study abroad consultancy. As an overseas education consultancy, PGC doesn't just advise; for institutions like IDEA College, Malta and IDEA Academy, UAE, PGC is the appointed Exclusive Representative Office, meaning applications, admissions guidance and enrolment support all run through a single accountable partner. Every institution PGC represents is independently accredited - through recognised national and international bodies including Malta's MFHEA and Dubai's KHDA - so students, agents and universities alike are working with a consultancy built on verified, recognised partnerships rather than a directory of listings.</p>
-  </div>
-</section>
-
-<!-- CATEGORY 1: EXCLUSIVE REPRESENTATIVE OFFICE -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal"><span class="cat-label">Exclusive Representative Office</span><h2 style="margin-top:1rem;">Institutions PGC Exclusively Represents.</h2><p>PGC is the appointed Exclusive Representative Office for these higher-education institutions - the single accountable partner for their student recruitment.</p></div>
-    <p class="reveal" style="max-width:760px;margin:0 0 1.8rem;color:var(--graphite);">Malta, the UAE, Italy and Switzerland are among the best countries to study abroad for EU-recognised, globally accredited qualifications - each represented here by an institution PGC works with directly.</p>
-    <div class="grid grid--3">
-      <article class="inst-card reveal from-left" id="europe" style="scroll-margin-top:110px;">
-        <img class="inst-logo" src="images/partners/idea-logo.svg" alt="IDEA College logo" />
-        <h3>IDEA College, Malta</h3>
-        <p class="loc">Malta &middot; EU</p>
-        <p>An MFHEA-accredited higher-education institution (Licence 2014-FHI-015) offering EU-recognised qualifications from MQF 4 to MQF 8 - foundation to doctorate - across healthcare, management, finance, technology and more.</p>
-        <a href="/idea-college-malta" class="link-arrow">View IDEA College Malta &rarr;</a>
-      </article>
-      <article class="inst-card reveal" data-delay="1" id="middle-east" style="scroll-margin-top:110px;">
-        <img class="inst-logo" src="images/partners/idea-logo.svg" alt="IDEA Academy logo" />
-        <h3>IDEA Academy, UAE</h3>
-        <p class="loc">Dubai &middot; UAE</p>
-        <p>A KHDA-licensed academy in Dubai (Licence 630698) offering EQF-aligned foundation certificates and diplomas (EQF 4-5) across healthcare, management, finance, digital technology, tourism and logistics - built for flexible, career-friendly study.</p>
-        <a href="/idea-uae" class="link-arrow">View IDEA Academy UAE &rarr;</a>
-      </article>
-      <article class="inst-card reveal from-right" data-delay="2">
-        <img class="inst-logo inst-logo--dark" src="images/partners/doria.png" alt="Fondazione Doria - Training and Education Institute logo" />
-        <h3>Fondazione Doria - Training and Education Institute</h3>
-        <p class="loc">Campania, Italy &middot; Dubai office</p>
-        <p>An Italian training institute accredited by the Campania Region and recognised by the Italian Ministry of Education - regional healthcare qualifications (OSS/OSA), a culinary academy, and online university degrees through its eCampus University partnership.</p>
-        <a href="/fondazione-doria" class="link-arrow">View Fondazione Doria &rarr;</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORY 2: ADMISSIONS PARTNERS -->
-<section class="section section--ivory">
-  <div class="wrap">
-    <div class="section-head reveal"><span class="cat-label">Admissions Partners</span><h2 style="margin-top:1rem;">Universities We Recruit For.</h2><p>PGC is an appointed Admissions Partner for these universities - working with students and agents to place the right candidates.</p></div>
-    <div class="grid grid--3">
-      <article class="inst-card reveal from-left">
-        <img class="inst-logo" src="images/partners/ajman.svg" alt="Ajman University logo" />
-        <h3>Ajman University</h3>
-        <p class="loc">Ajman &middot; UAE</p>
-        <p>A leading UAE university with 9 colleges and 46 accredited programmes, ranked in the QS World University Rankings top 400, with international accreditations including ABET and AACSB.</p>
-        <a href="/contact" class="link-arrow">Enquire / Recruit &rarr;</a>
-      </article>
-      <article class="inst-card reveal" data-delay="1">
-        <img class="inst-logo" src="images/partners/alpine.png" alt="Alpine Swiss Business School logo" />
-        <h3>Alpine Swiss Business School</h3>
-        <p class="loc">Zurich &middot; Switzerland</p>
-        <p>A modern Swiss business school offering industry-driven Diploma, Bachelor, Master and PhD programmes with flexible learning designed for globally competitive leaders.</p>
-        <a href="/contact" class="link-arrow">Enquire / Recruit &rarr;</a>
-      </article>
-      <article class="inst-card reveal from-right" data-delay="2">
-        <img class="inst-logo" src="images/partners/aue.png" alt="American University in the Emirates logo" />
-        <h3>American University in the Emirates</h3>
-        <p class="loc">Dubai &middot; UAE</p>
-        <p>A QS 4-Star university in Dubai International Academic City with 8 colleges and 32+ undergraduate and graduate programmes across business, law, design, media, engineering and security studies.</p>
-        <a href="/contact" class="link-arrow">Enquire / Recruit &rarr;</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORY 3: OTHER GLOBAL INSTITUTIONS -->
-<section class="section section--cloud" id="north-america" style="scroll-margin-top:100px;">
-  <div class="wrap">
-    <div class="section-head reveal"><span class="cat-label">Other Global Institutions</span><h2 style="margin-top:1rem;">A Growing Global Network.</h2><p>Through our ApplyBoard partnership, PGC students can access a wide network of universities and colleges across Canada and the UK - institutions with a strong track record of welcoming international students from South Asia. A selection is shown below.</p></div>
-    <div class="logo-marquee reveal" aria-label="A selection of institutions available to our students through our ApplyBoard partnership">
-      <div class="logo-track" data-marquee>
-        <div class="inst-tile"><img src="images/partners/uni-windsor.png" alt="University of Windsor logo" /><span>University of Windsor</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-conestoga.png" alt="Conestoga College logo" /><span>Conestoga College</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-fanshawe.png" alt="Fanshawe College logo" /><span>Fanshawe College</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-centennial.png" alt="Centennial College logo" /><span>Centennial College</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-stclair.png" alt="St. Clair College logo" /><span>St. Clair College</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-georgian.png" alt="Georgian College logo" /><span>Georgian College</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-capebreton.png" alt="Cape Breton University logo" /><span>Cape Breton University</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-trent.png" alt="Trent University logo" /><span>Trent University</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-thompson.png" alt="Thompson Rivers University logo" /><span>Thompson Rivers University</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-coventry.png" alt="Coventry University logo" /><span>Coventry University</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-greenwich.png" alt="University of Greenwich logo" /><span>University of Greenwich</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-hertfordshire.png" alt="University of Hertfordshire logo" /><span>University of Hertfordshire</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-ulster.png" alt="Ulster University logo" /><span>Ulster University</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-eastlondon.png" alt="University of East London logo" /><span>University of East London</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-sunderland.png" alt="University of Sunderland logo" /><span>University of Sunderland</span></div>
-        <div class="inst-tile"><img src="images/partners/uni-bcu.png" alt="Birmingham City University logo" /><span>Birmingham City University</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -211,7 +267,7 @@
       <div class="faq__item"><button class="faq__q">Which higher-education institutions does PGC represent?<span class="plus">+</span></button><div class="faq__a"><p>Primegate Consultancy (PGC) is the Exclusive Representative Office for IDEA College Malta, IDEA Academy UAE and Fondazione Doria (Italy), and an Admissions Partner for Ajman University, Alpine Swiss Business School and the American University in the Emirates (AUE). The list grows as new institutions join.</p></div></div>
       <div class="faq__item"><button class="faq__q">How can a student apply to these institutions through PGC?<span class="plus">+</span></button><div class="faq__a"><p>Students and families can enquire through PGC, and we guide you from programme selection through application, offer, visa and enrolment. Get in touch and a PGC advisor will help you find the right institution and programme.</p></div></div>
       <div class="faq__item"><button class="faq__q">Can an education agent recruit students for these institutions?<span class="plus">+</span></button><div class="faq__a"><p>Yes. Agents who wish to recruit students for the institutions PGC represents can get in touch, and a member of the Primegate Consultancy team will reach out to discuss the partnership, access and support.</p></div></div>
-      <div class="faq__item"><button class="faq__q">Can an institution appoint PGC to recruit students for it?<span class="plus">+</span></button><div class="faq__a"><p>Yes. Universities, colleges and schools that would like PGC to represent them and recruit students on their behalf can use the <a href="#institution-enquiry">institution partnership enquiry</a> on this page to discuss a representation or admissions partnership.</p></div></div>
+      <div class="faq__item"><button class="faq__q">Can an institution appoint PGC to recruit students for it?<span class="plus">+</span></button><div class="faq__a"><p>Yes. Universities, colleges and schools that would like PGC to represent them and recruit students on their behalf can use the <a href="#institution-enquiry">institution partnership enquiry</a> on this page (also on our <a href="/for-universities#institution-enquiry">For Universities</a> page) to discuss a representation or admissions partnership.</p></div></div>
       <div class="faq__item"><button class="faq__q">Does PGC offer student visa assistance?<span class="plus">+</span></button><div class="faq__a"><p>PGC advisors provide guidance through the visa process as part of end-to-end application support, though visa decisions are made by the relevant embassy or consulate, not by PGC or the institution. Get in touch for details specific to your destination and institution.</p></div></div>
       <div class="faq__item"><button class="faq__q">What is the study abroad application process through PGC?<span class="plus">+</span></button><div class="faq__a"><p>The study abroad application process through PGC starts with a free consultation to shortlist institutions and programmes, followed by application submission, offer management, visa guidance and enrolment support - all handled by a single PGC advisor from first enquiry to arrival.</p></div></div>
     </div>
@@ -232,6 +288,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

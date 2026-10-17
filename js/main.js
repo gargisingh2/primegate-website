@@ -245,6 +245,42 @@
     }
   });
 
+  /* ---- Institution directory: name search + destination chips ---- */
+  var dir = document.querySelector("[data-directory]");
+  if (dir) {
+    var dq = dir.querySelector("#dir-q");
+    var chips = dir.querySelectorAll("[data-region]");
+    var cards = dir.querySelectorAll("[data-name]");
+    var blocks = dir.querySelectorAll("[data-region-block]");
+    var dirEmpty = dir.querySelector("[data-dir-empty]");
+    var dirStatus = dir.querySelector("[data-dir-status]");
+    var region = "";
+    var filterDir = function () {
+      var q = (dq.value || "").trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function (c) {
+        var inRegion = !region || (" " + c.closest("[data-region-block]").getAttribute("data-region-block") + " ").indexOf(" " + region + " ") !== -1;
+        var ok = inRegion && (!q || c.getAttribute("data-name").toLowerCase().indexOf(q) !== -1);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+      // Hide a region (or sub-region) heading when none of its cards are visible.
+      Array.prototype.slice.call(blocks).reverse().forEach(function (b) {
+        b.hidden = !b.querySelector("[data-name]:not([hidden])");
+      });
+      dirEmpty.hidden = shown > 0;
+      dirStatus.textContent = shown + (shown === 1 ? " institution shown" : " institutions shown");
+    };
+    chips.forEach(function (b) {
+      b.addEventListener("click", function () {
+        region = b.getAttribute("data-region");
+        chips.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        filterDir();
+      });
+    });
+    dq.addEventListener("input", filterDir);
+  }
+
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();

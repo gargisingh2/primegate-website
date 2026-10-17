@@ -1,0 +1,57 @@
+{
+  "institution_id": "idea-uae",
+  "source": "https://uae.ideaeducation.com",
+  "retrieved_at": "2026-10-17",
+  "programmes": {
+    "idea-uae-diploma-in-accounting-with-management-and-analytics": {
+      "official_title": "Diploma in Accounting with Management and Analytics",
+      "official_url": "https://uae.ideaeducation.com/courses/diploma-in-accounting-with-management-and-analytics/",
+      "retrieved_at": "2026-10-17",
+      "entry_requirements": "Candidates who apply for this course must possess the following: A related qualification at MQF Level 4 and/or Two ‘A’ Levels (MQF Level 4) or equivalent one of which should be related to Accounts, Business or Economics and a pass in English Language* and Mathematics at MQF Level 3 (‘O’ Level or equivalent). Should students not satisfy this requirement, but have sufficient related experience, they will be subject to an interview by the board of admissions which will review their experience and qualification(s). Preference will be given to applicants having 1 year work experience related to the study programme. In the case of students who do not possess all the formal required academic qualifications, then the Recognition of Prior Learning (RPL) process could be applied such that if evidence of equivalent learning is found then the applicant could still be accepted in the course. Such RPL process will subject applicants to an interview held with a board of experts within the field, chosen specifically by IDEA Academy, so as to verify their experiences and prior learning. *Students whose first language is not English and do not possess an ‘O’ level pass in English Language will be required to demonstrate English language capability at IELTS level 6.0 or equivalent.",
+      "official_level": "EQF Level 5"
+    },
+    "idea-uae-diploma-in-anti-money-laundering-and-compliance": {
+      "official_title": "Diploma in Anti-Money Laundering and Compliance",
+      "official_url": "https://uae.ideaeducation.com/courses/diploma-in-anti-money-laundering-and-compliance/",
+      "retrieved_at": "2026-10-17",
+      "entry_requirements": "Candidates who apply for this course must possess the following: a qualification at MQF Level 4 (one A-level or equivalent in any subject); AND a pass in English Language and Mathematics at MQF Level 3 (O-level or equivalent).",
+      "official_level": "EQF Level 5"
+    },
+    "idea-uae-diploma-in-computing": {
+      "official_title": "Diploma in Computing",
+      "official_url": "https://uae.ideaeducation.com/courses/diploma-in-computing/",
+      "retrieved_at": "2026-10-17",
+      "entry_requirements": "Candidates who apply for this course must be in possession of the following: a qualification at EQF Level 4 in subjects related to Mathematics, Science or Computing (minimum two ‘A’ Levels or equivalent); AND a pass in English at EQF Level 3 (‘O’ Level or equivalent).",
+      "official_level": "EQF Level 5"
+    },
+    "idea-uae-diploma-in-hospitality": {
+      "official_title": "Diploma in Hospitality",
+      "official_url": "https://uae.ideaeducation.com/courses/diploma-in-hospitality/",
+      "retrieved_at": "2026-10-17",
+      "entry_requirements": "Candidates who apply for this course must possess the following: a qualification at EQF Level 4 (one ‘A’ Level or equivalent in any subject); AND a pass in English Language and Mathematics at EQF Level 3. Preference is given to applicants having a year of work experience in an area related to this study programme.",
+      "official_level": "EQF Level 5"
+    },
+    "idea-uae-diploma-in-supply-chain-management-and-logistics": {
+      "official_title": "Diploma in Supply Chain Management and Logistics",
+      "official_url": "https://uae.ideaeducation.com/courses/diploma-in-supply-chain-management-and-logistics/",
+      "retrieved_at": "2026-10-17",
+      "entry_requirements": "Candidates who apply for this course must possess the following: a qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), AND a pass in English and Mathematics at MQF Level 3 ('O' Level or equivalent). Preference is given to applicants having a year of work experience related to the field of study. *Equivalent qualifications abroad will also be considered for admission.",
+      "official_level": "EQF Level 5"
+    }
+  },
+  "unmatched": [],
+  "conflicts": [],
+  "unlisted": [
+    "Undergraduate Diploma in Early Childhood Education",
+    "Undergraduate Certificate in Early Childhood Education",
+    "Undergraduate Certificate in Travel and Tourism",
+    "Undergraduate Diploma in Travel and Tourism",
+    "Diploma in Insurance Studies",
+    "Diploma in Retail and Store Management",
+    "Foundation Certificate in Management",
+    "Certificate in Management",
+    "Diploma in Human Resources Management",
+    "Diploma in Business Management",
+    "Diploma in Elderly Care"
+  ]
+}

@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css?v=6" />
+<link rel="stylesheet" href="css/style.css?v=7" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="apple-touch-icon" href="images/favicon.png" />
 <link rel="manifest" href="site.webmanifest" />
@@ -53,6 +53,7 @@
     <a href="/" class="nav__logo"><img src="images/logo-horizontal.png" alt="Primegate Consultancy" /><span>Primegate<small>Consultancy</small></span></a>
     <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav__menu">
+      <a href="/programmes">Find a Programme</a>
       <a href="/about">About</a>
       <div class="nav__group">
         <button class="nav__grouptoggle" aria-expanded="false" aria-haspopup="true">Services <span class="caret">&#9662;</span></button>
@@ -93,6 +94,7 @@
       <a href="#students" class="btn btn--gold">Study with Fondazione Doria →</a>
       <a href="#agents" class="btn btn--ghost">Recruit With Primegate →</a>
     </div>
+    <nav class="jump-links reveal" data-delay="2" aria-label="On this page"><a href="#programmes">Jump to the programme list &darr;</a><a href="/programmes?institution=fondazione-doria">Search these programmes &rarr;</a></nav>
   </div>
 </section>
 
@@ -131,17 +133,17 @@
 <!-- PROGRAMMES -->
 <section class="section">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Programmes</span><h2>What You Can Study at Fondazione Doria.</h2><p>Accredited pathways across healthcare, hospitality, university degrees and professional certification. Contact Primegate for current intakes, entry requirements and fees.</p></div>
+    <div class="section-head reveal" id="programmes"><span class="eyebrow">Programmes</span><h2>What You Can Study at Fondazione Doria.</h2><p>Accredited pathways across healthcare, hospitality, university degrees and professional certification. Contact Primegate for current intakes, entry requirements and fees.</p></div>
     <div class="grid grid--2">
       <article class="card reveal from-left"><div class="card__body">
         <div class="card__kicker">Regional Healthcare</div>
         <h3>Health &amp; Social Care</h3>
         <ul class="ticks">
-          <li>Social &amp; Health Care Worker (OSS) - 1,000 hrs</li>
-          <li>Social Care Assistant (OSA) - 600 hrs</li>
-          <li>OSS Complementary Module - 400 hrs</li>
-          <li>Care for People with Disabilities - 120 hrs</li>
-          <li>Alzheimer's &amp; Dementia Care - 80 hrs</li>
+          <li data-prog>Social &amp; Health Care Worker (OSS) - 1,000 hrs</li>
+          <li data-prog>Social Care Assistant (OSA) - 600 hrs</li>
+          <li data-prog>OSS Complementary Module - 400 hrs</li>
+          <li data-prog>Care for People with Disabilities - 120 hrs</li>
+          <li data-prog>Alzheimer's &amp; Dementia Care - 80 hrs</li>
         </ul>
       </div></article>
       <article class="card reveal from-right" data-delay="1"><div class="card__body">
@@ -158,7 +160,7 @@
         <div class="card__kicker">Academy</div>
         <h3>Culinary &amp; Professional</h3>
         <ul class="ticks">
-          <li>Professional Chef - 300 hrs</li>
+          <li data-prog>Professional Chef - 300 hrs</li>
           <li>Hands-on, career-focused academy training</li>
         </ul>
       </div></article>
@@ -225,6 +227,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

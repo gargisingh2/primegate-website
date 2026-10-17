@@ -1,0 +1,29 @@
+{
+  "_note": "Institution directory used by the programme finder, /higher-education counts and the /partner-with-us portfolio table. Facts here mirror what the site already says. To plug in a new institution's programmes, add a seed page in tools/catalogue-lib.mjs (SEED_PAGES) and set catalogue to \"listed\". Then run: node tools/build-catalogue.mjs",
+  "institutions": [
+    { "id": "idea-malta", "name": "IDEA College, Malta", "url": "/idea-college-malta", "location": "Malta", "country": "Malta", "region": "europe", "relationship": "exclusive", "levels": "MQF 4 - MQF 8 (foundation to doctorate)", "catalogue": "listed" },
+    { "id": "idea-uae", "name": "IDEA Academy, UAE", "url": "/idea-uae", "location": "Dubai, UAE", "country": "UAE", "region": "middle-east", "relationship": "exclusive", "levels": "EQF 4 - EQF 5 (foundation certificates and diplomas)", "catalogue": "listed" },
+    { "id": "fondazione-doria", "name": "Fondazione Doria - Training and Education Institute", "url": "/fondazione-doria", "location": "Campania, Italy", "country": "Italy", "region": "europe", "relationship": "exclusive", "levels": "Regional healthcare qualifications, culinary academy, online university pathways", "catalogue": "listed" },
+    { "id": "ajman", "name": "Ajman University", "url": null, "location": "Ajman, UAE", "country": "UAE", "region": "middle-east", "relationship": "admissions", "levels": "Undergraduate and graduate", "catalogue": "on_request" },
+    { "id": "alpine", "name": "Alpine Swiss Business School", "url": null, "location": "Zurich, Switzerland", "country": "Switzerland", "region": "europe", "relationship": "admissions", "levels": "Diploma, Bachelor, Master and PhD", "catalogue": "on_request" },
+    { "id": "aue", "name": "American University in the Emirates", "url": null, "location": "Dubai, UAE", "country": "UAE", "region": "middle-east", "relationship": "admissions", "levels": "Undergraduate and graduate", "catalogue": "on_request" }
+  ],
+  "network": [
+    { "name": "University of Windsor", "logo": "uni-windsor.png", "country": "Canada", "region": "north-america" },
+    { "name": "Conestoga College", "logo": "uni-conestoga.png", "country": "Canada", "region": "north-america" },
+    { "name": "Fanshawe College", "logo": "uni-fanshawe.png", "country": "Canada", "region": "north-america" },
+    { "name": "Centennial College", "logo": "uni-centennial.png", "country": "Canada", "region": "north-america" },
+    { "name": "St. Clair College", "logo": "uni-stclair.png", "country": "Canada", "region": "north-america" },
+    { "name": "Georgian College", "logo": "uni-georgian.png", "country": "Canada", "region": "north-america" },
+    { "name": "Cape Breton University", "logo": "uni-capebreton.png", "country": "Canada", "region": "north-america" },
+    { "name": "Trent University", "logo": "uni-trent.png", "country": "Canada", "region": "north-america" },
+    { "name": "Thompson Rivers University", "logo": "uni-thompson.png", "country": "Canada", "region": "north-america" },
+    { "name": "Coventry University", "logo": "uni-coventry.png", "country": "UK", "region": "uk" },
+    { "name": "University of Greenwich", "logo": "uni-greenwich.png", "country": "UK", "region": "uk" },
+    { "name": "University of Hertfordshire", "logo": "uni-hertfordshire.png", "country": "UK", "region": "uk" },
+    { "name": "Ulster University", "logo": "uni-ulster.png", "country": "UK", "region": "uk" },
+    { "name": "University of East London", "logo": "uni-eastlondon.png", "country": "UK", "region": "uk" },
+    { "name": "University of Sunderland", "logo": "uni-sunderland.png", "country": "UK", "region": "uk" },
+    { "name": "Birmingham City University", "logo": "uni-bcu.png", "country": "UK", "region": "uk" }
+  ]
+}
