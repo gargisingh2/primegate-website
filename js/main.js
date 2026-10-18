@@ -281,6 +281,57 @@
     dq.addEventListener("input", filterDir);
   }
 
+  /* ---- Zoho form auto-height ----
+     Iframes with data-zoho-autosize load with ?zf_rszfm=1, so Zoho posts
+     "formperma|height" (and "formperma|height|scroll" on a page change).
+     The fixed inline height stays as the fallback if no message arrives. */
+  var zohoFrames = document.querySelectorAll("iframe[data-zoho-autosize]");
+  if (zohoFrames.length) {
+    window.addEventListener("message", function (e) {
+      if (!/^https:\/\/forms\.zohopublic\.(com|eu|in)$/.test(e.origin) || typeof e.data !== "string") return;
+      var parts = e.data.split("|");
+      if (parts.length < 2 || parts.length > 3) return;
+      var h = parseInt(parts[1], 10);
+      if (!h) return;
+      zohoFrames.forEach(function (f) {
+        if (f.src.indexOf(parts[0]) === -1) return;
+        f.style.height = (h + 15) + "px";
+        // Moving to the next form page: bring the top of the form back into view.
+        if (parts.length === 3) {
+          var card = f.closest("#apply") || f;
+          card.scrollIntoView({ block: "start" });
+        }
+      });
+    });
+  }
+
+  /* ---- Partner pages: "Fill the form" returns to the form on the same page,
+     so anything already typed in the iframe is kept ---- */
+  var partnerPage = document.querySelector("[data-partner-page]");
+  var formCard = document.getElementById("apply");
+  if (partnerPage && formCard) {
+    document.querySelectorAll("[data-to-form]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        formCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (history.replaceState) history.replaceState(null, "", "#apply");
+      });
+    });
+    // Mobile: a "Fill the form" bar while the form is scrolled out of view (below it only).
+    var bar = document.querySelector(".stickybar");
+    if (bar && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        var r = entries[0];
+        bar.classList.toggle("show", !r.isIntersecting && r.boundingClientRect.top < 0);
+      }).observe(formCard);
+    }
+    // Links that leave the page open in a new tab so a half-filled form is not lost.
+    partnerPage.querySelectorAll('a[href^="/"], a[href^="http"]').forEach(function (a) {
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+  }
+
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();

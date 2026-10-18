@@ -5,7 +5,7 @@
 // Reads:  programme lists on the institution pages (single source of truth),
 //         data/institutions.json, data/enrichment/*.json (official-site facts)
 // Writes: data/programmes.json        - compact index for /programmes
-//         partner-with-us.html        - portfolio table between <!-- portfolio:start/end -->
+//         agent-partnership.html        - portfolio table between <!-- portfolio:start/end -->
 //         higher-education.html       - programme counts in [data-count-for] spans
 // Fails (exit 1) on duplicate IDs, unknown institutions or unclassified programmes.
 
@@ -99,7 +99,7 @@ write("data/programmes.json", JSON.stringify({
   programmes,
 }) + "\n");
 
-// ---- /partner-with-us portfolio overview ----
+// ---- /agent-partnership portfolio overview ----
 const REL = { exclusive: "Exclusive Representative Office", admissions: "Admissions Partner" };
 const levelsOf = (id) => {
   const set = new Set(programmes.filter((p) => p.i === id).map((p) => p.lv));
@@ -123,10 +123,10 @@ ${rows}
     </div>
     <p class="portfolio-note">Plus universities and colleges in Canada and the UK available through our ApplyBoard partnership - see <a href="/higher-education#north-america">the full directory</a>. Intakes, entry requirements and fees are confirmed per student. Last updated ${new Date().toISOString().slice(0, 10)}.</p>
     <!-- portfolio:end -->`;
-let partner = read("partner-with-us.html");
+let partner = read("agent-partnership.html");
 if (partner.includes("<!-- portfolio:start")) {
   partner = partner.replace(/<!-- portfolio:start[\s\S]*?<!-- portfolio:end -->/, table);
-  write("partner-with-us.html", partner);
+  write("agent-partnership.html", partner);
 }
 
 // ---- Institution pages: link each listed programme to its stable finder link ----

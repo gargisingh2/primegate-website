@@ -1,6 +1,6 @@
 // Shared helpers for the programme catalogue.
 // The programme lists on the institution pages (idea-college-malta.html,
-// idea-uae.html, fondazione-doria.html) are the single source of truth for
+// idea-academy-uae.html, fondazione-doria.html) are the single source of truth for
 // titles, levels and credits. Edit those pages, then run
 // `node tools/build-catalogue.mjs` to refresh data/programmes.json.
 
@@ -128,7 +128,7 @@ function readTagged(html, institutionId, page) {
 
 export const SEED_PAGES = [
   ["idea-malta", "idea-college-malta.html", readAccordion],
-  ["idea-uae", "idea-uae.html", readAccordion],
+  ["idea-uae", "idea-academy-uae.html", readAccordion],
   ["fondazione-doria", "fondazione-doria.html", readTagged],
 ];
 

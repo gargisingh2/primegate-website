@@ -9,11 +9,11 @@ A fast, SEO-friendly static website built with plain HTML, CSS and JavaScript (*
 ```
 website/
 ├── index.html                 Home (showcases all 4 audiences)
-├── for-universities.html      University recruitment partnerships
+├── university-partnership.html      University recruitment partnerships
 ├── study-abroad.html          Outbound students (Middle East → world)
 ├── study-in-middle-east.html  Inbound students (world → Gulf)
 ├── management-consulting.html Business setup & consulting (4th audience)
-├── partner-with-us.html       Education agents / sub-agents (+ application form)
+├── agent-partnership.html       Education agents / sub-agents (+ application form)
 ├── about.html                 Founder story & philosophy
 ├── contact.html               3 tabbed contact forms
 ├── 404.html                   Branded "page not found"

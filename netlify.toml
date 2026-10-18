@@ -51,6 +51,43 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # ---- Canonical URLs: 301 every .html to its clean URL (force overrides the static file) ----
+# ---- Renamed pages (Oct 2026): old URLs 301 to the new ones ----
+[[redirects]]
+  from = "/for-universities"
+  to = "/university-partnership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/for-universities.html"
+  to = "/university-partnership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/partner-with-us"
+  to = "/agent-partnership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/partner-with-us.html"
+  to = "/agent-partnership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/idea-uae"
+  to = "/idea-academy-uae"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/idea-uae.html"
+  to = "/idea-academy-uae"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/index.html"
   to = "/"
@@ -126,8 +163,8 @@
   force = true
 
 [[redirects]]
-  from = "/for-universities.html"
-  to = "/for-universities"
+  from = "/university-partnership.html"
+  to = "/university-partnership"
   status = 301
   force = true
 
@@ -144,8 +181,8 @@
   force = true
 
 [[redirects]]
-  from = "/idea-uae.html"
-  to = "/idea-uae"
+  from = "/idea-academy-uae.html"
+  to = "/idea-academy-uae"
   status = 301
   force = true
 
@@ -186,8 +223,8 @@
   force = true
 
 [[redirects]]
-  from = "/partner-with-us.html"
-  to = "/partner-with-us"
+  from = "/agent-partnership.html"
+  to = "/agent-partnership"
   status = 301
   force = true
 
