@@ -183,3 +183,13 @@ The free editor included here (**Decap CMS**, in the `admin/` folder) is **Git-b
 - Copy: publication-ready, from `Primegate_Website_Copy_AllPages.md`.
 - SEO & AI-citation strategy: `Primegate_SEO_AgentSegment_Addendum.docx`.
 - Brand system (Navy #0B1F4D · Gold #D4AF37 · Ivory #F7F3ED, Playfair Display + Montserrat): from the Primegate Brand Guidelines.
+
+## Blog posts: table of contents
+
+Every blog post has an "In this article" list built from its section headings, and each section heading has a stable id (e.g. `/blog-mqf-levels-explained#frequently-asked-questions`) so AI assistants and search engines can cite an exact section. After adding or editing a post, run:
+
+```bash
+node tools/add-toc.mjs
+```
+
+It is safe to re-run. Existing section ids are never changed, so published section links keep working.
