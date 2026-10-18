@@ -843,6 +843,8 @@ a.textlink { color: var(--navy); font-weight: 700; text-decoration: underline; }
 .backtoform small{font-size:.8rem;color:var(--graphite)}
 .section--navy .backtoform small{color:rgba(247,243,237,.8)}
 .stickybar{display:none}
+/* Desktop shows the quick links in the side panel; phones (where that list is hidden) get this row instead */
+@media (min-width:901px){.learn{display:none}}
 .fbox--links{position:sticky;top:96px}
 .asidelinks{list-style:none;padding:0!important;gap:.15rem!important}.asidelinks a{display:inline-flex;min-height:32px;align-items:center;text-decoration:none!important}.asidelinks a:hover{text-decoration:underline!important}
 @media (max-width:900px){.fbox--links{display:none}}
