@@ -277,6 +277,74 @@
   force = true
 
 # ---- Friendly 404 ----
+# ---- Legacy WordPress URLs (from Search Console 404 report, Oct 2026) ----
+# Only pages with a genuine equivalent are redirected; retired content stays 404.
+[[redirects]]
+  from = "/about-us/"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-us-2/"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service/management-consulting/"
+  to = "/management-consulting"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service/university-partnerships/"
+  to = "/university-partnership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service/study-abroad-services/"
+  to = "/study-abroad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service/education-immigration-consulting-2/"
+  to = "/study-abroad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Country/dubai/"
+  to = "/study-in-middle-east"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/our-services/"
+  to = "/study-abroad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/partners/"
+  to = "/higher-education"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/we-help-making-your-dream-into-reality-when-you-want-to-study-abroad/"
+  to = "/study-abroad"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/404.html"
