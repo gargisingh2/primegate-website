@@ -24,7 +24,8 @@ const FONTS_FILE = path.join(ROOT, "css", "fonts.css");
 // Content hash: changes whenever style.css changes, so browsers fetch the new file.
 const CSS_VERSION = crypto.createHash("sha1").update(fs.readFileSync(CSS_FILE)).digest("hex").slice(0, 8);
 const STATE_CLASSES = ["in", "open", "scrolled", "is-active", "is-playing", "show", "active", "js", "is-personal", "flipped"];
-const ALWAYS = /^(:root|\*|html|body|img|picture|a|ul|h1|h2|h3|p|\[id\]|\.wrap|\.sr-only)\b/;
+// Selector starts that are always critical. The lookahead (not \b) is needed so "*" and "[id]" match too.
+const ALWAYS = /^(:root|\*|html|body|img|picture|a|ul|h1|h2|h3|p|\[id\]|\.wrap|\.sr-only)(?=$|[\s,.:>[{+~])/;
 
 // ---- tiny CSS splitter: top-level rules, @media/@supports blocks, @keyframes ----
 function split(css) {
@@ -53,7 +54,7 @@ function selectorNeeded(sel, used) {
   sel = sel.trim();
   if (ALWAYS.test(sel) && !/\./.test(sel.replace(/^body\./, ""))) return true;
   const { classes, ids } = tokensOf(sel);
-  if (!classes.length && !ids.length) return /^(html|body|h1|h2|h3|p|a|img|ul|\*|:root)\b/.test(sel);
+  if (!classes.length && !ids.length) return true; // element-only rules (reset, typography): few, small, always needed
   return classes.every((c) => used.classes.has(c)) && ids.every((d) => used.ids.has(d));
 }
 
@@ -75,6 +76,8 @@ function critical(rules, used) {
 const minify = (s) => s.replace(/\s+/g, " ").replace(/\s*([{}:;,>])\s*/g, "$1").replace(/;}/g, "}");
 
 const rules = split(fs.readFileSync(CSS_FILE, "utf8"));
+// Every class the stylesheet defines (used to spot classes that page scripts render).
+const CSS_CLASSES = new Set([...fs.readFileSync(CSS_FILE, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/\.([a-zA-Z][\w-]*)/g)].map((m) => m[1]));
 const fontsCss = minify(fs.readFileSync(FONTS_FILE, "utf8"));
 const pages = fs.readdirSync(ROOT).filter((f) => f.endsWith(".html") && !f.startsWith("mock-"));
 
@@ -92,6 +95,15 @@ for (const f of pages) {
   for (const m of top.matchAll(/id="([^"]+)"/g)) used.ids.add(m[1]);
   const bodyCls = /<body[^>]*class="([^"]+)"/.exec(html);
   if (bodyCls) bodyCls[1].split(/\s+/).forEach((c) => used.classes.add(c));
+  // Page-specific scripts (e.g. js/programmes.js) render first-screen markup too: include their classes.
+  for (const m of html.matchAll(/<script src="(js\/(?!main\.js)[^"?]+)/g)) {
+    const js = path.join(ROOT, m[1]);
+    if (!fs.existsSync(js)) continue;
+    const src = fs.readFileSync(js, "utf8");
+    for (const k of CSS_CLASSES) {
+      if (new RegExp("(^|[^\\w-])" + k.replace(/[-]/g, "\\-") + "($|[^\\w-])").test(src)) used.classes.add(k);
+    }
+  }
 
   const crit = fontsCss + minify(critical(rules, used));
   const rel = "css/style.css?v=" + CSS_VERSION;
