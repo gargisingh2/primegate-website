@@ -196,10 +196,11 @@
   }
 
   /* ---- Hero background video ----
-     The poster image is the LCP element. The video is only fetched after the
-     page has fully loaded, and skipped for reduced-motion / data-saver /
-     slow connections (they keep the poster). Portrait screens get a
-     cropped 9:16 file. */
+     The poster image is the LCP element. The video is only fetched once the
+     page has fully loaded AND the poster has decoded, then waits for the
+     browser to go idle, so it never competes with the first paint. Skipped
+     for reduced-motion / data-saver / slow connections (they keep the
+     poster). Portrait screens get a cropped 9:16 file. */
   var heroVideo = document.querySelector(".hero__video video");
   if (heroVideo) {
     var conn = navigator.connection || {};
@@ -213,8 +214,17 @@
         var p = heroVideo.play();
         if (p && p.catch) p.catch(function () { /* autoplay blocked (e.g. low-power mode): poster stays */ });
       };
-      if (document.readyState === "complete") startHeroVideo();
-      else window.addEventListener("load", startHeroVideo, { once: true });
+      var poster = document.querySelector(".hero__video img");
+      var whenIdle = function () {
+        if ("requestIdleCallback" in window) window.requestIdleCallback(startHeroVideo, { timeout: 3000 });
+        else setTimeout(startHeroVideo, 1500);
+      };
+      var afterPoster = function () {
+        if (poster && poster.decode && !poster.complete) poster.decode().then(whenIdle, whenIdle);
+        else whenIdle();
+      };
+      if (document.readyState === "complete") afterPoster();
+      else window.addEventListener("load", afterPoster, { once: true });
     }
   }
 

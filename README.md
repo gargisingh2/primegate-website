@@ -193,3 +193,23 @@ node tools/add-toc.mjs
 ```
 
 It is safe to re-run. Existing section ids are never changed, so published section links keep working.
+
+## Page speed: fonts, critical CSS, images, video
+
+- **Fonts** are self-hosted in `fonts/` (Playfair Display, Montserrat; latin + latin-ext, `font-display: swap`). The @font-face rules live in `css/fonts.css`. No Google Fonts requests.
+- **Critical CSS:** each page inlines the CSS its first screen needs and loads `css/style.css` without blocking. **After any change to `css/style.css` or to a page header/hero, run:**
+
+  ```bash
+  node tools/critical-css.mjs
+  ```
+
+  It also refreshes the stylesheet version (content hash) on every page.
+- **Images:** pages serve WebP with the JPG/PNG as fallback, and every `<img>` has width/height. After adding or replacing images, run (needs the image library once):
+
+  ```bash
+  npm install --no-save sharp
+  node tools/optimise-images.mjs
+  node tools/critical-css.mjs
+  ```
+
+- **Hero video:** `images/hero-video.mp4` (960x540, ~1 MB) and `images/hero-video-mobile.mp4` (432x768, ~0.6 MB) start downloading only after the page has loaded, the poster has decoded and the browser is idle.

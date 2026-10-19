@@ -38,6 +38,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
 # CSS/JS use fixed filenames (no content hash), so they must revalidate on
 # every load - otherwise browsers serve a stale stylesheet after an edit.
 [[headers]]

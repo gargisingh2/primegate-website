@@ -42,6 +42,8 @@ body {
   overflow-x: clip; /* clip, not hidden: hidden makes body a scroll box and breaks position: sticky */
 }
 img { max-width: 100%; display: block; height: auto; }
+/* <picture> only swaps the file format (WebP first): keep it out of layout so the <img> behaves as before */
+picture { display: contents; }
 /* Components that set display (flex/grid) must still honour the hidden attribute */
 [hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
@@ -132,6 +134,9 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .nav__menu a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s var(--ease); }
 .nav__menu a:hover::after, .nav__menu a.active::after { width: 100%; }
 .nav__cta { padding: 0.6rem 1.2rem !important; }
+/* .nav__menu a sets ivory text; the gold CTA needs navy text for contrast (WCAG AA) */
+.nav__menu a.nav__cta { color: var(--navy); }
+.nav__menu a.nav__cta:hover { color: var(--gold); }
 /* Grouped nav dropdowns (Services, Partner With Us) - links stay in the DOM (crawlable) */
 .nav__group { position: relative; display: flex; align-items: center; }
 .nav__grouptoggle { background: none; border: 0; color: var(--ivory); font-family: inherit; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; padding-block: 0.3rem; white-space: nowrap; }
@@ -500,7 +505,7 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .apply-step strong { color: var(--navy); font-size: 1.02rem; }
 .apply-step p { margin: 0.25rem 0 0; color: var(--graphite); font-size: 0.92rem; }
 .apply-note { background: #fff; border: 1px solid rgba(11,31,77,0.08); border-left: 3px solid var(--gold); border-radius: var(--radius); padding: 1.4rem 1.6rem; box-shadow: var(--shadow-soft); }
-.apply-note h4 { color: var(--navy); font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.apply-note h3, .apply-note h4 { font-weight: 700; line-height: 1.3;  color: var(--navy); font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
 .apply-note ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; }
 .apply-note li { color: var(--graphite); font-size: 0.92rem; line-height: 1.5; }
 .apply-note li strong { color: var(--navy); }
@@ -508,7 +513,7 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 /* ---------- Footer ---------- */
 .footer { background: #081539; color: rgba(247,243,237,0.8); padding-block: 3.5rem 2rem; }
 .footer__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2rem; }
-.footer h4 { color: var(--gold); font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+.footer h2, .footer h4 { line-height: 1.3; font-weight: 700;  color: var(--gold); font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
 .footer a { display: block; padding: 0.3rem 0; font-size: 0.9rem; transition: color 0.3s; }
 .footer a:hover { color: var(--gold); }
 .footer__brand img { height: 68px; width: auto; margin-bottom: 1rem; }
@@ -529,6 +534,8 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .reveal[data-delay="1"]{ transition-delay: 0.12s; }
 .reveal[data-delay="2"]{ transition-delay: 0.24s; }
 .reveal[data-delay="3"]{ transition-delay: 0.36s; }
+/* First-screen content shows immediately (no fade-in): it is the LCP, and faded text counts as unpainted */
+body > section:first-of-type .reveal, main > section:first-of-type .reveal { opacity: 1; transform: none; transition: none; }
 @media (prefers-reduced-motion: reduce){
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero--ken .hero__bg { animation: none; }
