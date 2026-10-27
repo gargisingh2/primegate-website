@@ -347,6 +347,24 @@ body.solid-header .site-header { background: rgba(11, 31, 77, 0.97); box-shadow:
 .article .toc li { color: var(--gold); font-size: 0.92rem; line-height: 1.45; padding: 0.3rem 0 0.3rem 0.2rem; }
 .toc a { color: var(--navy); font-weight: 600; }
 .toc a:hover { text-decoration: underline; }
+/* TOC links: no underline in the list itself (the article in-text link style would add one) */
+.article .toc li a { text-decoration: none; }
+.article .toc li a:hover { text-decoration: underline; }
+.article .toc li a[aria-current="true"] { color: var(--navy); font-weight: 700; }
+/* Wide screens: frozen TOC panel on the left of the article. Phones/laptops: inline (rail is layout-neutral). */
+@supports selector(:has(a)) {
+@media (min-width: 1200px) {
+  .article:has(.toc-rail) { position: relative; max-width: calc(760px + 240px + 2 * var(--gutter)); padding-left: calc(var(--gutter) + 240px); }
+  .toc-rail { position: absolute; top: 0; bottom: 0; left: var(--gutter); width: 208px; }
+  .toc-rail .toc { position: sticky; top: 110px; margin: 0; padding: 0.2rem 0 0.4rem; border: 0; border-left: 1px solid rgba(11,31,77,0.12); border-radius: 0; background: none; max-height: calc(100vh - 140px); overflow-y: auto; }
+  .article .toc-rail .toc__title { padding-left: 1rem; }
+  .article .toc-rail .toc ol { list-style: none; padding-left: 0; gap: 0; }
+  .article .toc-rail .toc li { padding: 0; font-size: 0.84rem; line-height: 1.4; }
+  .article .toc-rail .toc li a { display: block; padding: 0.4rem 0.6rem 0.4rem 1rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--graphite); font-weight: 500; }
+  .article .toc-rail .toc li a:hover { color: var(--navy); text-decoration: none; background: var(--cloud); }
+  .article .toc-rail .toc li a[aria-current="true"] { border-left-color: var(--gold); color: var(--navy); font-weight: 700; }
+}
+}
 @media (max-width: 760px) { .toc { padding: 0.9rem 1rem 1rem; } .article .toc li { padding-block: 0.45rem; } }
 .cost-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: 0.92rem; }
 .cost-table th, .cost-table td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(11,31,77,0.1); }

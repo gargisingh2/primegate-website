@@ -342,6 +342,32 @@
     });
   }
 
+  /* ---- Blog TOC: mark the section being read (aria-current drives the highlight) ---- */
+  var toc = document.querySelector("[data-toc]");
+  if (toc) {
+    var tocLinks = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+    var heads = tocLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); }).filter(Boolean);
+    var setCurrent = function (id) {
+      tocLinks.forEach(function (a) {
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    // The current section is the last heading that has scrolled above the top band of the screen.
+    var pickCurrent = function () {
+      var line = 140, current = null;
+      heads.forEach(function (h) { if (h.getBoundingClientRect().top - line <= 0) current = h; });
+      if (current) setCurrent(current.id);
+      else tocLinks.forEach(function (a) { a.removeAttribute("aria-current"); });
+    };
+    var tocTick = 0;
+    window.addEventListener("scroll", function () {
+      if (tocTick) return;
+      tocTick = requestAnimationFrame(function () { tocTick = 0; pickCurrent(); });
+    }, { passive: true });
+    pickCurrent();
+  }
+
   /* ---- Footer year ---- */
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();

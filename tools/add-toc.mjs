@@ -5,7 +5,8 @@
 // - Gives each section heading (<h2> directly in .article) a stable id, keeping
 //   any id it already has, so AI assistants and search engines can cite and
 //   link to an exact section (/blog-post#section-id).
-// - Inserts the list before the first section heading, after the byline,
+// - Inserts the list before the first section heading (a sticky left panel on
+//   wide screens, see .toc-rail in css/style.css), after the byline,
 //   standfirst and any "Key takeaways" box.
 // - Skips headings inside the Key takeaways box and the call-to-action box,
 //   and "More on ..." reading lists.
@@ -76,13 +77,18 @@ for (const f of files) {
   });
   if (items.length < 3) { console.log("skip (fewer than 3 sections):", f); continue; }
   const esc = (s) => s.replace(/&(?![a-z#0-9]+;)/g, "&amp;").replace(/</g, "&lt;");
+  // One TOC element. The rail is layout-neutral on phones (TOC sits inline here,
+  // after the intro); on wide screens CSS stretches the rail down the left of the
+  // whole article and the TOC sticks inside it.
   const toc = `<!-- toc:start -->
-    <nav class="toc" aria-labelledby="toc-title">
+    <div class="toc-rail">
+    <nav class="toc" aria-labelledby="toc-title" data-toc>
       <h2 class="toc__title" id="toc-title">In this article</h2>
       <ol>
 ${items.map(([id, label]) => `        <li><a href="#${id}">${esc(label)}</a></li>`).join("\n")}
       </ol>
     </nav>
+    </div>
     <!-- toc:end -->
     `;
   // Insert before the first listed section heading (re-find it: ids may have shifted offsets).
