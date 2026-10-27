@@ -51,6 +51,19 @@ const ER_CORRECTIONS = {
   "idea-malta-bachelor-of-science-in-nursing-top-up": [[/IELTS level 6\.0 or equival$/, "IELTS level 6.0 or equivalent."]],
 };
 
+// Owner decision 26 Oct 2026: the finder shows no IELTS/OET (English-test) eligibility
+// criteria. Remove the "Students whose first language is not English ..." sentence
+// (including an "at either: IELTS ... OR OET ..." list) and the footnote asterisks
+// that pointed to it. Other requirements in the excerpt are kept as published.
+function stripEnglishTestRequirement(er) {
+  const out = er
+    .replace(/\s*\*?\s*Students whose first language is not English[\s\S]*?(?:at either:[\s\S]*?OET[\s\S]*?listening\.|(?:IELTS|OET)[\s\S]*?(?:writing\.|communication\.|equivalent\.))/g, "")
+    .replace(/\*/g, "")
+    .replace(/\s+/g, " ").trim();
+  if (/IELTS|OET\b/.test(out)) errors.push("English-test wording left in entry requirements: " + out.slice(0, 80));
+  return out;
+}
+
 const errors = [];
 const seeds = readSeeds(ROOT);
 const ids = new Set();
@@ -82,6 +95,7 @@ const programmes = seeds.map((p) => {
     // No partner-site URLs on our pages: drop "Link to ...: <url>" pointers and bare URLs.
     if (e.entry_requirements) rec.er = e.entry_requirements.replace(/\s*Link to [^:.]*:\s*https?:\/\/\S+/gi, "").replace(/\s*https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim();
     if (rec.er && ER_CORRECTIONS[p.id]) ER_CORRECTIONS[p.id].forEach(([from, to]) => { rec.er = rec.er.replace(from, to); });
+    if (rec.er) rec.er = stripEnglishTestRequirement(rec.er);
   }
   return rec;
 });

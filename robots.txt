@@ -2,6 +2,8 @@
 # Allow all standard search crawlers
 User-agent: *
 Allow: /
+# Content editor (not a public page)
+Disallow: /admin/
 
 # Explicitly welcome AI / LLM citation crawlers (helps Primegate be cited in AI answers)
 User-agent: GPTBot
