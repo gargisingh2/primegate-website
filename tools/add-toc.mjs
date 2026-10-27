@@ -50,12 +50,16 @@ for (const f of files) {
   let html = fs.readFileSync(file, "utf8").replace(/\s*<!-- toc:start -->[\s\S]*?<!-- toc:end -->/, "");
   const start = html.indexOf('<div class="article">');
   if (start < 0) { console.log("skip (no .article):", f); continue; }
+  // Only headings inside the article: stop at its closing </div> (the footer has <h2>s too).
+  let end = html.length;
+  { let depth = 0; const tag = /<\/?div\b/g; tag.lastIndex = start; let t;
+    while ((t = tag.exec(html))) { depth += t[0] === "<div" ? 1 : -1; if (depth === 0) { end = t.index; break; } } }
   const skips = skipRanges(html);
   const used = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const items = [];
   let firstPos = -1;
   html = html.replace(/<h2(\s[^>]*)?>([\s\S]*?)<\/h2>/g, (whole, attrs = "", inner, pos) => {
-    if (pos < start || skips.some(([a, b]) => pos > a && pos < b)) return whole;
+    if (pos < start || pos > end || skips.some(([a, b]) => pos > a && pos < b)) return whole;
     const label = text(inner);
     if (SKIP_TEXT.test(label)) return whole;
     let id = (/\sid="([^"]+)"/.exec(attrs) || [])[1];

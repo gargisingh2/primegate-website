@@ -22,7 +22,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CSS_FILE = path.join(ROOT, "css", "style.css");
 const FONTS_FILE = path.join(ROOT, "css", "fonts.css");
 // Content hash: changes whenever style.css changes, so browsers fetch the new file.
-const CSS_VERSION = crypto.createHash("sha1").update(fs.readFileSync(CSS_FILE)).digest("hex").slice(0, 8);
+// Line endings are normalised so a CRLF/LF checkout difference does not change the version.
+const CSS_VERSION = crypto.createHash("sha1").update(fs.readFileSync(CSS_FILE, "utf8").split(String.fromCharCode(13)).join("")).digest("hex").slice(0, 8);
 const STATE_CLASSES = ["in", "open", "scrolled", "is-active", "is-playing", "show", "active", "js", "is-personal", "flipped"];
 // Selector starts that are always critical. The lookahead (not \b) is needed so "*" and "[id]" match too.
 const ALWAYS = /^(:root|\*|html|body|img|picture|a|ul|h1|h2|h3|p|\[id\]|\.wrap|\.sr-only)(?=$|[\s,.:>[{+~])/;
