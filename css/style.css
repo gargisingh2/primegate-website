@@ -890,3 +890,10 @@ a.textlink { color: var(--navy); font-weight: 700; text-decoration: underline; }
   .reminder{display:block!important}
 }
 .reminder{display:none;font-size:.84rem;color:var(--charcoal);background:#fff8e6;border-left:3px solid var(--gold);padding:.6rem .8rem;border-radius:0 4px 4px 0;margin:0 0 .8rem}
+
+/* Find Your Programme: search panel stands out from the page (owner request, Nov 2026) */
+.finder { background: var(--ivory); border: 2px solid var(--gold); box-shadow: 0 18px 44px rgba(11,31,77,0.18); }
+.finder__bar--top { border-bottom-color: rgba(212,175,55,0.45); }
+.finder .fld select, .finder .fld input[type="text"], .finder .fld input[type="search"], .finder .fld input[type="number"] { border-color: rgba(11,31,77,0.25); }
+.finder__note { background: var(--white); }
+.tag--fee { background: var(--navy); border-color: var(--navy); color: var(--white); }

@@ -64,6 +64,10 @@ function stripEnglishTestRequirement(er) {
   return out;
 }
 
+const OWNER = fs.existsSync(path.join(ROOT, "data", "owner-programme-facts.json")) ? JSON.parse(read("data/owner-programme-facts.json")) : {};
+delete OWNER._note;
+const usedOwner = new Set();
+
 const errors = [];
 const seeds = readSeeds(ROOT);
 const ids = new Set();
@@ -97,8 +101,22 @@ const programmes = seeds.map((p) => {
     if (rec.er && ER_CORRECTIONS[p.id]) ER_CORRECTIONS[p.id].forEach(([from, to]) => { rec.er = rec.er.replace(from, to); });
     if (rec.er) rec.er = stripEnglishTestRequirement(rec.er);
   }
+  // Owner-supplied facts (owner decision 19 Nov 2026): fees as labelled in the
+  // owner's documents; for IDEA Malta the sheet's duration replaces the scraped one.
+  const owner = OWNER[p.institution_id];
+  const f = owner && owner.programmes[p.title];
+  if (f) {
+    usedOwner.add(p.institution_id + "|" + p.title);
+    if (f.fee) { rec.fee = f.fee; rec.fl = owner.fee_label; }
+    if (f.years) { rec.yr = f.years; delete rec.d; delete rec.dc; }
+    if (f.exit) rec.ex = f.exit;
+  }
   return rec;
 });
+// Every owner-supplied title must match a programme on the institution pages.
+Object.entries(OWNER).forEach(([inst, o]) => Object.keys(o.programmes || {}).forEach((t) => {
+  if (!usedOwner.has(inst + "|" + t)) errors.push(`owner facts: "${t}" (${inst}) matches no programme on its institution page`);
+}));
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 const counts = {};
@@ -107,7 +125,7 @@ programmes.forEach((p) => { counts[p.i] = (counts[p.i] || 0) + 1; });
 write("data/programmes.json", JSON.stringify({
   generated: new Date().toISOString().slice(0, 10),
   levels: LEVELS, subjects: SUBJECTS,
-  institutions: institutions.map((i) => ({ id: i.id, name: i.name, url: i.url, location: i.location, country: i.country, region: i.region, relationship: i.relationship, count: counts[i.id] || 0 })),
+  institutions: institutions.map((i) => ({ id: i.id, name: i.name, url: i.url, location: i.location, country: i.country, region: i.region, relationship: i.relationship, count: counts[i.id] || 0, ...(OWNER[i.id] && OWNER[i.id].fee_note ? { fn: OWNER[i.id].fee_note } : {}) })),
   // Directory-only institutions (no listed programmes): lets the finder offer an enquiry route.
   network: network.map((n) => ({ key: n.logo.replace(/^uni-|\.png$/g, ""), name: n.name, country: n.country })),
   programmes,
@@ -151,12 +169,8 @@ SEED_PAGES.forEach(([instId, file]) => {
   const recs = programmes.filter((p) => p.i === instId);
   let n = 0;
   const link = (title) => { const p = recs[n++]; return p ? `<a href="/programmes?programme=${p.id}">${title}</a>` : title; };
-  if (instId === "fondazione-doria") {
-    html = html.replace(/<li data-prog(="[^"]*")?>(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/li>/g, (m, attr, t) => `<li data-prog${attr || ""}>${link(t)}</li>`);
-  } else {
-    const [head, list] = html.split('id="programme-list"');
-    html = head + 'id="programme-list"' + list.replace(/<span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>/g, (m, t) => `<span class="prog-name">${link(t)}</span>`);
-  }
+  const [head, list] = html.split('id="programme-list"');
+  html = head + 'id="programme-list"' + list.replace(/<span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>/g, (m, t) => `<span class="prog-name">${link(t)}</span>`);
   if (n !== recs.length) { console.error(`${file}: ${n} rows vs ${recs.length} records - not linking`); process.exit(1); }
   write(file, html);
 });

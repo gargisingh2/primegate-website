@@ -89,7 +89,9 @@ function readAccordion(html, institutionId, page) {
   const block = html.split('id="programme-list"')[1] || "";
   const items = block.split('class="prog-acc__item"').slice(1);
   items.forEach((item) => {
-    const fw = (/prog-acc__lvl">([^<]+)</.exec(item) || [])[1] || "";
+    // Fondazione Doria groups by stream instead of framework level: <div class="prog-acc__item" data-stream="health">
+    const stream = (/^\s*data-stream="([a-z_]+)"/.exec(item) || [])[1] || null;
+    const fw =(/prog-acc__lvl">([^<]+)</.exec(item) || [])[1] || "";
     const [framework, lvl] = fw.trim().split(/\s+/);
     const re = /<li><span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>(?:<span class="prog-ects">([^<]+)<\/span>)?<\/li>/g;
     let m;
@@ -103,14 +105,15 @@ function readAccordion(html, institutionId, page) {
         title: display, institution_id: institutionId, page,
         framework, framework_level: lvl ? +lvl : null, framework_label: fw.trim(),
         credits: ects ? { value: +ects[1], unit: "ECTS" } : null,
+        stream,
       });
     }
   });
   return out;
 }
 
-// Fondazione Doria lists named courses as <li data-prog="...">Title - 1,000 hrs</li>
-function readTagged(html, institutionId, page) {
+// Earlier Fondazione Doria format (<li data-prog>Title - 1,000 hrs</li>); no longer used by SEED_PAGES.
+export function readTagged(html, institutionId, page) {
   const out = [];
   const re = /<li data-prog(?:="[^"]*")?>(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/li>/g;
   let m;
@@ -126,10 +129,19 @@ function readTagged(html, institutionId, page) {
   return out;
 }
 
+// Fondazione Doria 2026-27 streams -> finder subject
+const STREAM_SUBJECT = {
+  health: "health_nursing",
+  construction: "engineering_built_environment",
+  hospitality: "hospitality_tourism",
+  fashion: "arts_design_media",
+  it: "computing_data_ai",
+};
+
 export const SEED_PAGES = [
   ["idea-malta", "idea-college-malta.html", readAccordion],
   ["idea-uae", "idea-academy-uae.html", readAccordion],
-  ["fondazione-doria", "fondazione-doria.html", readTagged],
+  ["fondazione-doria", "fondazione-doria.html", readAccordion],
 ];
 
 export function readSeeds(root) {
@@ -144,8 +156,10 @@ export function readSeeds(root) {
     while (seen.has(slug)) slug += "-2";
     seen.add(slug);
     p.id = slug;
-    p.level_group = levelFor(p.title, p.framework_level, p.credits && p.credits.unit);
+    // Doria streams are vocational programmes: one level, subject from the stream plus keyword rules.
+    p.level_group = p.stream ? "short_course" : levelFor(p.title, p.framework_level, p.credits && p.credits.unit);
     p.subject_ids = subjectsFor(p.title);
+    if (p.stream && STREAM_SUBJECT[p.stream] && !p.subject_ids.includes(STREAM_SUBJECT[p.stream])) p.subject_ids.unshift(STREAM_SUBJECT[p.stream]);
   });
   return all;
 }

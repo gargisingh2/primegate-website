@@ -1,0 +1,584 @@
+{
+  "_note": "Owner-supplied programme facts shown in the finder. idea-malta: HERO programmes sheet (Nov 2026) - programme fee in EUR, duration in years, next exit point. fondazione-doria: 2026-27 Programmes PDF - offer letter fee in EUR and stream. Keys must match the titles listed on the institution pages; tools/build-catalogue.mjs fails if one does not.",
+  "idea-malta": {
+    "fee_label": "Programme fee",
+    "programmes": {
+      "Diploma in Travel and Tourism": {
+        "fee": 9000,
+        "years": 1,
+        "exit": "Undergraduate Higher Diploma in Travel and Tourism (MQF 5, 120 ECTS)"
+      },
+      "Undergraduate Diploma in Applied IT Essentials": {
+        "fee": 9000,
+        "years": 1
+      },
+      "Undergraduate Diploma in Hospitality": {
+        "fee": 9000,
+        "years": 1
+      },
+      "Undergraduate Diploma in Management": {
+        "fee": 9000,
+        "years": 1,
+        "exit": "Undergraduate Higher Diploma in Management (MQF 5, 120 ECTS)"
+      },
+      "Undergraduate Diploma in Supply Chain Management and Logistics": {
+        "fee": 9000,
+        "years": 1
+      },
+      "Bachelor Degree (Honours) in Tourism and Hospitality Management": {
+        "fee": 16000,
+        "years": 3
+      },
+      "B.Sc. in Computing": {
+        "fee": 16500,
+        "years": 3
+      },
+      "Bachelor (Honours) in Travel and Tourism": {
+        "fee": 16000,
+        "years": 3
+      },
+      "Bachelor of Science in Management": {
+        "fee": 16000,
+        "years": 3
+      },
+      "M.Sc. in Management (M.Sc)": {
+        "fee": 13500,
+        "years": 1.5
+      },
+      "Master in Business Administration (MBA)": {
+        "fee": 13500,
+        "years": 1.5
+      },
+      "Master of Science (M.Sc.) in Elderly Care Management": {
+        "fee": 13500,
+        "years": 1.5
+      },
+      "Master of Science in Healthcare Management and Leadership": {
+        "fee": 13500,
+        "years": 1.5
+      },
+      "Master of Science in Hospitality Management": {
+        "fee": 13500,
+        "years": 1.5
+      },
+      "Master of Science in Public Health": {
+        "fee": 13500,
+        "years": 1.5
+      }
+    }
+  },
+  "fondazione-doria": {
+    "fee_label": "Offer letter fee",
+    "fee_note": "Fees, intake dates and terms are confirmed in writing at offer stage.",
+    "programmes": {
+      "Additional Healthcare Training for OSS Professionals": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Assistant for Autonomy and Communication – Disabilities": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Autonomy and Communication Assistance Technician": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Care Operator for Non-Self-Sufficient Persons": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Care Operator for Persons with Disabilities": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Childcare and Recreation Technician": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Community Support Operator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Early Childhood Educator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Educational Support Operator for Vulnerable Persons": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Family Mediator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Healthcare Booking and Call-Centre Operator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Intercultural Mediator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Medical Instrument Sterilisation Assistant": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Residential and Semi-Residential Care Services Support Operator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Social Animation Operator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Social Animator": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Social and Healthcare Operator – OSS": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Social and Healthcare Services Management Technician": {
+        "fee": 9500,
+        "stream": "health"
+      },
+      "Administrative and Secretarial Operator – Healthcare": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Basic Care Assistant": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Childcare Operator": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Elderly Care Operator": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Family Caregiver": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Healthcare Facility Sanitation Worker": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Home Care Operator": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Medical Office Secretary": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Personal Care Assistant": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Reception Assistant in Healthcare Facilities": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Social Care Operator – OSA": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Support Services Operator in Social and Healthcare Facilities": {
+        "fee": 10000,
+        "stream": "health"
+      },
+      "Air-Conditioning Systems Installer and Maintenance Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "CAD Technical Drafter for Construction": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Civil Electrical Systems Installer and Maintenance Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Construction Site Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Industrial Electrical Systems Installer and Maintenance Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Plumbing and Heating Systems Installer and Maintenance Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Refrigeration Technician": {
+        "fee": 10000,
+        "stream": "construction"
+      },
+      "Bricklayer": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Building Insulation Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Building Maintenance Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Building Waterproofing Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Construction Carpenter": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Construction Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Earth-Moving Machinery Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Flooring and Wall-Covering Installer": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Masonry Works Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Plasterboard Installer": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Plasterboard Wall and Suspended Ceiling Installer": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Plastering Works Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Plumber": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Reinforced Concrete Formwork Carpenter": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Reinforcement Steel Installation Worker": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Scaffolder": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Scaffolding Assembly and Dismantling Operator": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Steel Fixer": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Tiler": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Welder": {
+        "fee": 10500,
+        "stream": "construction"
+      },
+      "Building Painter": {
+        "fee": 11000,
+        "stream": "construction"
+      },
+      "Electrical Systems Installation and Maintenance Technician": {
+        "fee": 11000,
+        "stream": "construction"
+      },
+      "Painter and Building Decorator": {
+        "fee": 11000,
+        "stream": "construction"
+      },
+      "Plasterer": {
+        "fee": 11000,
+        "stream": "construction"
+      },
+      "Accommodation Facility Management Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Accommodation Services Assistant": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Assistant Cook": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Baker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Bar Counter Assistant": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Barista": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Bartender": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Catering Operator – Dining Room Setup and F&B Service": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Catering Operator – Food Preparation and Dish Presentation": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Cook": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Dining Room Service Assistant": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Dining Service Operator – Waiter": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Event Organiser": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Food Preparation Worker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Head Waiter / Maître d'Hôtel": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Hotel Housekeeper": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Hotel Reception Assistant": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Ice Cream Maker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Kitchen Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Pastry Chef": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Pastry Production Worker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Pizza Maker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Pizza Production Worker": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Professional Chef – Culinary Arts Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Receptionist for Accommodation Facilities": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Room Cleaning and Housekeeping Assistant": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Sommelier": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Territorial Tourism Promotion and Development Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Tourism Package Planning Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Tourism Services Operator": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Tourist Reception Technician": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Waiter": {
+        "fee": 11000,
+        "stream": "hospitality"
+      },
+      "Artisan Tailor": {
+        "fee": 11000,
+        "stream": "fashion"
+      },
+      "Clothing Manufacturing Operator": {
+        "fee": 11000,
+        "stream": "fashion"
+      },
+      "Professional Beautician and Aesthetic Expert Programme": {
+        "fee": 11000,
+        "stream": "fashion"
+      },
+      "Professional Hairdressing and Styling Programme": {
+        "fee": 11000,
+        "stream": "fashion"
+      },
+      "Computer and IT Support": {
+        "fee": 11500,
+        "stream": "it"
+      },
+      "Digital Marketing": {
+        "fee": 11500,
+        "stream": "it"
+      },
+      "E-Commerce": {
+        "fee": 11500,
+        "stream": "it"
+      },
+      "Information Technology": {
+        "fee": 11500,
+        "stream": "it"
+      },
+      "Business Digitalisation": {
+        "fee": 12000,
+        "stream": "it"
+      },
+      "Network Administration": {
+        "fee": 12000,
+        "stream": "it"
+      },
+      "Networking": {
+        "fee": 12000,
+        "stream": "it"
+      },
+      "Software Development": {
+        "fee": 12000,
+        "stream": "it"
+      },
+      "Web Development": {
+        "fee": 12000,
+        "stream": "it"
+      },
+      "Cybersecurity": {
+        "fee": 12500,
+        "stream": "it"
+      },
+      "Data Analysis": {
+        "fee": 12500,
+        "stream": "it"
+      },
+      "Data Specialist": {
+        "fee": 12500,
+        "stream": "it"
+      },
+      "IT Security": {
+        "fee": 12500,
+        "stream": "it"
+      },
+      "Internet of Things (IoT)": {
+        "fee": 12500,
+        "stream": "it"
+      },
+      "Artificial Intelligence": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "BIM Technologies": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Cloud Computing": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Digital Technologies for Industry 4.0": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Industrial Automation": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Industrial Automation & Industry 4.0": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Industrial Control Systems": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "PLC Programming": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "SCADA Systems": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Sensors and Automated Systems": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Warehouse Digitalisation and Automation": {
+        "fee": 13000,
+        "stream": "it"
+      },
+      "Industrial Robotics": {
+        "fee": 13500,
+        "stream": "it"
+      },
+      "Industry 4.0 Technologies": {
+        "fee": 13500,
+        "stream": "it"
+      },
+      "Integrated Automation": {
+        "fee": 13500,
+        "stream": "it"
+      },
+      "Robotics": {
+        "fee": 13500,
+        "stream": "it"
+      },
+      "Smart Manufacturing": {
+        "fee": 13500,
+        "stream": "it"
+      }
+    }
+  }
+}

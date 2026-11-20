@@ -259,7 +259,10 @@
     return '<article class="prow' + (open ? " prow--selected" : "") + '">' +
       '<div class="prow__top"><div><h3><a href="' + esc(progHref(p.id)) + '">' + esc(p.t) + '</a></h3><p class="prow__meta"><strong>' + esc(inst.name) + "</strong> · " + esc(inst.location) + " · " + esc(level) + "</p></div>" +
       (p.cr ? '<span class="prow__cr">' + esc(p.cr) + "</span>" : "") + "</div>" +
-      '<div class="tags">' + why(p) + load + '<span class="tag tag--confirm">Fees and intake to confirm</span></div>' +
+      '<div class="tags">' + why(p) + load +
+        (p.yr ? '<span class="tag tag--known">' + esc(years(p.yr)) + "</span>" : "") +
+        (p.fee ? '<span class="tag tag--fee">' + esc(p.fl) + " " + euro(p.fee) + '</span><span class="tag tag--confirm">Intake to confirm</span>' : '<span class="tag tag--confirm">Fees and intake to confirm</span>') +
+      "</div>" +
       note + unconf +
       '<div class="prow__actions"><button type="button" class="linkbtn" aria-expanded="' + open + '" aria-controls="' + detailId + '" data-detail>' + (open ? "Hide details" : "View details") + "</button>" +
       '<a class="btn btn--navy btn--sm" href="/contact?programme=' + encodeURIComponent(p.id) + '#contact-forms">Ask about this programme</a></div>' +
@@ -282,17 +285,26 @@
       '<ul class="entry-routes">' + parts.map(function (x, i) { return "<li>" + (i ? "<strong>or</strong> " : "") + esc(x.replace(/;$/, "")) + "</li>"; }).join("") + "</ul>" +
       (tail ? "<p>" + esc(tail) + "</p>" : "");
   }
+  function euro(n) { return "€" + Number(n).toLocaleString("en-GB"); }
+  function years(n) { return n + (n === 1 ? " year" : " years"); }
   function detailHtml(p, inst) {
     var h = "";
-    if (p.d) {
+    if (p.yr) {
+      h += "<h4>Duration</h4><p>" + esc(years(p.yr)) + "</p>";
+      if (p.ex) h += "<p>Next exit point: " + esc(p.ex) + "</p>";
+    } else if (p.d) {
       h += "<h4>Duration by study load</h4>" + Object.keys(p.d).map(function (k) { return "<p>" + MODES[k] + ": " + esc(p.d[k]) + "</p>"; }).join("");
       (p.dc || []).forEach(function (c) { if (CAVEAT_TEXT[c]) h += '<p class="src">' + CAVEAT_TEXT[c] + "</p>"; });
     }
     if (p.er) {
       h += "<h4>Official entry requirements</h4>" + entryHtml(p.er) + "<p><em>An advisor will confirm how your qualification maps to these requirements.</em></p>";
     }
-    h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
-    if (p.chk) h += '<p class="src">Duration and entry details are as published by ' + esc(SOURCE_NAME[p.i] || inst.name) + " (retrieved " + esc(p.chk) + "); your advisor confirms them before you apply.</p>";
+    if (p.fee) {
+      h += "<h4>Fees and intakes</h4><p>" + esc(p.fl) + ": " + euro(p.fee) + ".</p><p>" + esc(inst.fn || "Fees are confirmed in writing at offer stage.") + " Your Primegate Consultancy advisor confirms the next intake for you.</p>";
+    } else {
+      h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
+    }
+    if (p.chk) h += '<p class="src">' + (p.yr ? "Entry details are" : "Duration and entry details are") + " as published by " + esc(SOURCE_NAME[p.i] || inst.name) + " (retrieved " + esc(p.chk) + "); your advisor confirms them before you apply.</p>";
     if (inst.url) h += '<p class="src"><a href="' + esc(p.u) + '">See all programmes at ' + esc(inst.name) + "</a></p>";
     return h;
   }
