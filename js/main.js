@@ -295,25 +295,65 @@
      Iframes with data-zoho-autosize load with ?zf_rszfm=1, so Zoho posts
      "formperma|height" (and "formperma|height|scroll" on a page change).
      The fixed inline height stays as the fallback if no message arrives. */
-  var zohoFrames = document.querySelectorAll("iframe[data-zoho-autosize]");
-  if (zohoFrames.length) {
+  // Frames are looked up per message, so forms added later (click-to-open panels) resize too.
+  if (document.querySelector("iframe[data-zoho-autosize], [data-form-src]")) {
     window.addEventListener("message", function (e) {
       if (!/^https:\/\/forms\.zohopublic\.(com|eu|in)$/.test(e.origin) || typeof e.data !== "string") return;
       var parts = e.data.split("|");
       if (parts.length < 2 || parts.length > 3) return;
       var h = parseInt(parts[1], 10);
       if (!h) return;
-      zohoFrames.forEach(function (f) {
+      document.querySelectorAll("iframe[data-zoho-autosize]").forEach(function (f) {
         if (f.src.indexOf(parts[0]) === -1) return;
         f.style.height = (h + 15) + "px";
         // Moving to the next form page: bring the top of the form back into view.
         if (parts.length === 3) {
-          var card = f.closest("#apply") || f;
+          var card = f.closest("#apply, .form-panel") || f;
           card.scrollIntoView({ block: "start" });
         }
       });
     });
   }
+
+  /* ---- Institution pages: CTAs open the Zoho form in a panel below the cards.
+     The iframe is only created on the first click; links fall back to the
+     contact / agent pages without JavaScript. ---- */
+  document.querySelectorAll("[data-form-open]").forEach(function (cta) {
+    var panel = document.getElementById(cta.getAttribute("data-form-open"));
+    if (!panel) return;
+    cta.addEventListener("click", function (e) {
+      e.preventDefault();
+      // One form open at a time within the section
+      panel.parentElement.querySelectorAll(".form-panel").forEach(function (p) {
+        if (p !== panel) p.hidden = true;
+      });
+      document.querySelectorAll("[data-form-open]").forEach(function (b) {
+        b.setAttribute("aria-expanded", b === cta ? "true" : "false");
+      });
+      panel.hidden = false;
+      var holder = panel.querySelector(".form-panel__frame");
+      if (holder && !holder.querySelector("iframe")) {
+        var f = document.createElement("iframe");
+        f.src = panel.getAttribute("data-form-src");
+        f.title = panel.getAttribute("data-form-title") || "Enquiry form";
+        f.setAttribute("aria-label", f.title);
+        f.setAttribute("data-zoho-autosize", "");
+        f.style.cssText = "width:100%;height:1150px;border:none;display:block;";
+        holder.appendChild(f);
+      }
+      panel.scrollIntoView({ block: "start" });
+      var head = panel.querySelector("h3");
+      if (head) head.focus({ preventScroll: true });
+    });
+  });
+  document.querySelectorAll("[data-form-close]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var panel = btn.closest(".form-panel");
+      panel.hidden = true;
+      var cta = document.querySelector('[data-form-open="' + panel.id + '"]');
+      if (cta) { cta.setAttribute("aria-expanded", "false"); cta.focus(); }
+    });
+  });
 
   /* ---- Partner pages: "Fill the form" returns to the form on the same page,
      so anything already typed in the iframe is kept ---- */
