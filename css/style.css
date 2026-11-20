@@ -897,3 +897,8 @@ a.textlink { color: var(--navy); font-weight: 700; text-decoration: underline; }
 .finder .fld select, .finder .fld input[type="text"], .finder .fld input[type="search"], .finder .fld input[type="number"] { border-color: rgba(11,31,77,0.25); }
 .finder__note { background: var(--white); }
 .tag--fee { background: var(--navy); border-color: var(--navy); color: var(--white); }
+/* Preferences: every label reserves two lines (bottom-aligned) so all five controls sit on one line */
+@media (min-width: 761px) {
+  .finder__grid { align-items: start; }
+  .finder__grid .fld > label, .finder__grid .fld > .fld__label { min-height: calc(2 * 1.3em); display: flex; align-items: flex-end; }
+}

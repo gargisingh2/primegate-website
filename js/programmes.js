@@ -251,7 +251,7 @@
     opts = opts || {};
     var inst = instById[p.i] || {};
     var level = data.levels[p.lv] + (p.fw ? " · " + p.fw : "");
-    var load = p.m ? '<span class="tag tag--known">' + p.m.map(function (m) { return MODES[m]; }).join(" / ") + "</span>" : '<span class="tag tag--confirm">Study load to confirm</span>';
+    var load = p.m ? '<span class="tag tag--known">' + p.m.map(function (m) { return MODES[m]; }).join(" / ") + "</span>" : '';
     var note = p.lv === "top_up" ? '<p class="prow__note">Top-up degree: it builds on a completed, relevant diploma or higher diploma. It is not a first-degree route for school leavers.</p>' : "";
     var unconf = p._unconf ? '<p class="prow__note">Study load (full-time / part-time) has not been confirmed for this programme yet.</p>' : "";
     var detailId = (opts.selected ? "s-" : "d-") + p.id;
@@ -261,7 +261,7 @@
       (p.cr ? '<span class="prow__cr">' + esc(p.cr) + "</span>" : "") + "</div>" +
       '<div class="tags">' + why(p) + load +
         (p.yr ? '<span class="tag tag--known">' + esc(years(p.yr)) + "</span>" : "") +
-        (p.fee ? '<span class="tag tag--fee">' + esc(p.fl) + " " + euro(p.fee) + '</span><span class="tag tag--confirm">Intake to confirm</span>' : '<span class="tag tag--confirm">Fees and intake to confirm</span>') +
+        (p.fee ? '<span class="tag tag--fee">' + esc(p.fl) + " " + euro(p.fee) + '</span>' : '') +
       "</div>" +
       note + unconf +
       '<div class="prow__actions"><button type="button" class="linkbtn" aria-expanded="' + open + '" aria-controls="' + detailId + '" data-detail>' + (open ? "Hide details" : "View details") + "</button>" +

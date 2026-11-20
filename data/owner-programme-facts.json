@@ -1,5 +1,5 @@
 {
-  "_note": "Owner-supplied programme facts shown in the finder. idea-malta: HERO programmes sheet (Nov 2026) - programme fee in EUR, duration in years, next exit point. fondazione-doria: 2026-27 Programmes PDF - offer letter fee in EUR and stream. Keys must match the titles listed on the institution pages; tools/build-catalogue.mjs fails if one does not.",
+  "_note": "Owner-supplied programme facts shown in the finder. idea-malta: HERO programmes sheet (Nov 2026) - programme fee in EUR, duration in years, next exit point. fondazione-doria: 2026-27 Programmes PDF - course fee in EUR (the PDF calls it the offer letter fee; shown as Course fee per owner, 19 Nov 2026) and stream. Keys must match the titles listed on the institution pages; tools/build-catalogue.mjs fails if one does not.",
   "idea-malta": {
     "fee_label": "Programme fee",
     "programmes": {
@@ -68,7 +68,7 @@
     }
   },
   "fondazione-doria": {
-    "fee_label": "Offer letter fee",
+    "fee_label": "Course fee",
     "fee_note": "Fees, intake dates and terms are confirmed in writing at offer stage.",
     "programmes": {
       "Additional Healthcare Training for OSS Professionals": {
