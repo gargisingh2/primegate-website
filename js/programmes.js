@@ -305,7 +305,7 @@
     } else {
       h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
     }
-    if (p.chk) h += '<p class="src">' + (p.yr ? "Entry details are" : "Duration and entry details are") + " as published by " + esc(SOURCE_NAME[p.i] || inst.name) + " (retrieved " + esc(p.chk) + "); your advisor confirms them before you apply.</p>";
+    if (p.er || p.d) h += '<p class="src">Your advisor confirms these details for you before you apply.</p>';
     if (inst.la) h += '<h4>Language</h4><p>' + esc(inst.la) + '</p>';
     if (p.pg) h += '<p><a class="textlink" href="' + esc(p.pg) + '">' + (p.i === "idea-malta" ? "Full programme details" : "All courses in this stream, with course fees") + ' &rarr;</a></p>';
     if (inst.url) h += '<p class="src"><a href="' + esc(p.u) + '">See all programmes at ' + esc(inst.name) + "</a></p>";

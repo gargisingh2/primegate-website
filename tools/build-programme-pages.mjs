@@ -113,7 +113,6 @@ ideaPages.forEach(({ c, p }, idx) => {
       ${list(c.careers)}
       <h2>Fees and intakes</h2>
       <p>${esc(p.fl)}: <strong>${euro(p.fee)}</strong> for the full programme (${esc(years(p.yr))}). Intakes run ${esc(ideaInfo.intake.toLowerCase())}; your Primegate Consultancy advisor confirms the fee and next start date for your situation.</p>
-      <p class="prog-src">Programme details: ${esc(ideaInfo.source)}, ${esc(c.src)}. Fee and duration: Primegate Consultancy's 2026 IDEA College programme list.</p>
       <h2>More IDEA College programmes</h2>
       <ul class="prog-related">
         ${related}
@@ -192,7 +191,7 @@ ${rows.map((r) => `          <tr><th scope="row" data-label="Programme"><a href=
         <li>Get assistance with the visa process and pre-departure requirements.</li>
         <li>Travel to Italy, begin your programme and progress toward the professional internship pathway.</li>
       </ol>
-      <p class="prog-src">Source: ${esc(fdInfo.source)} (Fondazione Doria). Fondazione Doria determines the authorised training centre for each student; a specific centre cannot be promised unless confirmed in writing.</p>
+      <p class="prog-note">Fondazione Doria determines the authorised training centre for each student; a specific centre cannot be promised unless confirmed in writing.</p>
       <h2>Other Fondazione Doria streams</h2>
       <ul class="prog-related">
         ${others}
