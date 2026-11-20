@@ -934,3 +934,20 @@ a.textlink { color: var(--navy); font-weight: 700; text-decoration: underline; }
   .pfacts div:last-child:nth-child(3n+1) { grid-column: span 3; }
   .pfacts div:last-child:nth-child(3n+2) { grid-column: span 2; }
 }
+
+/* Institution photos (Fondazione Doria campus, IDEA College student life) */
+.section--photo { position: relative; overflow: hidden; isolation: isolate; }
+.photo-bg { position: absolute; inset: 0; z-index: -1; }
+.photo-bg img { width: 100%; height: 100%; object-fit: cover; }
+.photo-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(11,31,77,0.94) 0%, rgba(11,31,77,0.82) 55%, rgba(11,31,77,0.6) 100%); }
+.photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.photo-tile { margin: 0; background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow-card); }
+.photo-tile img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.photo-tile figcaption, .photo-wide figcaption { font-size: 0.84rem; color: var(--graphite); padding: 0.6rem 0.8rem; }
+.photo-wide { margin: 1rem 0 0; background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow-card); }
+.photo-wide img { width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; object-position: center 70%; display: block; }
+.photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.photo-pair .photo-tile img { aspect-ratio: 3 / 2; }
+.photo-note { font-size: 0.82rem; color: var(--graphite); margin-top: 0.8rem; }
+@media (max-width: 900px) { .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .photo-grid, .photo-pair { grid-template-columns: 1fr; } .photo-wide img { aspect-ratio: 4 / 3; } }
