@@ -257,11 +257,12 @@
     var detailId = (opts.selected ? "s-" : "d-") + p.id;
     var open = !!opts.selected;
     return '<article class="prow' + (open ? " prow--selected" : "") + '">' +
-      '<div class="prow__top"><div><h3><a href="' + esc(progHref(p.id)) + '">' + esc(p.t) + '</a></h3><p class="prow__meta"><strong>' + esc(inst.name) + "</strong> · " + esc(inst.location) + " · " + esc(level) + "</p></div>" +
+      '<div class="prow__top"><div><h3><a href="' + esc(p.pg && p.i === "idea-malta" ? p.pg : progHref(p.id)) + '">' + esc(p.t) + '</a></h3><p class="prow__meta"><strong>' + esc(inst.name) + "</strong> · " + esc(inst.location) + " · " + esc(level) + "</p></div>" +
       (p.cr ? '<span class="prow__cr">' + esc(p.cr) + "</span>" : "") + "</div>" +
       '<div class="tags">' + why(p) + load +
         (p.yr ? '<span class="tag tag--known">' + esc(years(p.yr)) + "</span>" : "") +
         (p.fee ? '<span class="tag tag--fee">' + esc(p.fl) + " " + euro(p.fee) + '</span>' : '') +
+        (inst.in ? '<span class="tag tag--known">' + (inst.in === "Every month" ? "Monthly intakes" : inst.in === "Every quarter" ? "Quarterly intakes" : esc(inst.in)) + '</span>' : '') +
       "</div>" +
       note + unconf +
       '<div class="prow__actions"><button type="button" class="linkbtn" aria-expanded="' + open + '" aria-controls="' + detailId + '" data-detail>' + (open ? "Hide details" : "View details") + "</button>" +
@@ -305,6 +306,8 @@
       h += "<h4>Fees and intakes</h4><p>Fees and next intake are confirmed by your Primegate Consultancy advisor for your situation (study load, nationality and start date can all change them).</p>";
     }
     if (p.chk) h += '<p class="src">' + (p.yr ? "Entry details are" : "Duration and entry details are") + " as published by " + esc(SOURCE_NAME[p.i] || inst.name) + " (retrieved " + esc(p.chk) + "); your advisor confirms them before you apply.</p>";
+    if (inst.la) h += '<h4>Language</h4><p>' + esc(inst.la) + '</p>';
+    if (p.pg) h += '<p><a class="textlink" href="' + esc(p.pg) + '">' + (p.i === "idea-malta" ? "Full programme details" : "All courses in this stream, with course fees") + ' &rarr;</a></p>';
     if (inst.url) h += '<p class="src"><a href="' + esc(p.u) + '">See all programmes at ' + esc(inst.name) + "</a></p>";
     return h;
   }

@@ -68,6 +68,11 @@ const OWNER = fs.existsSync(path.join(ROOT, "data", "owner-programme-facts.json"
 delete OWNER._note;
 const usedOwner = new Set();
 
+// Programme pages (tools/build-programme-pages.mjs): IDEA pages per programme, Doria pages per stream.
+const PAGES = fs.existsSync(path.join(ROOT, "data", "programme-pages.json")) ? JSON.parse(read("data/programme-pages.json")) : { institutions: {}, idea: [], doria: [] };
+const pageByIdeaTitle = Object.fromEntries((PAGES.idea || []).map((c) => [c.match, "/" + c.slug]));
+const pageByStream = Object.fromEntries((PAGES.doria || []).map((c) => [c.stream, "/" + c.slug]));
+
 const errors = [];
 const seeds = readSeeds(ROOT);
 const ids = new Set();
@@ -111,6 +116,8 @@ const programmes = seeds.map((p) => {
     if (f.years) { rec.yr = f.years; delete rec.d; delete rec.dc; }
     if (f.exit) rec.ex = f.exit;
   }
+  if (p.institution_id === "idea-malta" && pageByIdeaTitle[p.title]) rec.pg = pageByIdeaTitle[p.title];
+  if (p.institution_id === "fondazione-doria" && f && pageByStream[f.stream]) rec.pg = pageByStream[f.stream];
   return rec;
 });
 // Every owner-supplied title must match a programme on the institution pages.
@@ -125,7 +132,8 @@ programmes.forEach((p) => { counts[p.i] = (counts[p.i] || 0) + 1; });
 write("data/programmes.json", JSON.stringify({
   generated: new Date().toISOString().slice(0, 10),
   levels: LEVELS, subjects: SUBJECTS,
-  institutions: institutions.map((i) => ({ id: i.id, name: i.name, url: i.url, location: i.location, country: i.country, region: i.region, relationship: i.relationship, count: counts[i.id] || 0, ...(OWNER[i.id] && OWNER[i.id].fee_note ? { fn: OWNER[i.id].fee_note } : {}) })),
+  institutions: institutions.map((i) => ({ id: i.id, name: i.name, url: i.url, location: i.location, country: i.country, region: i.region, relationship: i.relationship, count: counts[i.id] || 0, ...(OWNER[i.id] && OWNER[i.id].fee_note ? { fn: OWNER[i.id].fee_note } : {}),
+    ...(PAGES.institutions[i.id] ? { in: PAGES.institutions[i.id].intake, la: PAGES.institutions[i.id].language } : {}) })),
   // Directory-only institutions (no listed programmes): lets the finder offer an enquiry route.
   network: network.map((n) => ({ key: n.logo.replace(/^uni-|\.png$/g, ""), name: n.name, country: n.country })),
   programmes,
@@ -168,7 +176,8 @@ SEED_PAGES.forEach(([instId, file]) => {
   let html = read(file);
   const recs = programmes.filter((p) => p.i === instId);
   let n = 0;
-  const link = (title) => { const p = recs[n++]; return p ? `<a href="/programmes?programme=${p.id}">${title}</a>` : title; };
+  // IDEA rows link to their programme page; Doria rows (127, grouped on stream pages) to the finder entry.
+  const link = (title) => { const p = recs[n++]; return p ? `<a href="${p.i === "idea-malta" && p.pg ? p.pg : "/programmes?programme=" + p.id}">${title}</a>` : title; };
   const [head, list] = html.split('id="programme-list"');
   html = head + 'id="programme-list"' + list.replace(/<span class="prog-name">(?:<a [^>]*>)?([^<]+)(?:<\/a>)?<\/span>/g, (m, t) => `<span class="prog-name">${link(t)}</span>`);
   if (n !== recs.length) { console.error(`${file}: ${n} rows vs ${recs.length} records - not linking`); process.exit(1); }
