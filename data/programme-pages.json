@@ -44,7 +44,8 @@
         "Tour operator",
         "Event organiser",
         "Travel agency roles"
-      ]
+      ],
+      "seo_title": "Travel & Tourism Diploma, Malta"
     },
     {
       "match": "Undergraduate Diploma in Applied IT Essentials",
@@ -74,7 +75,8 @@
         "Cloud support associate",
         "Entry-level data analyst",
         "Junior software developer"
-      ]
+      ],
+      "seo_title": "Applied IT Diploma, Malta"
     },
     {
       "match": "Undergraduate Diploma in Hospitality",
@@ -108,7 +110,8 @@
         "Cruise ship supervisor",
         "Events executive",
         "Food operations or housekeeping manager"
-      ]
+      ],
+      "seo_title": "Hospitality Diploma, Malta"
     },
     {
       "match": "Undergraduate Diploma in Management",
@@ -132,7 +135,8 @@
       "careers": [
         "Supervisory roles in business, public administration, retail, finance and hospitality",
         "A first step towards higher managerial roles"
-      ]
+      ],
+      "seo_title": "Management Diploma, Malta"
     },
     {
       "match": "Undergraduate Diploma in Supply Chain Management and Logistics",
@@ -163,7 +167,8 @@
         "Supply chain supervisor",
         "Logistics supervisor",
         "Roles in procurement, warehousing and distribution"
-      ]
+      ],
+      "seo_title": "Supply Chain Diploma, Malta"
     },
     {
       "match": "Bachelor Degree (Honours) in Tourism and Hospitality Management",
@@ -198,7 +203,8 @@
         "Travel agency manager",
         "Tour operator",
         "Marketing or business development executive"
-      ]
+      ],
+      "seo_title": "Tourism & Hospitality Degree, Malta"
     },
     {
       "match": "B.Sc. in Computing",
@@ -232,7 +238,8 @@
         "Systems analyst",
         "Database administrator",
         "IT technical support officer"
-      ]
+      ],
+      "seo_title": "BSc Computing, Malta"
     },
     {
       "match": "Bachelor (Honours) in Travel and Tourism",
@@ -269,7 +276,8 @@
         "Hotel manager",
         "Travel agency manager",
         "Tour operator"
-      ]
+      ],
+      "seo_title": "Travel & Tourism Degree, Malta"
     },
     {
       "match": "Bachelor of Science in Management",
@@ -302,7 +310,8 @@
         "Head of department",
         "Director, in private or public organisations",
         "A foundation for postgraduate study"
-      ]
+      ],
+      "seo_title": "BSc Management, Malta"
     },
     {
       "match": "M.Sc. in Management (M.Sc)",
@@ -334,7 +343,8 @@
         "General manager",
         "Head of department",
         "Director, in private or public organisations"
-      ]
+      ],
+      "seo_title": "MSc Management, Malta"
     },
     {
       "match": "Master in Business Administration (MBA)",
@@ -370,7 +380,8 @@
         "Senior finance manager",
         "Marketing or project director",
         "Management consultant"
-      ]
+      ],
+      "seo_title": "MBA, IDEA College Malta"
     },
     {
       "match": "Master of Science (M.Sc.) in Elderly Care Management",
@@ -402,7 +413,8 @@
         "Elderly care home manager or director",
         "Chief executive or financial officer of an elderly care organisation",
         "HR manager in care services"
-      ]
+      ],
+      "seo_title": "MSc Elderly Care Management, Malta"
     },
     {
       "match": "Master of Science in Healthcare Management and Leadership",
@@ -435,7 +447,8 @@
         "Senior management in healthcare organisations",
         "Roles in government health agencies",
         "Healthcare consultancy"
-      ]
+      ],
+      "seo_title": "MSc Healthcare Leadership, Malta"
     },
     {
       "match": "Master of Science in Hospitality Management",
@@ -465,7 +478,8 @@
       ],
       "careers": [
         "Senior posts such as head of department or events director in hotels, restaurants, casinos and other hospitality organisations"
-      ]
+      ],
+      "seo_title": "MSc Hospitality Management, Malta"
     },
     {
       "match": "Master of Science in Public Health",
@@ -497,7 +511,8 @@
         "Health policy analyst or planner",
         "Health promotion specialist",
         "Public health educator or researcher"
-      ]
+      ],
+      "seo_title": "MSc Public Health, Malta"
     }
   ],
   "doria": [
@@ -510,7 +525,8 @@
         "Social and Healthcare Operator (OSS) and Social Care Operator (OSA)",
         "Care for older people, people with disabilities and children",
         "Healthcare administration, reception and booking roles"
-      ]
+      ],
+      "seo_title": "Healthcare Courses in Italy"
     },
     {
       "stream": "construction",
@@ -521,7 +537,8 @@
         "Building trades: bricklayer, carpenter, plasterer, tiler, painter, scaffolder, welder",
         "Systems technicians: electrical, plumbing and heating, air-conditioning, refrigeration",
         "CAD technical drafting and construction site technician"
-      ]
+      ],
+      "seo_title": "Construction Trades Courses in Italy"
     },
     {
       "stream": "hospitality",
@@ -532,7 +549,8 @@
         "Culinary: cook, professional chef, pastry chef, pizza maker, baker, ice cream maker",
         "Food and beverage service: waiter, head waiter, bartender, barista, sommelier",
         "Hotels and tourism: reception, housekeeping, event organiser, tourism services"
-      ]
+      ],
+      "seo_title": "Hospitality & Chef Courses in Italy"
     },
     {
       "stream": "fashion",
@@ -543,7 +561,8 @@
         "Artisan tailoring and clothing manufacturing",
         "Professional beautician and aesthetics",
         "Professional hairdressing and styling"
-      ]
+      ],
+      "seo_title": "Fashion & Beauty Courses in Italy"
     },
     {
       "stream": "it",
@@ -554,7 +573,8 @@
         "IT support, networking, software and web development",
         "Cybersecurity, data analysis, cloud computing and artificial intelligence",
         "Industrial automation, PLC, SCADA, robotics and smart manufacturing"
-      ]
+      ],
+      "seo_title": "IT & Automation Courses in Italy"
     }
   ]
 }

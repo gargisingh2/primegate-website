@@ -958,3 +958,17 @@ a.textlink { color: var(--navy); font-weight: 700; text-decoration: underline; }
 .form-panel__head h3 { font-family: var(--font-body); font-size: 1.05rem; color: var(--navy); margin: 0; outline: none; }
 .form-panel__note { font-size: 0.86rem; color: var(--graphite); margin: 0.4rem 0 0.8rem; }
 @media (max-width: 760px) { .form-panel { padding: 1rem 0.4rem 0.2rem; } .form-panel__head, .form-panel__note { padding: 0 0.6rem; } }
+.cred__note { text-align: center; font-size: 0.82rem; color: var(--graphite); margin: 1rem 0 0; }
+.cred__note--dark { color: rgba(247,243,237,0.8); }
+/* Homepage: secondary service band (Management Consulting) */
+.also-band { padding-block: clamp(2.4rem, 5vw, 3.6rem); }
+.also-band__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.4rem 2.4rem; flex-wrap: wrap; }
+.also-band__inner > div { max-width: 720px; }
+.also-band h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); color: var(--navy); margin-bottom: 0.6rem; }
+.also-band p { color: var(--graphite); margin: 0; }
+/* /institutions hub: browse by destination */
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.1rem; }
+.dest-card { background: var(--white); border: 1px solid rgba(11,31,77,0.12); border-top: 3px solid var(--gold); border-radius: 6px; padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.dest-card h3 { font-family: var(--font-body); font-size: 1.05rem; color: var(--navy); margin: 0; }
+.dest-card p { font-size: 0.9rem; color: var(--graphite); margin: 0; flex: 1; }
+.dest-card .link-arrow { color: var(--navy); }

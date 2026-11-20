@@ -168,6 +168,12 @@ if (partner.includes("<!-- portfolio:start")) {
   partner = partner.replace(/<!-- portfolio:start[\s\S]*?<!-- portfolio:end -->/, table);
   write("agent-partnership.html", partner);
 }
+// The same table on the /institutions hub (SEO review 13 Nov 2026, issue 6).
+let hub = read("institutions.html");
+if (hub.includes("<!-- portfolio:start")) {
+  hub = hub.replace(/<!-- portfolio:start[\s\S]*?<!-- portfolio:end -->/, table);
+  write("institutions.html", hub);
+}
 
 // ---- Institution pages: link each listed programme to its stable finder link ----
 // Rows are paired with catalogue records in document order (the same order

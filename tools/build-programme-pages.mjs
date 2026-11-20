@@ -133,7 +133,7 @@ ${cta("programme=" + p.id, "Ask about this programme")}`;
     hasCourseInstance: { "@type": "CourseInstance", courseMode: "Blended", location: { "@type": "Place", name: "Malta" } },
   };
   fs.writeFileSync(path.join(ROOT, c.slug + ".html"), page({
-    slug: c.slug, title: `${p.t} - IDEA College Malta`, description: desc,
+    slug: c.slug, title: c.seo_title || `${p.t} - IDEA College Malta`, description: desc,
     crumbs: [["Home", "/"], ["Find Your Programme", "/programmes"], ["IDEA College, Malta", "/idea-college-malta"], [p.t, "/" + c.slug]],
     body, ld,
   }));
@@ -216,7 +216,7 @@ ${cta("institution=fondazione-doria", "Ask about these courses")}`;
     })),
   };
   fs.writeFileSync(path.join(ROOT, c.slug + ".html"), page({
-    slug: c.slug, title: c.title, description: desc,
+    slug: c.slug, title: c.seo_title || c.title, description: desc,
     crumbs: [["Home", "/"], ["Find Your Programme", "/programmes"], ["Fondazione Doria", "/fondazione-doria"], [c.title, "/" + c.slug]],
     body, ld,
   }));
