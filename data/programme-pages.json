@@ -1,5 +1,5 @@
 {
-  "_note": "Content for the programme pages built by tools/build-programme-pages.mjs. Owner decisions 19 Nov 2026: one page per IDEA Malta hero programme and one per Fondazione Doria stream; IDEA facts from the IDEA College Prospectus 2026/27 (published at /downloads/IDEA-College-Prospectus-2026.pdf, printed page given in 'src'), overviews written in our own words; fees and durations from data/owner-programme-facts.json; Doria facts from the Fondazione Doria 2026-27 Programmes PDF; intakes and Doria language as confirmed by the owner. English-test (IELTS/OET) criteria are deliberately left out (owner decision 26 Oct 2026). 'match' is the programme title exactly as listed on the institution page.",
+  "_note": "Content for the programme pages built by tools/build-programme-pages.mjs. Owner decisions 19 Nov 2026: one page per IDEA Malta hero programme and one per Fondazione Doria stream; IDEA facts from the IDEA College Prospectus 2026/27 (published at /downloads/IDEA-College-Prospectus-2026.pdf, printed page given in 'src'), overviews written in our own words; fees and durations from data/owner-programme-facts.json; Doria facts from the Fondazione Doria 2026-27 Programmes PDF; intakes as confirmed by the owner; no language of instruction is shown for Doria (owner decision 19 Nov 2026). English-test (IELTS/OET) criteria are deliberately left out (owner decision 26 Oct 2026). 'match' is the programme title exactly as listed on the institution page.",
   "institutions": {
     "idea-malta": {
       "language": "English",
@@ -10,7 +10,6 @@
       "source": "IDEA College Prospectus 2026/27"
     },
     "fondazione-doria": {
-      "language": "Italian - programmes ordinarily begin with intensive A1 and A2 Italian language study",
       "intake": "Every month",
       "location": "Campania, southern Italy (Fondazione Doria determines the authorised training centre)",
       "internship": "Progression toward an approximately 3-month professional internship pathway, subject to applicable conditions",
@@ -19,151 +18,543 @@
   },
   "idea": [
     {
-      "match": "Diploma in Travel and Tourism", "slug": "diploma-travel-and-tourism-malta", "src": "pp. 138-139 (interim exit award of the Bachelor (Honours) in Travel and Tourism)",
+      "match": "Diploma in Travel and Tourism",
+      "slug": "diploma-travel-and-tourism-malta",
+      "src": "pp. 138-139 (interim exit award of the Bachelor (Honours) in Travel and Tourism)",
       "overview": "A one-year MQF Level 5 diploma for students who want a practical first qualification in the travel and tourism industry. It is made up of the first six modules of IDEA College's Bachelor (Honours) in Travel and Tourism, covering tourism principles, hospitality management, travel geography and destination management alongside academic writing and critical thinking. Students can continue to the Undergraduate Higher Diploma (120 ECTS) and on to the full bachelor's degree.",
-      "who": ["School leavers starting a career in travel and tourism", "People already working in the sector who want a recognised qualification"],
-      "modules": ["Principles of Tourism", "Hospitality Management", "Academic Writing", "Critical Thinking and Communication", "Travel Geography", "Destination Management"],
-      "entry": ["A related qualification at MQF Level 4, such as the IATA Foundation in Travel and Tourism Diploma; and/or", "One 'A' Level or equivalent, with a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)", "Mature students without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"],
-      "careers": ["Travel consultant", "Tour operator", "Event organiser", "Travel agency roles"]
+      "who": [
+        "School leavers starting a career in travel and tourism",
+        "People already working in the sector who want a recognised qualification"
+      ],
+      "modules": [
+        "Principles of Tourism",
+        "Hospitality Management",
+        "Academic Writing",
+        "Critical Thinking and Communication",
+        "Travel Geography",
+        "Destination Management"
+      ],
+      "entry": [
+        "A related qualification at MQF Level 4, such as the IATA Foundation in Travel and Tourism Diploma; and/or",
+        "One 'A' Level or equivalent, with a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)",
+        "Mature students without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"
+      ],
+      "careers": [
+        "Travel consultant",
+        "Tour operator",
+        "Event organiser",
+        "Travel agency roles"
+      ]
     },
     {
-      "match": "Undergraduate Diploma in Applied IT Essentials", "slug": "diploma-applied-it-essentials-malta", "src": "pp. 42-43",
+      "match": "Undergraduate Diploma in Applied IT Essentials",
+      "slug": "diploma-applied-it-essentials-malta",
+      "src": "pp. 42-43",
       "overview": "A practice-oriented MQF Level 5 diploma that takes learners from everyday digital literacy to the technical skills employers expect in IT roles. Students start with workplace technologies, digital tools and cybersecurity awareness, then move on to programming fundamentals, cloud computing and data management. It suits school leavers and career changers who want a fast, hands-on route into IT.",
-      "who": ["Post-secondary school leavers aiming for an IT career", "Working professionals from non-IT backgrounds who want to reskill"],
-      "modules": ["Workplace Technology Trends and Applications", "Digital Tools for Workplace Efficiency", "Cybersecurity Awareness", "Programming Fundamentals", "Cloud Computing Essentials", "Data Management and Analysis"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject, or a related professional qualification), with a pass in English Language and Mathematics at MQF Level 3", "Applicants without all the formal qualifications may be accepted through Recognition of Prior Learning (RPL), for example with a CV showing relevant IT experience"],
-      "careers": ["IT support technician / helpdesk support", "Junior systems administrator", "Cybersecurity assistant", "Cloud support associate", "Entry-level data analyst", "Junior software developer"]
+      "who": [
+        "Post-secondary school leavers aiming for an IT career",
+        "Working professionals from non-IT backgrounds who want to reskill"
+      ],
+      "modules": [
+        "Workplace Technology Trends and Applications",
+        "Digital Tools for Workplace Efficiency",
+        "Cybersecurity Awareness",
+        "Programming Fundamentals",
+        "Cloud Computing Essentials",
+        "Data Management and Analysis"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject, or a related professional qualification), with a pass in English Language and Mathematics at MQF Level 3",
+        "Applicants without all the formal qualifications may be accepted through Recognition of Prior Learning (RPL), for example with a CV showing relevant IT experience"
+      ],
+      "careers": [
+        "IT support technician / helpdesk support",
+        "Junior systems administrator",
+        "Cybersecurity assistant",
+        "Cloud support associate",
+        "Entry-level data analyst",
+        "Junior software developer"
+      ]
     },
     {
-      "match": "Undergraduate Diploma in Hospitality", "slug": "diploma-hospitality-malta", "src": "pp. 68-69",
+      "match": "Undergraduate Diploma in Hospitality",
+      "slug": "diploma-hospitality-malta",
+      "src": "pp. 68-69",
       "overview": "An MQF Level 5 diploma in the business of hospitality: hotels, restaurants, wellness centres, cruises and tourism services. Students cover operations, finance, health and safety, customer care, supervisory and HR skills, and consumer behaviour, along with innovation and current issues in the industry. It prepares students for supervisory roles in a fast-growing sector.",
-      "who": ["People seeking academic and professional advancement in hospitality", "Professionals returning to work or changing career"],
-      "modules": ["An Introduction to Hospitality", "An Introduction to Finance and Cashier", "Health and Safety in Hospitality", "Principles of Customer Care", "Supervisory and HR Skills for Hospitality Professionals", "Hospitality Operations", "Communication Skills and Work Ethics for Hospitality", "Consumer Behaviour and Marketing in Hospitality", "Hospitality Innovation and Business Development", "Contemporary Issues in Hospitality"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3", "Preference is given to applicants with one year of work experience related to the programme"],
-      "careers": ["Front office manager", "Operations supervisor", "Guest relations manager", "Cruise ship supervisor", "Events executive", "Food operations or housekeeping manager"]
+      "who": [
+        "People seeking academic and professional advancement in hospitality",
+        "Professionals returning to work or changing career"
+      ],
+      "modules": [
+        "An Introduction to Hospitality",
+        "An Introduction to Finance and Cashier",
+        "Health and Safety in Hospitality",
+        "Principles of Customer Care",
+        "Supervisory and HR Skills for Hospitality Professionals",
+        "Hospitality Operations",
+        "Communication Skills and Work Ethics for Hospitality",
+        "Consumer Behaviour and Marketing in Hospitality",
+        "Hospitality Innovation and Business Development",
+        "Contemporary Issues in Hospitality"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3",
+        "Preference is given to applicants with one year of work experience related to the programme"
+      ],
+      "careers": [
+        "Front office manager",
+        "Operations supervisor",
+        "Guest relations manager",
+        "Cruise ship supervisor",
+        "Events executive",
+        "Food operations or housekeeping manager"
+      ]
     },
     {
-      "match": "Undergraduate Diploma in Management", "slug": "diploma-management-malta", "src": "pp. 92-93 (interim exit award of the Undergraduate Higher Diploma in Management)",
+      "match": "Undergraduate Diploma in Management",
+      "slug": "diploma-management-malta",
+      "src": "pp. 92-93 (interim exit award of the Undergraduate Higher Diploma in Management)",
       "overview": "A one-year MQF Level 5 management diploma made up of the first five modules of IDEA College's Undergraduate Higher Diploma in Management. It builds academic and digital literacy, critical thinking and research skills, then introduces work psychology and the foundations of management and organisational behaviour. Students can continue to the Higher Diploma (120 ECTS) and on to the Bachelor of Science in Management.",
-      "who": ["People building fundamental management knowledge", "Employees moving from first-level supervisory roles towards management"],
-      "modules": ["Academic and Digital Literacy", "Critical Thinking and Communication", "Research Skills", "Work Psychology: Emotional and Social Intelligence", "Foundations of Management and Organisational Behaviour"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)"],
-      "careers": ["Supervisory roles in business, public administration, retail, finance and hospitality", "A first step towards higher managerial roles"]
+      "who": [
+        "People building fundamental management knowledge",
+        "Employees moving from first-level supervisory roles towards management"
+      ],
+      "modules": [
+        "Academic and Digital Literacy",
+        "Critical Thinking and Communication",
+        "Research Skills",
+        "Work Psychology: Emotional and Social Intelligence",
+        "Foundations of Management and Organisational Behaviour"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)"
+      ],
+      "careers": [
+        "Supervisory roles in business, public administration, retail, finance and hospitality",
+        "A first step towards higher managerial roles"
+      ]
     },
     {
-      "match": "Undergraduate Diploma in Supply Chain Management and Logistics", "slug": "diploma-supply-chain-management-logistics-malta", "src": "pp. 76-77 (interim exit award of the Undergraduate Higher Diploma in Supply Chain Management and Logistics)",
+      "match": "Undergraduate Diploma in Supply Chain Management and Logistics",
+      "slug": "diploma-supply-chain-management-logistics-malta",
+      "src": "pp. 76-77 (interim exit award of the Undergraduate Higher Diploma in Supply Chain Management and Logistics)",
       "overview": "A one-year MQF Level 5 diploma made up of the first ten modules of IDEA College's Undergraduate Higher Diploma in Supply Chain Management and Logistics. It covers how goods and information flow between suppliers, manufacturers, logistics providers, retailers and consumers, from procurement and demand management to warehousing, global logistics and shipping documentation. Students can continue to the full Higher Diploma (120 ECTS).",
-      "who": ["People seeking a career in supply chain management and logistics", "Professionals returning to work or changing career"],
-      "modules": ["Strategic Management", "Operations and Demand Management", "Procurement and Supply Management", "Negotiation Techniques", "Analytical Techniques and Problem Solving", "Warehouse and Distribution Management", "Global Logistics", "Shipping and Documentation", "Organisational Behaviour", "Customer Relationship Management"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English and Mathematics at MQF Level 3", "Preference is given to applicants with one year of related work experience; equivalent qualifications from abroad are considered"],
-      "careers": ["Supply chain supervisor", "Logistics supervisor", "Roles in procurement, warehousing and distribution"]
+      "who": [
+        "People seeking a career in supply chain management and logistics",
+        "Professionals returning to work or changing career"
+      ],
+      "modules": [
+        "Strategic Management",
+        "Operations and Demand Management",
+        "Procurement and Supply Management",
+        "Negotiation Techniques",
+        "Analytical Techniques and Problem Solving",
+        "Warehouse and Distribution Management",
+        "Global Logistics",
+        "Shipping and Documentation",
+        "Organisational Behaviour",
+        "Customer Relationship Management"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English and Mathematics at MQF Level 3",
+        "Preference is given to applicants with one year of related work experience; equivalent qualifications from abroad are considered"
+      ],
+      "careers": [
+        "Supply chain supervisor",
+        "Logistics supervisor",
+        "Roles in procurement, warehousing and distribution"
+      ]
     },
     {
-      "match": "Bachelor Degree (Honours) in Tourism and Hospitality Management", "slug": "bachelor-hons-tourism-hospitality-management-malta", "src": "pp. 120-121",
+      "match": "Bachelor Degree (Honours) in Tourism and Hospitality Management",
+      "slug": "bachelor-hons-tourism-hospitality-management-malta",
+      "src": "pp. 120-121",
       "overview": "A three-year MQF Level 6 honours degree combining hospitality operations with tourism management. Students study hospitality operations, finance, health and safety, customer care, supervision and consumer behaviour, then tourism principles, travel geography, event management, sustainable and niche tourism, and tourism and hospitality law. A project and a dissertation build research skills for management careers across the industry.",
-      "who": ["People seeking to advance their knowledge of tourism and hospitality management", "Those aiming for management careers across the tourism and hospitality industry"],
-      "modules": ["Hospitality Operations", "Principles of Customer Care", "Consumer Behaviour and Marketing in Hospitality", "Principles of Tourism", "Travel Geography", "Event Management", "Sustainable Tourism and Hospitality", "Niche Tourism", "Tourism and Hospitality Law and Policy", "Cross-cultural Communication", "Research Methods, Project and Dissertation"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3", "Applicants without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"],
-      "careers": ["Hotel manager", "Operations manager", "Event organiser or manager", "Travel agency manager", "Tour operator", "Marketing or business development executive"]
+      "who": [
+        "People seeking to advance their knowledge of tourism and hospitality management",
+        "Those aiming for management careers across the tourism and hospitality industry"
+      ],
+      "modules": [
+        "Hospitality Operations",
+        "Principles of Customer Care",
+        "Consumer Behaviour and Marketing in Hospitality",
+        "Principles of Tourism",
+        "Travel Geography",
+        "Event Management",
+        "Sustainable Tourism and Hospitality",
+        "Niche Tourism",
+        "Tourism and Hospitality Law and Policy",
+        "Cross-cultural Communication",
+        "Research Methods, Project and Dissertation"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3",
+        "Applicants without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"
+      ],
+      "careers": [
+        "Hotel manager",
+        "Operations manager",
+        "Event organiser or manager",
+        "Travel agency manager",
+        "Tour operator",
+        "Marketing or business development executive"
+      ]
     },
     {
-      "match": "B.Sc. in Computing", "slug": "bsc-computing-malta", "src": "pp. 116-119",
+      "match": "B.Sc. in Computing",
+      "slug": "bsc-computing-malta",
+      "src": "pp. 116-119",
       "overview": "A three-year MQF Level 6 computing degree covering mathematics, programming, data analytics, software development, computer systems, networks, web development and databases. In the second year students choose a specialisation in digital marketing, blockchain or intelligent systems, and the final year adds machine learning, security, the Internet of Things and a dissertation.",
-      "who": ["Students seeking academic and professional advancement in computing", "Professionals returning to work or changing career into IT"],
-      "modules": ["Programming and Advanced Programming", "Website Design and Development", "Data Analytics and Data Mining", "Computer Networks", "Software Development Lifecycles", "Data Structures and Algorithms", "Database Design and Implementation", "Artificial Intelligence and Machine Learning", "The Internet of Things (IoT)", "Security", "Specialisation: Digital Marketing, Blockchain or Intelligent Systems", "Dissertation"],
-      "entry": ["A qualification at MQF Level 4 in subjects related to Mathematics, Science or Computing (minimum two 'A' Levels or equivalent), and a pass in English ('O' Level or equivalent)", "Preference is given to applicants with a Level 4 diploma in engineering or computing and A-level standard mathematics"],
-      "careers": ["Applications or systems programmer", "Systems analyst", "Database administrator", "IT technical support officer"]
+      "who": [
+        "Students seeking academic and professional advancement in computing",
+        "Professionals returning to work or changing career into IT"
+      ],
+      "modules": [
+        "Programming and Advanced Programming",
+        "Website Design and Development",
+        "Data Analytics and Data Mining",
+        "Computer Networks",
+        "Software Development Lifecycles",
+        "Data Structures and Algorithms",
+        "Database Design and Implementation",
+        "Artificial Intelligence and Machine Learning",
+        "The Internet of Things (IoT)",
+        "Security",
+        "Specialisation: Digital Marketing, Blockchain or Intelligent Systems",
+        "Dissertation"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 in subjects related to Mathematics, Science or Computing (minimum two 'A' Levels or equivalent), and a pass in English ('O' Level or equivalent)",
+        "Preference is given to applicants with a Level 4 diploma in engineering or computing and A-level standard mathematics"
+      ],
+      "careers": [
+        "Applications or systems programmer",
+        "Systems analyst",
+        "Database administrator",
+        "IT technical support officer"
+      ]
     },
     {
-      "match": "Bachelor (Honours) in Travel and Tourism", "slug": "bachelor-hons-travel-and-tourism-malta", "src": "pp. 138-139",
+      "match": "Bachelor (Honours) in Travel and Tourism",
+      "slug": "bachelor-hons-travel-and-tourism-malta",
+      "src": "pp. 138-139",
       "overview": "A three-year MQF Level 6 honours degree in travel and tourism. Year one lays the foundations in tourism, hospitality management, travel geography and destination management, year two adds tourism business management, event management, tourism marketing and a project, and the final year covers sustainable and niche tourism, tourism law and policy, cross-cultural communication and a dissertation. Interim awards are available after modules 1-3 (certificate) and 1-6 (diploma).",
-      "who": ["People seeking to advance their knowledge of travel and tourism", "Those aiming for a range of careers in the travel and tourism industry"],
-      "modules": ["Principles of Tourism", "Hospitality Management", "Travel Geography", "Destination Management", "Tourism Business Management", "Event Management", "Tourism Marketing", "Sustainable Tourism", "Niche Tourism", "Tourism Law and Policy", "Cross-cultural Communication", "Research Methods, Project and Dissertation"],
-      "entry": ["A related qualification at MQF Level 4, such as the IATA Foundation in Travel and Tourism Diploma; and/or", "One 'A' Level or equivalent, with a pass in English Language and Mathematics at MQF Level 3", "Mature students without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"],
-      "careers": ["Travel consultant", "Operations manager", "Event organiser or manager", "Hotel manager", "Travel agency manager", "Tour operator"]
+      "who": [
+        "People seeking to advance their knowledge of travel and tourism",
+        "Those aiming for a range of careers in the travel and tourism industry"
+      ],
+      "modules": [
+        "Principles of Tourism",
+        "Hospitality Management",
+        "Travel Geography",
+        "Destination Management",
+        "Tourism Business Management",
+        "Event Management",
+        "Tourism Marketing",
+        "Sustainable Tourism",
+        "Niche Tourism",
+        "Tourism Law and Policy",
+        "Cross-cultural Communication",
+        "Research Methods, Project and Dissertation"
+      ],
+      "entry": [
+        "A related qualification at MQF Level 4, such as the IATA Foundation in Travel and Tourism Diploma; and/or",
+        "One 'A' Level or equivalent, with a pass in English Language and Mathematics at MQF Level 3",
+        "Mature students without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"
+      ],
+      "careers": [
+        "Travel consultant",
+        "Operations manager",
+        "Event organiser or manager",
+        "Hotel manager",
+        "Travel agency manager",
+        "Tour operator"
+      ]
     },
     {
-      "match": "Bachelor of Science in Management", "slug": "bsc-management-malta", "src": "pp. 110-113",
+      "match": "Bachelor of Science in Management",
+      "slug": "bsc-management-malta",
+      "src": "pp. 110-113",
       "overview": "A three-year MQF Level 6 management degree that builds from management foundations to strategy, governance and data-driven decision-making. The curriculum blends leadership, economics, operations, marketing, research and analytics, with emphasis on emotional intelligence, digital transformation, ethical governance and sustainability, and ends with a research dissertation.",
-      "who": ["People seeking a first-cycle (undergraduate) degree in management", "Those aiming for careers in business administration, marketing, HR, operations, entrepreneurship or project management"],
-      "modules": ["Foundations of Management and Organisational Behaviour", "Human Resource and Leadership Practices", "Economics and Financial Literacy", "Legislation, Ethics, and Risk", "Strategic Marketing and Digital Transformation", "Project and Operations Management", "Strategic Management and Change", "Governance, Sustainability, and Corporate Responsibility", "Innovation, Technology, and the Future of Work", "Data-Driven Decision Making and Analytics", "Dissertation"],
-      "entry": ["A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)", "Applicants without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"],
-      "careers": ["Manager or senior manager", "Head of department", "Director, in private or public organisations", "A foundation for postgraduate study"]
+      "who": [
+        "People seeking a first-cycle (undergraduate) degree in management",
+        "Those aiming for careers in business administration, marketing, HR, operations, entrepreneurship or project management"
+      ],
+      "modules": [
+        "Foundations of Management and Organisational Behaviour",
+        "Human Resource and Leadership Practices",
+        "Economics and Financial Literacy",
+        "Legislation, Ethics, and Risk",
+        "Strategic Marketing and Digital Transformation",
+        "Project and Operations Management",
+        "Strategic Management and Change",
+        "Governance, Sustainability, and Corporate Responsibility",
+        "Innovation, Technology, and the Future of Work",
+        "Data-Driven Decision Making and Analytics",
+        "Dissertation"
+      ],
+      "entry": [
+        "A qualification at MQF Level 4 (one 'A' Level or equivalent in any subject), and a pass in English Language and Mathematics at MQF Level 3 ('O' Level or equivalent)",
+        "Applicants without all the formal qualifications may be considered through Recognition of Prior Learning (RPL), with an interview"
+      ],
+      "careers": [
+        "Manager or senior manager",
+        "Head of department",
+        "Director, in private or public organisations",
+        "A foundation for postgraduate study"
+      ]
     },
     {
-      "match": "M.Sc. in Management (M.Sc)", "slug": "msc-management-malta", "src": "pp. 166-169",
+      "match": "M.Sc. in Management (M.Sc)",
+      "slug": "msc-management-malta",
+      "src": "pp. 166-169",
       "overview": "An MQF Level 7 master's for managers who want to build strategy, policy and leadership skills to master's level. Core modules cover managing organisations and people, operations, finance and research methods, after which students choose electives and can follow a specialisation such as project management, marketing or innovation. The degree also strengthens progression to doctoral study.",
-      "who": ["Managers with supervisory or middle-management experience", "Operations, finance, supply chain, retail, marketing and services managers"],
-      "modules": ["Managing Organisations and People", "Organisational Behaviour", "Operations Management", "Evidence-based Management", "Financial Management", "Research Methods", "Leadership and Organisational Strategy Development", "Change Management", "Project Management or Marketing Management electives", "Innovation, Strategy and Sustainability", "Dissertation"],
-      "entry": ["A Level 6 degree and three years' work experience; or", "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"],
-      "careers": ["General manager", "Head of department", "Director, in private or public organisations"]
+      "who": [
+        "Managers with supervisory or middle-management experience",
+        "Operations, finance, supply chain, retail, marketing and services managers"
+      ],
+      "modules": [
+        "Managing Organisations and People",
+        "Organisational Behaviour",
+        "Operations Management",
+        "Evidence-based Management",
+        "Financial Management",
+        "Research Methods",
+        "Leadership and Organisational Strategy Development",
+        "Change Management",
+        "Project Management or Marketing Management electives",
+        "Innovation, Strategy and Sustainability",
+        "Dissertation"
+      ],
+      "entry": [
+        "A Level 6 degree and three years' work experience; or",
+        "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"
+      ],
+      "careers": [
+        "General manager",
+        "Head of department",
+        "Director, in private or public organisations"
+      ]
     },
     {
-      "match": "Master in Business Administration (MBA)", "slug": "mba-malta", "src": "pp. 246-249",
+      "match": "Master in Business Administration (MBA)",
+      "slug": "mba-malta",
+      "src": "pp. 246-249",
       "overview": "An MQF Level 7 MBA for professionals moving into strategic management and leadership. Eleven compulsory modules cover management and organisational behaviour, finance, accounting and economics, operations and analytics, marketing strategy, corporate strategy, negotiation and crisis management, information management and the global economy, followed by a final project.",
-      "who": ["Emerging leaders and mid-career managers", "Experienced practitioners moving into strategic leadership"],
-      "modules": ["Management Fundamentals and Organisational Behaviour", "Finance, Accounting, and Economics", "Managerial Operations and Analytics", "Project Management", "Leading with Impact", "Marketing Strategy and Management", "Advanced Finance, Accounting, and Economics", "Corporate Strategy", "Negotiation and Crisis Management", "Strategic Information Management", "Managing in the Global Economy", "Final Project"],
-      "entry": ["A Level 6 degree; or", "A related Level 5 diploma or higher diploma and four years of relevant work experience, subject to interview by the Admissions Board"],
-      "careers": ["CEO or general manager", "Chief operating officer", "Head of strategy or HR", "Senior finance manager", "Marketing or project director", "Management consultant"]
+      "who": [
+        "Emerging leaders and mid-career managers",
+        "Experienced practitioners moving into strategic leadership"
+      ],
+      "modules": [
+        "Management Fundamentals and Organisational Behaviour",
+        "Finance, Accounting, and Economics",
+        "Managerial Operations and Analytics",
+        "Project Management",
+        "Leading with Impact",
+        "Marketing Strategy and Management",
+        "Advanced Finance, Accounting, and Economics",
+        "Corporate Strategy",
+        "Negotiation and Crisis Management",
+        "Strategic Information Management",
+        "Managing in the Global Economy",
+        "Final Project"
+      ],
+      "entry": [
+        "A Level 6 degree; or",
+        "A related Level 5 diploma or higher diploma and four years of relevant work experience, subject to interview by the Admissions Board"
+      ],
+      "careers": [
+        "CEO or general manager",
+        "Chief operating officer",
+        "Head of strategy or HR",
+        "Senior finance manager",
+        "Marketing or project director",
+        "Management consultant"
+      ]
     },
     {
-      "match": "Master of Science (M.Sc.) in Elderly Care Management", "slug": "msc-elderly-care-management-malta", "src": "pp. 170-173",
+      "match": "Master of Science (M.Sc.) in Elderly Care Management",
+      "slug": "msc-elderly-care-management-malta",
+      "src": "pp. 170-173",
       "overview": "An MQF Level 7 master's for current and future managers of elderly care services, one of the fastest-growing parts of healthcare. It draws on management, policy, law and the social and behavioural sciences, covering leadership, quality improvement, finance and HR in care settings, the ageing process, palliative care and the psychology of old age.",
-      "who": ["Care home managers and directors", "Professionals in community, social, health and long-term care services for older people"],
-      "modules": ["Public Policy and Legal Basis for Elderly Care Management", "Welfare and Economic Issues in Elderly Care", "Leadership in Elderly Care", "Managing Institutions and HR for Elderly Care", "Quality Management and Elderly Care Service Improvement", "Financial Management of Elderly Care Settings", "Research Methods", "Critical Appraisal of the Ageing Process", "Palliative and End of Life Care", "Psychology and Psychiatry of Old Age", "Dissertation"],
-      "entry": ["A Level 6 degree and three years' work experience; or", "A Level 5 diploma or higher diploma and five years' work experience in a related role"],
-      "careers": ["Elderly care home manager or director", "Chief executive or financial officer of an elderly care organisation", "HR manager in care services"]
+      "who": [
+        "Care home managers and directors",
+        "Professionals in community, social, health and long-term care services for older people"
+      ],
+      "modules": [
+        "Public Policy and Legal Basis for Elderly Care Management",
+        "Welfare and Economic Issues in Elderly Care",
+        "Leadership in Elderly Care",
+        "Managing Institutions and HR for Elderly Care",
+        "Quality Management and Elderly Care Service Improvement",
+        "Financial Management of Elderly Care Settings",
+        "Research Methods",
+        "Critical Appraisal of the Ageing Process",
+        "Palliative and End of Life Care",
+        "Psychology and Psychiatry of Old Age",
+        "Dissertation"
+      ],
+      "entry": [
+        "A Level 6 degree and three years' work experience; or",
+        "A Level 5 diploma or higher diploma and five years' work experience in a related role"
+      ],
+      "careers": [
+        "Elderly care home manager or director",
+        "Chief executive or financial officer of an elderly care organisation",
+        "HR manager in care services"
+      ]
     },
     {
-      "match": "Master of Science in Healthcare Management and Leadership", "slug": "msc-healthcare-management-leadership-malta", "src": "pp. 174-177",
+      "match": "Master of Science in Healthcare Management and Leadership",
+      "slug": "msc-healthcare-management-leadership-malta",
+      "src": "pp. 174-177",
       "overview": "An MQF Level 7 master's that prepares healthcare professionals for senior leadership. It brings management, leadership, strategy and operations together with the realities of healthcare systems, covering finance, economics, quality, patient care, ICT and intercultural management, and closes with an independent dissertation.",
-      "who": ["Healthcare professionals moving into management", "Professionals from other sectors transitioning into healthcare leadership"],
-      "modules": ["Managing Organisations and People", "Leadership and Organisational Strategy", "Change Management", "Managing Finance in Organisations", "Operations Management", "Project Management for Healthcare", "Economics in Healthcare", "Patient and Customer Care", "Intercultural Management in Healthcare", "ICT and Information Systems in Healthcare", "Quality Management and Monitoring", "Dissertation"],
-      "entry": ["A Level 6 degree and two years' work experience; or", "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"],
-      "careers": ["Senior management in healthcare organisations", "Roles in government health agencies", "Healthcare consultancy"]
+      "who": [
+        "Healthcare professionals moving into management",
+        "Professionals from other sectors transitioning into healthcare leadership"
+      ],
+      "modules": [
+        "Managing Organisations and People",
+        "Leadership and Organisational Strategy",
+        "Change Management",
+        "Managing Finance in Organisations",
+        "Operations Management",
+        "Project Management for Healthcare",
+        "Economics in Healthcare",
+        "Patient and Customer Care",
+        "Intercultural Management in Healthcare",
+        "ICT and Information Systems in Healthcare",
+        "Quality Management and Monitoring",
+        "Dissertation"
+      ],
+      "entry": [
+        "A Level 6 degree and two years' work experience; or",
+        "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"
+      ],
+      "careers": [
+        "Senior management in healthcare organisations",
+        "Roles in government health agencies",
+        "Healthcare consultancy"
+      ]
     },
     {
-      "match": "Master of Science in Hospitality Management", "slug": "msc-hospitality-management-malta", "src": "pp. 214-217",
+      "match": "Master of Science in Hospitality Management",
+      "slug": "msc-hospitality-management-malta",
+      "src": "pp. 214-217",
       "overview": "An MQF Level 7 master's for hospitality professionals moving into senior leadership. It combines advanced business management with hospitality practice, covering operations, revenue management, marketing and events, finance, people leadership, health, safety and crisis management, and gastronomy, and ends with a dissertation.",
-      "who": ["Hospitality professionals with supervisory or middle-management experience", "Event, restaurant, reception, guest services and housekeeping managers"],
-      "modules": ["Tourism and Hospitality Principles", "Leading and Managing People", "Hospitality Operations Management", "Marketing, Sales and Event Management", "Managing Change in Hospitality", "Revenue Management in Hospitality", "The Art and Science of Gastronomy", "Managing Cultural Diversity in Hospitality", "Finance for Non-Financial Managers", "Health, Safety and Crisis Management in Hospitality", "Dissertation"],
-      "entry": ["A Level 6 degree and three years' work experience; or", "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"],
-      "careers": ["Senior posts such as head of department or events director in hotels, restaurants, casinos and other hospitality organisations"]
+      "who": [
+        "Hospitality professionals with supervisory or middle-management experience",
+        "Event, restaurant, reception, guest services and housekeeping managers"
+      ],
+      "modules": [
+        "Tourism and Hospitality Principles",
+        "Leading and Managing People",
+        "Hospitality Operations Management",
+        "Marketing, Sales and Event Management",
+        "Managing Change in Hospitality",
+        "Revenue Management in Hospitality",
+        "The Art and Science of Gastronomy",
+        "Managing Cultural Diversity in Hospitality",
+        "Finance for Non-Financial Managers",
+        "Health, Safety and Crisis Management in Hospitality",
+        "Dissertation"
+      ],
+      "entry": [
+        "A Level 6 degree and three years' work experience; or",
+        "A Level 5 diploma or higher diploma and five years' work experience in a supervisory or managerial role"
+      ],
+      "careers": [
+        "Senior posts such as head of department or events director in hotels, restaurants, casinos and other hospitality organisations"
+      ]
     },
     {
-      "match": "Master of Science in Public Health", "slug": "msc-public-health-malta", "src": "pp. 178-181",
+      "match": "Master of Science in Public Health",
+      "slug": "msc-public-health-malta",
+      "src": "pp. 178-181",
       "overview": "An MQF Level 7 master's made up of seven modules and a dissertation, aligned with the UK Faculty of Public Health Diplomate Examination (DFPH) syllabus and the European Agency of Public Health Education Accreditation (APHEA). It covers the principles of public health, epidemiology and statistics, evaluation, disease causation and prevention, health information, and the social, policy and economic influences on health.",
-      "who": ["People advancing their knowledge of public health", "Those aiming for careers in public health practice, policy or research"],
-      "modules": ["Principles of Public Health", "Research Methods - Epidemiology and Statistical Methods", "Research Methods - Assessment and Evaluation Approaches", "Disease Causation, Prevention, and Promotion", "Health Information", "Medical Sociology, Social Policy, and Health Economics", "Organisation and Management of Healthcare Programmes", "Dissertation"],
-      "entry": ["A Level 6 degree related to public health; or", "An unrelated Level 6 degree and at least one year of relevant experience (subject to interview); or", "A related Level 5 diploma or higher diploma and two years of related work experience (subject to interview)"],
-      "careers": ["Consultant in public health", "Epidemiologist or biostatistician", "Health policy analyst or planner", "Health promotion specialist", "Public health educator or researcher"]
+      "who": [
+        "People advancing their knowledge of public health",
+        "Those aiming for careers in public health practice, policy or research"
+      ],
+      "modules": [
+        "Principles of Public Health",
+        "Research Methods - Epidemiology and Statistical Methods",
+        "Research Methods - Assessment and Evaluation Approaches",
+        "Disease Causation, Prevention, and Promotion",
+        "Health Information",
+        "Medical Sociology, Social Policy, and Health Economics",
+        "Organisation and Management of Healthcare Programmes",
+        "Dissertation"
+      ],
+      "entry": [
+        "A Level 6 degree related to public health; or",
+        "An unrelated Level 6 degree and at least one year of relevant experience (subject to interview); or",
+        "A related Level 5 diploma or higher diploma and two years of related work experience (subject to interview)"
+      ],
+      "careers": [
+        "Consultant in public health",
+        "Epidemiologist or biostatistician",
+        "Health policy analyst or planner",
+        "Health promotion specialist",
+        "Public health educator or researcher"
+      ]
     }
   ],
   "doria": [
     {
-      "stream": "health", "slug": "healthcare-social-care-courses-italy", "title": "Healthcare and Social Care Courses in Italy",
+      "stream": "health",
+      "slug": "healthcare-social-care-courses-italy",
+      "title": "Healthcare and Social Care Courses in Italy",
       "overview": "Fondazione Doria's healthcare and social care stream trains students for care roles in Italy, from personal care and home care to childcare, community support and healthcare administration. It includes the Social and Healthcare Operator (OSS) and Social Care Operator (OSA) programmes. Training is practical, and employers in the sector host the professional internship stage.",
-      "highlights": ["Social and Healthcare Operator (OSS) and Social Care Operator (OSA)", "Care for older people, people with disabilities and children", "Healthcare administration, reception and booking roles"]
+      "highlights": [
+        "Social and Healthcare Operator (OSS) and Social Care Operator (OSA)",
+        "Care for older people, people with disabilities and children",
+        "Healthcare administration, reception and booking roles"
+      ]
     },
     {
-      "stream": "construction", "slug": "construction-technical-trades-courses-italy", "title": "Construction and Technical Trades Courses in Italy",
+      "stream": "construction",
+      "slug": "construction-technical-trades-courses-italy",
+      "title": "Construction and Technical Trades Courses in Italy",
       "overview": "The construction and technical trades stream builds practical skills for in-demand building and installation jobs in Italy. It covers site trades such as bricklaying, carpentry, plastering, tiling, scaffolding and welding, and technical roles in electrical, plumbing, air-conditioning and refrigeration systems, CAD drafting and site supervision.",
-      "highlights": ["Building trades: bricklayer, carpenter, plasterer, tiler, painter, scaffolder, welder", "Systems technicians: electrical, plumbing and heating, air-conditioning, refrigeration", "CAD technical drafting and construction site technician"]
+      "highlights": [
+        "Building trades: bricklayer, carpenter, plasterer, tiler, painter, scaffolder, welder",
+        "Systems technicians: electrical, plumbing and heating, air-conditioning, refrigeration",
+        "CAD technical drafting and construction site technician"
+      ]
     },
     {
-      "stream": "hospitality", "slug": "hospitality-tourism-culinary-courses-italy", "title": "Hospitality, Tourism and Culinary Courses in Italy",
+      "stream": "hospitality",
+      "slug": "hospitality-tourism-culinary-courses-italy",
+      "title": "Hospitality, Tourism and Culinary Courses in Italy",
       "overview": "The hospitality, tourism and culinary stream prepares students for kitchens, dining rooms, bars, hotels and tourism services in Italy. Courses range from cook, pastry chef, pizza maker and baker to waiter, bartender, sommelier and barista, as well as hotel reception, housekeeping, event organisation and tourism planning.",
-      "highlights": ["Culinary: cook, professional chef, pastry chef, pizza maker, baker, ice cream maker", "Food and beverage service: waiter, head waiter, bartender, barista, sommelier", "Hotels and tourism: reception, housekeeping, event organiser, tourism services"]
+      "highlights": [
+        "Culinary: cook, professional chef, pastry chef, pizza maker, baker, ice cream maker",
+        "Food and beverage service: waiter, head waiter, bartender, barista, sommelier",
+        "Hotels and tourism: reception, housekeeping, event organiser, tourism services"
+      ]
     },
     {
-      "stream": "fashion", "slug": "fashion-beauty-personal-care-courses-italy", "title": "Fashion, Beauty and Personal Care Courses in Italy",
+      "stream": "fashion",
+      "slug": "fashion-beauty-personal-care-courses-italy",
+      "title": "Fashion, Beauty and Personal Care Courses in Italy",
       "overview": "The fashion, beauty and personal care stream covers tailoring, clothing manufacturing, beauty and aesthetics, and hairdressing and styling. Practical training uses working salon stations and professional equipment.",
-      "highlights": ["Artisan tailoring and clothing manufacturing", "Professional beautician and aesthetics", "Professional hairdressing and styling"]
+      "highlights": [
+        "Artisan tailoring and clothing manufacturing",
+        "Professional beautician and aesthetics",
+        "Professional hairdressing and styling"
+      ]
     },
     {
-      "stream": "it", "slug": "it-digital-automation-courses-italy", "title": "IT, Digital and Automation Courses in Italy",
+      "stream": "it",
+      "slug": "it-digital-automation-courses-italy",
+      "title": "IT, Digital and Automation Courses in Italy",
       "overview": "The IT, digital and automation stream trains students in the technologies behind modern business and Industry 4.0. It spans IT support, networking, software and web development, cybersecurity and data, digital marketing and e-commerce, and industrial automation, PLC and SCADA programming, robotics and smart manufacturing.",
-      "highlights": ["IT support, networking, software and web development", "Cybersecurity, data analysis, cloud computing and artificial intelligence", "Industrial automation, PLC, SCADA, robotics and smart manufacturing"]
+      "highlights": [
+        "IT support, networking, software and web development",
+        "Cybersecurity, data analysis, cloud computing and artificial intelligence",
+        "Industrial automation, PLC, SCADA, robotics and smart manufacturing"
+      ]
     }
   ]
 }

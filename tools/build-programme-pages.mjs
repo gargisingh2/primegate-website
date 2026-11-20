@@ -150,7 +150,7 @@ content.doria.forEach((c) => {
   const fees = rows.map((r) => r.fee);
   const range = Math.min(...fees) === Math.max(...fees) ? euro(fees[0]) : `${euro(Math.min(...fees))} - ${euro(Math.max(...fees))}`;
   const others = content.doria.filter((o) => o !== c).map((o) => `<li><a href="/${o.slug}">${esc(o.title)}</a></li>`).join("\n        ");
-  const desc = `${rows.length} ${fdNames[c.stream]} courses in Campania, Italy (2026-27): fees ${range}, Italian pathway, monthly intakes.`;
+  const desc = `${rows.length} ${fdNames[c.stream]} courses in Campania, Italy (2026-27): fees ${range}, monthly intakes.`;
   const body = `<section class="page-head">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><!--crumbs--></nav>
@@ -168,7 +168,6 @@ content.doria.forEach((c) => {
       ["Institution", `<a href="/fondazione-doria">Fondazione Doria - Training and Education Institute</a>`],
       ["Programmes", `${rows.length} in this stream`],
       ["Course fee", `<strong>${range}</strong>`],
-      ["Language", esc(fdInfo.language)],
       ["Location", esc(fdInfo.location)],
       ["Intakes", esc(fdInfo.intake)],
       ["Internship", esc(fdInfo.internship)],
@@ -185,8 +184,6 @@ ${rows.map((r) => `          <tr><th scope="row" data-label="Programme"><a href=
         </tbody>
       </table></div>
       <p class="prog-note">${esc(inst["fondazione-doria"].fn || "Fees are confirmed in writing at offer stage.")} Programme availability depends on intake availability, centre capacity, regulatory approval and Fondazione Doria confirmation.</p>
-      <h2>Italian language pathway</h2>
-      <p>Italian is the preferred language of instruction. Programmes ordinarily begin with intensive A1 and A2 Italian language study, so international students can build the language skills needed for training and work.</p>
       <h2>Your journey to Italy</h2>
       <ol class="prog-steps">
         <li>Choose your programme and receive initial counselling from your Primegate Consultancy advisor.</li>
@@ -212,7 +209,7 @@ ${cta("institution=fondazione-doria", "Ask about these courses")}`;
       "@type": "ListItem", position: n + 1,
       item: {
         "@type": "Course", name: r.t, description: `${r.t}: ${fdNames[c.stream]} vocational education and training programme at Fondazione Doria, Campania, Italy (2026-27).`,
-        provider, inLanguage: "it",
+        provider,
         offers: { "@type": "Offer", category: "Course fee", price: r.fee, priceCurrency: "EUR" },
         hasCourseInstance: { "@type": "CourseInstance", courseMode: "Onsite", location: { "@type": "Place", name: "Campania, Italy" } },
       },
